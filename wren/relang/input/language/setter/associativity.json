@@ -1,0 +1,6 @@
+{
+  "id": "language/setter/associativity",
+  "type": "file",
+  "data": "class Foo {\n  construct new(value) { _value = value }\n  toString { _value }\n  bar=(value) {\n    _value = value\n    return value\n  }\n}\n\nvar a = Foo.new(\"a\")\nvar b = Foo.new(\"b\")\nvar c = Foo.new(\"c\")\n\n// Assignment is right-associative.\na.bar = b.bar = c.bar = \"d\"\nSystem.print(a.toString) // expect: d\nSystem.print(b.toString) // expect: d\nSystem.print(c.toString) // expect: d\n",
+  "timeout": 30
+}

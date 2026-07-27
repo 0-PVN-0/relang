@@ -1,0 +1,6 @@
+{
+  "id": "core/string/trim",
+  "type": "file",
+  "data": "System.print(\"\".trim() == \"\") // expect: true\nSystem.print(\"foo\".trim() == \"foo\") // expect: true\nSystem.print(\" \\t\\r\\nfoo b\\tar \\t\\r\\n\".trim() == \"foo b\\tar\") // expect: true\nSystem.print(\" \\t\\r\\n \\t\\r\\n\".trim() == \"\") // expect: true\nSystem.print(\" \\n\\n\\tsøméஃthîng \\n\\n\\t\".trim() == \"søméஃthîng\") // expect: true\n\nSystem.print(\"\".trim(\"abc\") == \"\") // expect: true\nSystem.print(\"foo\".trim(\"abc\") == \"foo\") // expect: true\nSystem.print(\"foo\".trim(\"\") == \"foo\") // expect: true\nSystem.print(\"cbacbfoobarab\".trim(\"abc\") == \"foobar\") // expect: true\nSystem.print(\"abcbacba\".trim(\"abc\") == \"\") // expect: true\nSystem.print(\"søméஃthîngsøméஃ\".trim(\"ஃmésø\") == \"thîng\") // expect: true\n\n// 8-bit clean.\nSystem.print(\" \\t\\ra\\0b \\t\\r\".trim() == \"a\\0b\") // expect: true\nSystem.print(\"\\0a\\0b\\0c\\0\".trim(\"c\\0a\") == \"b\") // expect: true\n",
+  "timeout": 30
+}

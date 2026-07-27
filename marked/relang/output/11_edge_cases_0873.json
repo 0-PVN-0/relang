@@ -1,0 +1,4 @@
+{
+  "id": "11_edge_cases_0873",
+  "output": "<blockquote>\n<ul>\n<li>a<blockquote>\n<p>deep quote</p>\n</blockquote>\n</li>\n<li>b</li>\n</ul>\n</blockquote>\n\n"
+}

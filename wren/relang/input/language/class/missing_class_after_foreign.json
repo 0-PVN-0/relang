@@ -1,0 +1,9 @@
+{
+  "id": "language/class/missing_class_after_foreign",
+  "type": "file",
+  "data": "// Missing \"class\".\nforeign blah A {} // expect error\n",
+  "timeout": 30,
+  "files": {
+    "language/class/syntax.wren": "// Empty body.\nclass A {}\n\n// Newline body.\nclass B {\n\n}\n\n// No newline after last method.\nclass C {\n  method {} }\n"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "id": "accounts_post_remove_without_csrf_returns_403",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/login/"
+        },
+        "expected": {},
+        "storeCookies": {
+          "rCsrf": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/accounts/login/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "action=login&email=alice@example.org&password=password&csrfmiddlewaretoken={rCsrf}"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {
+          "rSess": "sessionid"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {
+          "rProjId": "/projects/([0-9a-f-]+)/"
+        }
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/projects/{rProjId}/remove/"
+        },
+        "expected": {
+          "status": 403
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

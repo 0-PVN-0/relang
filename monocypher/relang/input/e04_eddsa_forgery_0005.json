@@ -1,0 +1,6 @@
+{
+  "id": "e04_eddsa_forgery_0005",
+  "type": "stdin",
+  "data": "crypto_eddsa_check\n887df8b0646485ff782a9bfc7a01dc4a42ed52354efc2a7e0d81de5c1d1b335006e4c079d306293c46077c3e3e4b9a2c8c75e713ee3e500c87f302fa06847205:\n4b3606cf52031d02212e8dc15fc17e797b995c3cbe53cc3a6cd11c749aeea54e:\n0ffdb4eb1b29fbc9c58eaef2130e94e2d1f2851dbc51b02a1ae12ec9cbbd5ebb41ce0bfde6dc2165a727f5630777215d:\n",
+  "timeout": 30
+}

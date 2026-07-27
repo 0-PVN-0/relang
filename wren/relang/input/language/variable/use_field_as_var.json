@@ -1,0 +1,6 @@
+{
+  "id": "language/variable/use_field_as_var",
+  "type": "file",
+  "data": "var _field = \"value\" // expect error\n",
+  "timeout": 30
+}

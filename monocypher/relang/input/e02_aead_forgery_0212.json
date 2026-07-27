@@ -1,0 +1,6 @@
+{
+  "id": "e02_aead_forgery_0212",
+  "type": "stdin",
+  "data": "crypto_aead_unlock\n65b8d71fedc17f408392d0a8d69f9a2c02b2a4c10520b34bc8ca601e63bebc4b:\n0befc4abe632bc55be8e9bc2d8bae52e65c08d5cef2a0506:\ned892e155af33d649f:\nadbf839afa40f651de29907b8a340b431c5ccfeac4f97a18dee75ed7:\na1eb86f2583dcb3b61c789d47bdb34f0:\n",
+  "timeout": 30
+}

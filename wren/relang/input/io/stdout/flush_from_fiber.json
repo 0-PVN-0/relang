@@ -1,0 +1,12 @@
+{
+  "id": "io/stdout/flush_from_fiber",
+  "type": "file",
+  "data": "import \"io\" for Stdout\nimport \"scheduler\" for Scheduler\nimport \"timer\" for Timer\n\nScheduler.add {\n  System.print(\"in fiber\") // expect: in fiber\n  Stdout.flush()\n  System.print(\"after flush\") // expect: after flush\n}\nTimer.sleep(50)\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

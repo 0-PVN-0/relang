@@ -1,0 +1,82 @@
+{
+  "id": "front_get_ping_by_number_returns_200_after_pinging",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/login/"
+        },
+        "expected": {},
+        "storeCookies": {
+          "pnCsrf": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/accounts/login/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "action=login&email=alice@example.org&password=password&csrfmiddlewaretoken={pnCsrf}"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {
+          "pnSess": "sessionid"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "content-type": "application/json",
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          },
+          "body": "{\"name\":\"Ping Num\",\"timeout\":3600,\"grace\":60}"
+        },
+        "expected": {
+          "status": 201
+        },
+        "storeCookies": {},
+        "store": {
+          "pnCheckId": "$.uuid"
+        },
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/ping/{pnCheckId}"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/checks/{pnCheckId}/pings/1/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

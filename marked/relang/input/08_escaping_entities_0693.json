@@ -1,0 +1,6 @@
+{
+  "id": "08_escaping_entities_0693",
+  "type": "stdin",
+  "data": "`\\` backslash in code span",
+  "timeout": 30
+}

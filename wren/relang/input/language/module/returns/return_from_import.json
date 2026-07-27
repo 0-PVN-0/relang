@@ -1,0 +1,10 @@
+{
+  "id": "language/module/returns/return_from_import",
+  "type": "file",
+  "data": "import \"./module_return\"\n\nSystem.print(\"baz\") \n// expect: foo\n// expect: baz\n",
+  "timeout": 30,
+  "files": {
+    "language/module/returns/module_return.wren": "// nontest\nSystem.print(\"foo\")\nreturn\nSystem.print(\"bar\")\n",
+    "language/module/returns/module_return_value.wren": "// nontest\nSystem.print(\"foo\")\nreturn 42\nSystem.print(\"bar\")\n"
+  }
+}

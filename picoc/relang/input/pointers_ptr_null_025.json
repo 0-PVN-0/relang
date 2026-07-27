@@ -1,0 +1,6 @@
+{
+  "id": "pointers_ptr_null_025",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int *p = NULL;\n    int val = 25;\n    if (p == NULL) {\n        p = &val;\n    }\n    if (p != NULL) {\n        printf(\"val: %d\\n\", *p);\n    }\n    return 0;\n}\n",
+  "timeout": 30
+}

@@ -1,0 +1,4 @@
+{
+  "id": "front_get_uncloak_with_bad_key_returns_404_when_logged_in",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 2}, {\"content-type\": \"text/html\", \"status\": 404, \"step\": 3}]"
+}

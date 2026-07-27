@@ -1,0 +1,6 @@
+{
+  "id": "04_lists_0365",
+  "type": "stdin",
+  "data": "- a\n  - b\n    - c\n      - d\n        - e\n          - f\n            - g",
+  "timeout": 30
+}

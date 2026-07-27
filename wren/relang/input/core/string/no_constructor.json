@@ -1,0 +1,6 @@
+{
+  "id": "core/string/no_constructor",
+  "type": "file",
+  "data": "String.new() // expect runtime error: String metaclass does not implement 'new()'.\n",
+  "timeout": 30
+}

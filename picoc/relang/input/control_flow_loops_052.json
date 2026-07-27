@@ -1,0 +1,6 @@
+{
+  "id": "control_flow_loops_052",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int sum = 0;\n    for (int j = 0; j < 52; j++) {\n        if (j % 5 == 0) continue;\n        if (j > 15) break;\n        sum += j;\n    }\n    printf(\"sum: %d\\n\", sum);\n    \n    int k = 0;\n    while (k < 52) {\n        k += 3;\n    }\n    printf(\"while_k: %d\\n\", k);\n    \n    int m = 0;\n    do {\n        m += 2;\n    } while (m < 52);\n    printf(\"dowhile_m: %d\\n\", m);\n    return 0;\n}\n",
+  "timeout": 30
+}

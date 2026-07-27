@@ -1,0 +1,12 @@
+{
+  "id": "io/file/file_exists_false",
+  "type": "file",
+  "data": "import \"io\" for File\n\nSystem.print(File.exists(\"this_file_does_not_exist_xyz.txt\")) // expect: false\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

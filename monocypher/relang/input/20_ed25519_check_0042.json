@@ -1,0 +1,6 @@
+{
+  "id": "20_ed25519_check_0042",
+  "type": "stdin",
+  "data": "crypto_ed25519_ph_sign\n54d3876a73ebeaa848c702df66c99d3dd43c916b559acd1a821d3a17e14b0aa1:\n4e9fac8cc4f89be9f9b68d14e42ed57d0c912ee4e331654ceefe74fa7e3bc2ea:\nf73e94c5fc92d36c85ede8bd16e0f235d1f88b7dec2c097638ec4aeef34362605526ba1495f57151b7cef23bd489c47e26ebc928076222eaf967426365504b1d:\n",
+  "timeout": 30
+}

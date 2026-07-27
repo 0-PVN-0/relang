@@ -1,0 +1,6 @@
+{
+  "id": "basic_types_inc_dec_001",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int a = 6;\n    int b = 4;\n    printf(\"post_inc_a: %d\\n\", a++);\n    printf(\"pre_inc_a: %d\\n\", ++a);\n    printf(\"post_dec_b: %d\\n\", b--);\n    printf(\"pre_dec_b: %d\\n\", --b);\n    printf(\"combined: %d\\n\", a++ + ++b);\n    printf(\"final_a: %d, final_b: %d\\n\", a, b);\n    return 0;\n}\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "language/list/empty_list_with_comma",
+  "type": "file",
+  "data": "[,] // expect error\n",
+  "timeout": 30
+}

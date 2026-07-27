@@ -1,0 +1,6 @@
+{
+  "id": "language/static_field/outside_class",
+  "type": "file",
+  "data": "__field = \"wat\" // expect error\n",
+  "timeout": 30
+}

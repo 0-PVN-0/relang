@@ -1,0 +1,9 @@
+{
+  "id": "core/number/smallest",
+  "type": "file",
+  "data": "System.print(Num.smallest) // expect: 2.2250738585072e-308\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "id": "api_create_check_with_timeout_just_below_min_returns_400",
+  "output": "[{\"body\": \"{\\\"error\\\": \\\"json validation error: timeout is too small\\\"}\", \"content-type\": \"application/json\", \"status\": 400, \"step\": 1}]"
+}

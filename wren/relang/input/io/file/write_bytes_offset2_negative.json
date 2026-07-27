@@ -1,0 +1,12 @@
+{
+  "id": "io/file/write_bytes_offset2_negative",
+  "type": "file",
+  "data": "import \"io\" for File, FileFlags\n\nvar file = File.openWithFlags(\"write_offset2_test.temp\", FileFlags.create | FileFlags.readWrite | FileFlags.truncate)\nfile.writeBytes(\"hello\", -1) // expect runtime error: Offset cannot be negative.\nfile.close()\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

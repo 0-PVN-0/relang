@@ -1,0 +1,6 @@
+{
+  "id": "core/list/iterate_iterator_not_int",
+  "type": "file",
+  "data": "var a = [1, 2, 3]\na.iterate(1.5) // expect runtime error: Iterator must be an integer.\n",
+  "timeout": 30
+}

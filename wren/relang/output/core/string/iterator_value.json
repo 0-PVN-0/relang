@@ -1,0 +1,4 @@
+{
+  "id": "core/string/iterator_value",
+  "output": "a\nb\nç\ntrue\nd\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\ntrue\n"
+}

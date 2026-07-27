@@ -1,0 +1,6 @@
+{
+  "id": "13_combinatorial2_4139",
+  "type": "stdin",
+  "data": "[a]: /url1\n[b]: /url2\n[c]: /url3\n\n[a] [b] [c]",
+  "timeout": 30
+}

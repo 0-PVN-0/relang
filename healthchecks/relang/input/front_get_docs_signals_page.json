@@ -1,0 +1,21 @@
+{
+  "id": "front_get_docs_signals_page",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/docs/signals/"
+        },
+        "expected": {
+          "status": 404
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

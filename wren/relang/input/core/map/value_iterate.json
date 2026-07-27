@@ -1,0 +1,12 @@
+{
+  "id": "core/map/value_iterate",
+  "type": "file",
+  "data": "var a = {\"one\": 1, \"two\": 2, \"three\": 3, \"four\": 4}.values\n\n// The precise numeric values aren't defined since they are indexes into the\n// entry table and the hashing process isn't specified. So we just validate\n// what we can assume about them.\n\nSystem.print(a.iterate(null) is Num) // expect: true\nSystem.print(a.iterate(null) >= 0) // expect: true\n\nSystem.print(a.iterate(0) is Num) // expect: true\nSystem.print(a.iterate(0) > 0) // expect: true\nSystem.print(a.iterate(1) is Num) // expect: true\nSystem.print(a.iterate(1) > 0) // expect: true\nSystem.print(a.iterate(2) is Num) // expect: true\nSystem.print(a.iterate(2) > 0) // expect: true\nSystem.print(a.iterate(3) is Num) // expect: true\nSystem.print(a.iterate(3) > 0) // expect: true\n\nvar previous = -1\nvar iterator = a.iterate(null)\nwhile (iterator) {\n  System.print(iterator > previous)\n  System.print(iterator is Num)\n  previous = iterator\n  iterator = a.iterate(iterator)\n}\n// First entry:\n// expect: true\n// expect: true\n// Second entry:\n// expect: true\n// expect: true\n// Third entry:\n// expect: true\n// expect: true\n// Fourth entry:\n// expect: true\n// expect: true\n\n// Out of bounds.\nSystem.print(a.iterate(16)) // expect: false\nSystem.print(a.iterate(-1)) // expect: false\n\n// Nothing to iterate in an empty map.\nSystem.print({}.values.iterate(null)) // expect: false\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

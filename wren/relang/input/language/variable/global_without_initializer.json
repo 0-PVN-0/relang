@@ -1,0 +1,6 @@
+{
+  "id": "language/variable/global_without_initializer",
+  "type": "file",
+  "data": "var a\nSystem.print(a) // expect: null\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "core/string/index_of_start_not_int",
+  "type": "file",
+  "data": "\"abcd\".indexOf(\"bc\", 12.34) // expect runtime error: Start must be an integer.\n",
+  "timeout": 30
+}

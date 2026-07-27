@@ -1,0 +1,4 @@
+{
+  "id": "accounts_get_change_email_without_login_redirects",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 302, \"step\": 1}]"
+}

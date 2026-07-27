@@ -1,0 +1,4 @@
+{
+  "id": "05_blockquotes_0477",
+  "output": "<blockquote>\n<pre><code>code\n</code></pre>\n<blockquote>\n<p>nested quote after code</p>\n</blockquote>\n</blockquote>\n\n"
+}

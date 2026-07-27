@@ -1,0 +1,12 @@
+{
+  "id": "io/directory/create_missing_parent",
+  "type": "file",
+  "data": "import \"io\" for Directory\n\n// Creating a nested directory where parent doesn't exist should error (ENOENT)\nvar fi = Fiber.new { Directory.create(\"nonexistent_parent_xyzabc/child_dir\") }\nfi.try()\nSystem.print(fi.error != null) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/directory/dir/c.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/file/file.txt": "this is a text file"
+  }
+}

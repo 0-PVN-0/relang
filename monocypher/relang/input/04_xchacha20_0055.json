@@ -1,0 +1,6 @@
+{
+  "id": "04_xchacha20_0055",
+  "type": "stdin",
+  "data": "crypto_chacha20_x\n1f44ac640cc110deaf302fd1111a56e5d1de4ea3c4c1754ac58001cf5b72d20e:\n83a7fc0ec6caeae17fcaf248a96f836beabc3c7e747fc4f5:\n9d218d07d62e0617361cd27a713a327aac14b74a24347b169a4fd10e1e9061881c6c89:\n205944a8896d9358:\n",
+  "timeout": 30
+}

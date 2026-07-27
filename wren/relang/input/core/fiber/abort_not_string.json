@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/abort_not_string",
+  "type": "file",
+  "data": "var fiber = Fiber.new {\n  Fiber.abort(123)\n}\n\nSystem.print(fiber.try()) // expect: 123\nSystem.print(fiber.isDone) // expect: true\nSystem.print(fiber.error) // expect: 123\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

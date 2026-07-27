@@ -1,0 +1,6 @@
+{
+  "id": "basic_types_precedence_044",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int a = 54;\n    int b = 49;\n    int c = 46;\n    printf(\"expr1: %d\\n\", a + b * c);\n    printf(\"expr2: %d\\n\", (a + b) * c);\n    printf(\"expr3: %d\\n\", a * b / c);\n    printf(\"expr4: %d\\n\", a - b - c);\n    printf(\"expr5: %d\\n\", a + (b - c) * a);\n    return 0;\n}\n",
+  "timeout": 30
+}

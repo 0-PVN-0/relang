@@ -1,0 +1,10 @@
+{
+  "id": "language/module/returns/return",
+  "type": "file",
+  "data": "System.print(\"foo\") // expect: foo\nreturn\nSystem.print(\"bar\")\n",
+  "timeout": 30,
+  "files": {
+    "language/module/returns/module_return.wren": "// nontest\nSystem.print(\"foo\")\nreturn\nSystem.print(\"bar\")\n",
+    "language/module/returns/module_return_value.wren": "// nontest\nSystem.print(\"foo\")\nreturn 42\nSystem.print(\"bar\")\n"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "id": "payments_get_billing_page_shows_payment_methods_section",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 2}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 3}]"
+}

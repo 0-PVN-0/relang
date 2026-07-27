@@ -1,0 +1,6 @@
+{
+  "id": "core/string/split",
+  "type": "file",
+  "data": "System.print(\"something\".split(\"meth\")) // expect: [so, ing]\nSystem.print(\"something\".split(\"some\")) // expect: [, thing]\nSystem.print(\"something\".split(\"ing\"))  // expect: [someth, ]\nSystem.print(\"something\".split(\"math\")) // expect: [something]\n\n// Multiple.\nSystem.print(\"somethingsomething\".split(\"meth\")) // expect: [so, ingso, ing]\nSystem.print(\"abc abc abc\".split(\" \")) // expect: [abc, abc, abc]\nSystem.print(\"abcabcabc\".split(\"abc\")) // expect: [, , , ]\n\n// Non-ASCII.\nSystem.print(\"søméthîng\".split(\"méth\"))  // expect: [sø, îng]\nSystem.print(\"søméthîng\".split(\"meth\")) // expect: [søméthîng]\n\n// 8-bit clean.\nSystem.print(\"a\\0b\\0c\".split(\"\\0\")) // expect: [a, b, c]\n",
+  "timeout": 30
+}

@@ -1,0 +1,15 @@
+{
+  "id": "io/stdin/is_raw_bad_zero",
+  "type": "file",
+  "data": "import \"io\" for Stdin\n\n// The isRaw setter uses wrenGetSlotBool() with no Wren type guard.\n// Non-bool values are silently coerced (no runtime error thrown).\nStdin.isRaw = 0\nSystem.print(\"no error\") // expect: no error\n",
+  "timeout": 30,
+  "files": {
+    "io/stdin/read_byte_eof.wren": "// skip: \nimport \"io\" for Stdin\n\nStdin.readLine() // stdin: one line\n\nvar error = Fiber.new {\n  Stdin.readByte()\n}.try()\n\nSystem.print(error) // expect: Stdin was closed.\n",
+    "io/stdin/read_line_eof.wren": "// skip: \nimport \"io\" for Stdin\n\nStdin.readLine() // stdin: one line\n\nvar error = Fiber.new {\n  Stdin.readLine()\n}.try()\n\nSystem.print(error) // expect: Stdin was closed.\n",
+    "io/stdin/read_line.wren": "// skip: \nimport \"io\" for Stdin\n\nSystem.write(\"> \")\nSystem.print(\"1 %(Stdin.readLine())\")\nSystem.write(\"> \")\nSystem.print(\"2 %(Stdin.readLine())\")\n\n// stdin: first\n// stdin: second\n// expect: > 1 first\n// expect: > 2 second\n",
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

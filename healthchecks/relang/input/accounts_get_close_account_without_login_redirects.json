@@ -1,0 +1,21 @@
+{
+  "id": "accounts_get_close_account_without_login_redirects",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/close/"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

@@ -1,0 +1,6 @@
+{
+  "id": "05_blockquotes_0446",
+  "type": "stdin",
+  "data": "> ```\n> fence code in quote\n> ```",
+  "timeout": 30
+}

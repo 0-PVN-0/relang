@@ -1,0 +1,6 @@
+{
+  "id": "language/super/super_in_closure_in_inherited_method",
+  "type": "file",
+  "data": "class A {\n  callSuperToString {\n    return Fn.new { super.toString }.call()\n  }\n\n  toString { \"A.toString\" }\n}\n\nclass B is A {\n  construct new() {}\n}\n\nSystem.print(B.new().callSuperToString) // expect: instance of B\n",
+  "timeout": 30
+}

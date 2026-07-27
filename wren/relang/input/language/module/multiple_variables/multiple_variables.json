@@ -1,0 +1,9 @@
+{
+  "id": "language/module/multiple_variables/multiple_variables",
+  "type": "file",
+  "data": "import \"./module\" for Module1, Module2, Module3, Module4, Module5\n\n// Only execute module body once:\n// expect: ran module\n\nSystem.print(Module1) // expect: from module one\nSystem.print(Module2) // expect: from module two\nSystem.print(Module3) // expect: from module three\nSystem.print(Module4) // expect: from module four\nSystem.print(Module5) // expect: from module five\n",
+  "timeout": 30,
+  "files": {
+    "language/module/multiple_variables/module.wren": "// nontest\nvar Module1 = \"from module one\"\nvar Module2 = \"from module two\"\nvar Module3 = \"from module three\"\nvar Module4 = \"from module four\"\nvar Module5 = \"from module five\"\n\nSystem.print(\"ran module\")\n"
+  }
+}

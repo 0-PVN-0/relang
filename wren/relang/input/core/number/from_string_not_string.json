@@ -1,0 +1,9 @@
+{
+  "id": "core/number/from_string_not_string",
+  "type": "file",
+  "data": "Num.fromString(1) // expect runtime error: Argument must be a string.",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

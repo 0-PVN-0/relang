@@ -1,0 +1,6 @@
+{
+  "id": "core/map/subscript_setter_key_not_value",
+  "type": "file",
+  "data": "var result = {}[[]] = \"value\" // expect runtime error: Key must be a value type.\n",
+  "timeout": 30
+}

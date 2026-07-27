@@ -1,0 +1,6 @@
+{
+  "id": "core/string/trim_end_chars_not_string",
+  "type": "file",
+  "data": "\"abracadabra\".trimEnd(123) // expect runtime error: Characters must be a string.\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "timer/sleep_float",
+  "type": "file",
+  "data": "import \"scheduler\" for Scheduler\nimport \"timer\" for Timer\n\n// These are both rounded to 1, so \"a\" should complete first.\nScheduler.add {\n  Timer.sleep(1.5)\n  System.print(\"a\")\n}\n\nScheduler.add {\n  Timer.sleep(1.3)\n  System.print(\"b\")\n}\n\nSystem.print(\"main\")\nTimer.sleep(3)\nSystem.print(\"done\")\n// expect: main\n// expect: a\n// expect: b\n// expect: done\n",
+  "timeout": 30
+}

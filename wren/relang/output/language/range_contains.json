@@ -1,0 +1,4 @@
+{
+  "id": "language/range_contains",
+  "output": "true\nfalse\ntrue\n"
+}

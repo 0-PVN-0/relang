@@ -1,0 +1,6 @@
+{
+  "id": "language/nonlocal/nonlocal_without_initializer",
+  "type": "file",
+  "data": "var A\nSystem.print(A) // expect: null\n",
+  "timeout": 30
+}

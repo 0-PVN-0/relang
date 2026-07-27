@@ -1,0 +1,6 @@
+{
+  "id": "03_code_blocks_0235",
+  "type": "stdin",
+  "data": "paragraph text\n```\ncode block\n```",
+  "timeout": 30
+}

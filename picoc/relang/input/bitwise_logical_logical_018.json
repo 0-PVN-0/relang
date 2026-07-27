@@ -1,0 +1,6 @@
+{
+  "id": "bitwise_logical_logical_018",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int side_effect = 0;\n    int res1 = (1) && (side_effect = 1);\n    printf(\"res1: %d, se1: %d\\n\", res1, side_effect);\n    \n    side_effect = 0;\n    int res2 = (0) || (side_effect = 2);\n    printf(\"res2: %d, se2: %d\\n\", res2, side_effect);\n    \n    int complex = !res1 && (res2 || side_effect);\n    printf(\"complex: %d\\n\", complex);\n    return 0;\n}\n",
+  "timeout": 30
+}

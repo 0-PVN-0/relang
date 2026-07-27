@@ -1,0 +1,4 @@
+{
+  "id": "07_paragraphs_breaks_0627",
+  "output": "<p>P1</p>\n<blockquote>\n<p>quote</p>\n</blockquote>\n<p>P2</p>\n\n"
+}

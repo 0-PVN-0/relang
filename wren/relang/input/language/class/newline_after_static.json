@@ -1,0 +1,9 @@
+{
+  "id": "language/class/newline_after_static",
+  "type": "file",
+  "data": "class Foo {\n  static // expect error\n  method {} // expect error\n}\n\n// The second error is cascaded.",
+  "timeout": 30,
+  "files": {
+    "language/class/syntax.wren": "// Empty body.\nclass A {}\n\n// Newline body.\nclass B {\n\n}\n\n// No newline after last method.\nclass C {\n  method {} }\n"
+  }
+}

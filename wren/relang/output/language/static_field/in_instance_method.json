@@ -1,0 +1,4 @@
+{
+  "id": "language/static_field/in_instance_method",
+  "output": "1\n2\n3\n4\n5\n"
+}

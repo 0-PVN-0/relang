@@ -1,0 +1,4 @@
+{
+  "id": "typedef_coercion_coercion_026",
+  "output": "double: 149.456, cast_int: 149, cast_float: 149.0\npromoted: 276\n"
+}

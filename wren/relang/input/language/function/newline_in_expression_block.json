@@ -1,0 +1,6 @@
+{
+  "id": "language/function/newline_in_expression_block",
+  "type": "file",
+  "data": "Fn.new { System.print(\"ok\") // expect error\n}.call()\n",
+  "timeout": 30
+}

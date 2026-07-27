@@ -1,0 +1,88 @@
+{
+  "id": "front_post_transfer_to_member_bob_redirects",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "content-type": "application/json",
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          },
+          "body": "{\"name\":\"Tfr To Bob\",\"timeout\":3600,\"grace\":60}"
+        },
+        "expected": {
+          "status": 201
+        },
+        "storeCookies": {},
+        "store": {
+          "tfr2Id": "$.uuid"
+        },
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/login/"
+        },
+        "expected": {},
+        "storeCookies": {
+          "tbCsrf": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/accounts/login/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "action=login&email=alice@example.org&password=password&csrfmiddlewaretoken={tbCsrf}"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {
+          "tbSess": "sessionid"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/checks/{tfr2Id}/transfer/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {
+          "tbCsrf": "csrfmiddlewaretoken\" value=\"([^\"]+)\""
+        }
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/checks/{tfr2Id}/transfer/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "csrfmiddlewaretoken={tbCsrf}&action=transfer"
+        },
+        "expected": {
+          "status": 400
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

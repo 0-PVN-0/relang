@@ -1,0 +1,6 @@
+{
+  "id": "os/process/cwd_is_string",
+  "type": "file",
+  "data": "import \"os\" for Process\n\nSystem.print(Process.cwd is String) // expect: true\n",
+  "timeout": 30
+}

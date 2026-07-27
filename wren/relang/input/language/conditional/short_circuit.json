@@ -1,0 +1,6 @@
+{
+  "id": "language/conditional/short_circuit",
+  "type": "file",
+  "data": "true ? System.print(\"ok\") : System.print(\"no\") // expect: ok\nfalse ? System.print(\"no\") : System.print(\"ok\") // expect: ok\n",
+  "timeout": 30
+}

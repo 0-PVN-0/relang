@@ -1,0 +1,6 @@
+{
+  "id": "05_blockquotes_0482",
+  "type": "stdin",
+  "data": "> text\n>\n> ```\n> code between paragraphs\n> ```\n>\n> more text",
+  "timeout": 30
+}

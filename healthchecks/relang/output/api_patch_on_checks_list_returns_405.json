@@ -1,0 +1,4 @@
+{
+  "id": "api_patch_on_checks_list_returns_405",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 405, \"step\": 1}]"
+}

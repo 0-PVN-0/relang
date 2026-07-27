@@ -1,0 +1,4 @@
+{
+  "id": "language/conditional/newlines",
+  "output": "yes\nno\n"
+}

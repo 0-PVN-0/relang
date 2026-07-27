@@ -1,0 +1,6 @@
+{
+  "id": "core/map/count",
+  "type": "file",
+  "data": "var map = {}\nSystem.print(map.count) // expect: 0\nmap[\"one\"] = \"value\"\nSystem.print(map.count) // expect: 1\nmap[\"two\"] = \"value\"\nSystem.print(map.count) // expect: 2\nmap[\"three\"] = \"value\"\nSystem.print(map.count) // expect: 3\n\n// Adding existing key does not increase count.\nmap[\"two\"] = \"new value\"\nSystem.print(map.count) // expect: 3\n",
+  "timeout": 30
+}

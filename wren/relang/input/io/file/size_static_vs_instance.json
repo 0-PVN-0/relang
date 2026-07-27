@@ -1,0 +1,12 @@
+{
+  "id": "io/file/size_static_vs_instance",
+  "type": "file",
+  "data": "import \"io\" for File\n\nvar file = File.open(\"test/io/file/file.txt\")\nvar instanceSize = file.size\nfile.close()\nvar staticSize = File.size(\"test/io/file/file.txt\")\nSystem.print(instanceSize == staticSize) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

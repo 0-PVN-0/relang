@@ -1,0 +1,4 @@
+{
+  "id": "accounts_get_verify_email_with_invalid_token_shows_error",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}]"
+}

@@ -1,0 +1,4 @@
+{
+  "id": "accounts_post_login_with_remember_me_sets_persistent_session",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 2}]"
+}

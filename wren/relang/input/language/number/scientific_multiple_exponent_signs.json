@@ -1,0 +1,6 @@
+{
+  "id": "language/number/scientific_multiple_exponent_signs",
+  "type": "file",
+  "data": "var x = 1e+-01 // expect error\n",
+  "timeout": 30
+}

@@ -1,0 +1,4 @@
+{
+  "id": "core/number/round",
+  "output": "123\n-123\n0\n-0\n0\n12\n-0\n-12\n"
+}

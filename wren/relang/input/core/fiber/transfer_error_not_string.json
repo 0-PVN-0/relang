@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/transfer_error_not_string",
+  "type": "file",
+  "data": "var A = Fiber.new {\n  B.transferError(123)\n}\n\nvar B = Fiber.new {\n  A.transfer()\n}\n\nB.try()\nSystem.print(B.error) // expect: 123\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

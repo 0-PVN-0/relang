@@ -1,0 +1,6 @@
+{
+  "id": "19_ed25519_pk_0011",
+  "type": "stdin",
+  "data": "crypto_ed25519_key_pair\n795698c52b769e0b88f9033f89cdaa16c983a6544c33c4d37f7ba6aec69c1732:\n",
+  "timeout": 30
+}

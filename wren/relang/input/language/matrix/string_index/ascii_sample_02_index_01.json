@@ -1,0 +1,6 @@
+{
+  "id": "language/matrix/string_index/ascii_sample_02_index_01",
+  "type": "file",
+  "data": "System.print(\"klmnopqrst\"[1]) // expect: l\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_2587",
+  "type": "stdin",
+  "data": "~~~javascript\ndef foo():\n    pass\n~~~",
+  "timeout": 30
+}

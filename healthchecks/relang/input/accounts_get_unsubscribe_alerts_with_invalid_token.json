@@ -1,0 +1,21 @@
+{
+  "id": "accounts_get_unsubscribe_alerts_with_invalid_token",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/unsubscribe_alerts/bad-token/"
+        },
+        "expected": {
+          "status": 404
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

@@ -1,0 +1,6 @@
+{
+  "id": "core/string/iterate",
+  "type": "file",
+  "data": "var s = \"abçd\"\nSystem.print(s.iterate(null)) // expect: 0\nSystem.print(s.iterate(0)) // expect: 1\nSystem.print(s.iterate(1)) // expect: 2\n// Skip 3 because that's the middle of the ç sequence.\nSystem.print(s.iterate(2)) // expect: 4\n// Iterating from the middle of a UTF-8 sequence goes to the next one.\nSystem.print(s.iterate(3)) // expect: 4\nSystem.print(s.iterate(4)) // expect: false\n\n// Out of bounds.\nSystem.print(s.iterate(123)) // expect: false\nSystem.print(s.iterate(-1)) // expect: false\n\n// Nothing to iterate in an empty string.\nSystem.print(\"\".iterate(null)) // expect: false\n\n// 8-bit clean.\nSystem.print(\"a\\0b\\0c\".iterate(null)) // expect: 0\nSystem.print(\"a\\0b\\0c\".iterate(0)) // expect: 1\nSystem.print(\"a\\0b\\0c\".iterate(1)) // expect: 2\nSystem.print(\"a\\0b\\0c\".iterate(2)) // expect: 3\nSystem.print(\"a\\0b\\0c\".iterate(3)) // expect: 4\nSystem.print(\"a\\0b\\0c\".iterate(4)) // expect: false\n\n// Iterates over invalid UTF-8 one byte at a time.\nSystem.print(\"\\xef\\xf7\".iterate(null)) // expect: 0\nSystem.print(\"\\xef\\xf7\".iterate(0)) // expect: 1\nSystem.print(\"\\xef\\xf7\".iterate(1)) // expect: false\n",
+  "timeout": 30
+}

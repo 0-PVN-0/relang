@@ -1,0 +1,6 @@
+{
+  "id": "03_code_blocks_0236",
+  "type": "stdin",
+  "data": "- list\n\n  ```\n  code in list\n  ```\n\n- another",
+  "timeout": 30
+}

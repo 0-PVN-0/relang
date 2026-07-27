@@ -1,0 +1,6 @@
+{
+  "id": "core/function/type",
+  "type": "file",
+  "data": "System.print(Fn.new { 0 } is Fn)      // expect: true\nSystem.print(Fn.new { 0 } is Object)  // expect: true\nSystem.print(Fn.new { 0 } is String)  // expect: false\nSystem.print(Fn.new { 0 }.type == Fn) // expect: true\n",
+  "timeout": 30
+}

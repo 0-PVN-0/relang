@@ -1,0 +1,4 @@
+{
+  "id": "pointers_ptr_levels_023",
+  "output": "val: 230, *p1: 230, **p2: 230, ***p3: 230\nnew val: 460\n"
+}

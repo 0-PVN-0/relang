@@ -1,0 +1,6 @@
+{
+  "id": "08_escaping_entities_0712",
+  "type": "stdin",
+  "data": "&#0; null entity",
+  "timeout": 30
+}

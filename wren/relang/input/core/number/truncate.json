@@ -1,0 +1,13 @@
+{
+  "id": "core/number/truncate",
+  "type": "file",
+  "data": "System.print(123.truncate)      // expect: 123\nSystem.print((-123).truncate)   // expect: -123\nSystem.print(0.truncate)        // expect: 0\nSystem.print((-0).truncate)     // expect: -0\nSystem.print(0.123.truncate)    // expect: 0\nSystem.print(12.3.truncate)     // expect: 12\nSystem.print((-0.123).truncate) // expect: -0\nSystem.print((-12.3).truncate)  // expect: -12\n\n// Using 32-bit representation, values \"beyond\" those  two will lead to\n// approximation.\nSystem.print((12345678901234.5).truncate)   // expect: 12345678901234\nSystem.print((-12345678901234.5).truncate)  // expect: -12345678901234\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123.",
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

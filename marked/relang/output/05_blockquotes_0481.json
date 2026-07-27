@@ -1,0 +1,4 @@
+{
+  "id": "05_blockquotes_0481",
+  "output": "<blockquote>\n<p><a href=\"url\">link</a> and <img src=\"img.png\" alt=\"img\"></p>\n</blockquote>\n\n"
+}

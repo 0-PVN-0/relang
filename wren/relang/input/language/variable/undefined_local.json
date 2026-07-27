@@ -1,0 +1,6 @@
+{
+  "id": "language/variable/undefined_local",
+  "type": "file",
+  "data": "Fn.new {\n  System.print(notDefined)  // expect error\n}.call()\n",
+  "timeout": 30
+}

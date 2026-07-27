@@ -1,0 +1,6 @@
+{
+  "id": "core/range/no_constructor",
+  "type": "file",
+  "data": "Range.new() // expect runtime error: Range metaclass does not implement 'new()'.\n",
+  "timeout": 30
+}

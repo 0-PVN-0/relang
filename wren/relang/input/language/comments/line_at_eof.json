@@ -1,0 +1,12 @@
+{
+  "id": "language/comments/line_at_eof",
+  "type": "file",
+  "data": "System.print(\"ok\") // expect: ok\n// comment",
+  "timeout": 30,
+  "files": {
+    "language/comments/only_line_comment.wren": "// comment",
+    "language/comments/only_line_comment_and_line.wren": "// comment\n",
+    "language/comments/unterminated_block.wren": "// expect error line 3\nSystem.print(\"nope\") /*\noops",
+    "language/comments/unterminated_nested_block.wren": "// expect error line 4\nSystem.print(\"nope\") /* /* /*\n*/\noops"
+  }
+}

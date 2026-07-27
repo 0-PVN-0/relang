@@ -1,0 +1,6 @@
+{
+  "id": "08_aead_8439_0141",
+  "type": "stdin",
+  "data": "crypto_aead_init_djb\ndbd9aecf4446332a2396cf72af7cdf5186096ac6be4aae7a47530a9bcfd74689:\n0d3b737b935dd3ee:\n",
+  "timeout": 30
+}

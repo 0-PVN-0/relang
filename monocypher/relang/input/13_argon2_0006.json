@@ -1,0 +1,6 @@
+{
+  "id": "13_argon2_0006",
+  "type": "stdin",
+  "data": "crypto_argon2\n00000000:\n08000000:\n01000000:\n01000000:\nd55921e5ad0e7cbd80:\n9d198ff8dd47a9d443fb:\n456f528168ce7aacae58809573292e:\n:\n2000000000000000:\n",
+  "timeout": 30
+}

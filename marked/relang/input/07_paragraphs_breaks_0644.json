@@ -1,0 +1,6 @@
+{
+  "id": "07_paragraphs_breaks_0644",
+  "type": "stdin",
+  "data": "line with \u001bescape\u001b chars",
+  "timeout": 30
+}

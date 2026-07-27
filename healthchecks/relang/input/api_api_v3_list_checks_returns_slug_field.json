@@ -1,0 +1,41 @@
+{
+  "id": "api_api_v3_list_checks_returns_slug_field",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v3/checks/",
+          "headers": {
+            "content-type": "application/json",
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          },
+          "body": "{\"name\":\"V3 Slug\",\"slug\":\"v3-test\",\"timeout\":3600,\"grace\":60}"
+        },
+        "expected": {
+          "status": 201
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/api/v3/checks/",
+          "headers": {
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          }
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

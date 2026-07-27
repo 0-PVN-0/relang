@@ -1,0 +1,6 @@
+{
+  "id": "core/string/split_argument_not_string",
+  "type": "file",
+  "data": "\"foo\".split(1) // expect runtime error: Delimiter must be a non-empty string.\n",
+  "timeout": 30
+}

@@ -1,0 +1,4 @@
+{
+  "id": "accounts_post_signup_without_csrf_returns_403",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 403, \"step\": 1}]"
+}

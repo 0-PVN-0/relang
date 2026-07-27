@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_2585",
+  "type": "stdin",
+  "data": "~~~python\ndef foo():\n    pass\n~~~",
+  "timeout": 30
+}

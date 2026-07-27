@@ -1,0 +1,6 @@
+{
+  "id": "language/variable/newline_after_equals",
+  "type": "file",
+  "data": "var foo =\n\n\n    123\nSystem.print(foo) // expect: 123\n",
+  "timeout": 30
+}

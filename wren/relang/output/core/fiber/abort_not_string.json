@@ -1,0 +1,4 @@
+{
+  "id": "core/fiber/abort_not_string",
+  "output": "123\ntrue\n123\n"
+}

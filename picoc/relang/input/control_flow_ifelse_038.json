@@ -1,0 +1,6 @@
+{
+  "id": "control_flow_ifelse_038",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int x = 38;\n    if (x < 10) {\n        if (x % 2 == 0) printf(\"low even\\n\");\n        else printf(\"low odd\\n\");\n    } else if (x < 20) {\n        printf(\"medium\\n\");\n    } else {\n        if (x % 5 == 0) printf(\"high mult 5\\n\");\n        else printf(\"high other\\n\");\n    }\n    return 0;\n}\n",
+  "timeout": 30
+}

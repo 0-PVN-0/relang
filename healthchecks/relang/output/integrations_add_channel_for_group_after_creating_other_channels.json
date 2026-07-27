@@ -1,0 +1,4 @@
+{
+  "id": "integrations_add_channel_for_group_after_creating_other_channels",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 2}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 3}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 4}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 5}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 6}]"
+}

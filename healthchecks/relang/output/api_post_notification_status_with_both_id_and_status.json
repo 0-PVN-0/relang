@@ -1,0 +1,4 @@
+{
+  "id": "api_post_notification_status_with_both_id_and_status",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 404, \"step\": 1}]"
+}

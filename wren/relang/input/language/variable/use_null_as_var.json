@@ -1,0 +1,6 @@
+{
+  "id": "language/variable/use_null_as_var",
+  "type": "file",
+  "data": "var null = \"value\" // expect error\n",
+  "timeout": 30
+}

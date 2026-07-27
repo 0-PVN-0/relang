@@ -1,0 +1,4 @@
+{
+  "id": "accounts_login_with_invalid_email_shows_error",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 2}]"
+}

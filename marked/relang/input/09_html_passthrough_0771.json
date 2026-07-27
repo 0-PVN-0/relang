@@ -1,0 +1,6 @@
+{
+  "id": "09_html_passthrough_0771",
+  "type": "stdin",
+  "data": "<a href=\"javascript:void(0)\">click</a>",
+  "timeout": 30
+}

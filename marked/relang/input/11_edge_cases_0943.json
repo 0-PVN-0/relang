@@ -1,0 +1,6 @@
+{
+  "id": "11_edge_cases_0943",
+  "type": "stdin",
+  "data": "# Header\n\n| Col1 | Col2 |\n|------|------|\n| `**code**` | `*code*` |",
+  "timeout": 30
+}

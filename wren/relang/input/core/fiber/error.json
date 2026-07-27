@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/error",
+  "type": "file",
+  "data": "var fiber = Fiber.new {\n  \"s\".unknown\n}\n\nSystem.print(fiber.error) // expect: null\nSystem.print(fiber.try()) // expect: String does not implement 'unknown'.\nSystem.print(fiber.error) // expect: String does not implement 'unknown'.\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

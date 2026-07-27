@@ -1,0 +1,6 @@
+{
+  "id": "language/break/in_for_loop",
+  "type": "file",
+  "data": "for (i in [1, 2, 3, 4, 5]) {\n  System.print(i)\n  if (i > 2) break\n  System.print(i)\n}\n// expect: 1\n// expect: 1\n// expect: 2\n// expect: 2\n// expect: 3\n",
+  "timeout": 30
+}

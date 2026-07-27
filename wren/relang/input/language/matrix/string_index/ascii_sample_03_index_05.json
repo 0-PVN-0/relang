@@ -1,0 +1,6 @@
+{
+  "id": "language/matrix/string_index/ascii_sample_03_index_05",
+  "type": "file",
+  "data": "System.print(\"uvwxyzABCD\"[5]) // expect: z\n",
+  "timeout": 30
+}

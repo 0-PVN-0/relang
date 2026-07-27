@@ -1,0 +1,12 @@
+{
+  "id": "core/map/churn",
+  "type": "file",
+  "data": "// This is a regression test for a bug where inserting in a map would not\n// correctly reuse tombstone entries, eventually deadlocking on insert.\nvar map = {}\n\nfor (i in 0...100) {\n  map[i] = i\n\n  if (i >= 10) map.remove(i - 10)\n}\n\nSystem.print(map.count) // expect: 10\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

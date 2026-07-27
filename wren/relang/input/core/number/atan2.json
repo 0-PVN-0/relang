@@ -1,0 +1,9 @@
+{
+  "id": "core/number/atan2",
+  "type": "file",
+  "data": "System.print(0.atan(0))     // expect: 0\nSystem.print(0.atan(1))     // expect: 0\n\nSystem.print(1.atan(0))     // expect: 1.5707963267949\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

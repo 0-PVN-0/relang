@@ -1,0 +1,6 @@
+{
+  "id": "core/string/multiply_negative",
+  "type": "file",
+  "data": "\"abc\" * -3 // expect runtime error: Count must be a non-negative integer.\n",
+  "timeout": 30
+}

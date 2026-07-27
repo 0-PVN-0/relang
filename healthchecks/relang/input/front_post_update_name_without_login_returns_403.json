@@ -1,0 +1,21 @@
+{
+  "id": "front_post_update_name_without_login_returns_403",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/checks/00000000-0000-0000-0000-000000000000/name/"
+        },
+        "expected": {
+          "status": 403
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

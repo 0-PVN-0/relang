@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/call_with_value_done",
+  "type": "file",
+  "data": "var fiber = Fiber.new {\n  System.print(\"call\")\n}\n\nfiber.call(1) // expect: call\nfiber.call(2) // expect runtime error: Cannot call a finished fiber.\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "id": "io/file/write_bytes_from_offset_negative",
+  "output": "Offset cannot be negative.\n"
+}

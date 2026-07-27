@@ -1,0 +1,43 @@
+{
+  "id": "api_pause_check_by_uuid_returns_200",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "content-type": "application/json",
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          },
+          "body": "{\"name\":\"API Pause\",\"timeout\":3600,\"grace\":60}"
+        },
+        "expected": {
+          "status": 201
+        },
+        "storeCookies": {},
+        "store": {
+          "apId": "$.uuid"
+        },
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/checks/{apId}/pause",
+          "headers": {
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          }
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

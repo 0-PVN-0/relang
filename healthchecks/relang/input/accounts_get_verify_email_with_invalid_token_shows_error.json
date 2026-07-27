@@ -1,0 +1,21 @@
+{
+  "id": "accounts_get_verify_email_with_invalid_token_shows_error",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/change_email/invalid-token-here/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

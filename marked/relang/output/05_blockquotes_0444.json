@@ -1,0 +1,4 @@
+{
+  "id": "05_blockquotes_0444",
+  "output": "<ul>\n<li><blockquote>\n<p>quote at list start</p>\n</blockquote>\n</li>\n<li>normal</li>\n</ul>\n\n"
+}

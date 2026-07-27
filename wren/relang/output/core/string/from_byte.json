@@ -1,0 +1,4 @@
+{
+  "id": "core/string/from_byte",
+  "output": "A\n0\n255\n"
+}

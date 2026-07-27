@@ -1,0 +1,26 @@
+{
+  "id": "api_create_check_with_invalid_methods_returns_400",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "content-type": "application/json",
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          },
+          "body": "{\"name\":\"Bad Methods\",\"methods\":\"INVALID\",\"timeout\":3600,\"grace\":60}"
+        },
+        "expected": {
+          "status": 400
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

@@ -1,0 +1,6 @@
+{
+  "id": "01_verify_0249",
+  "type": "stdin",
+  "data": "crypto_wipe\n2c8a2413b220db05ce64685a5e6fa56c72589b206b07a3baf624f1a149c196a62b91c71fb98dde98eae78116023de844f8a064bc0dfc39f568c0a5ad425e6cfb9ebe91d848fa2387a08dabe8de466a22f9137fb6abc424dcfc3f27d422a8d11df241d149d7d822d8d27f27755ff1e110:\n",
+  "timeout": 30
+}

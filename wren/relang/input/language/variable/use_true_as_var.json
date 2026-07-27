@@ -1,0 +1,6 @@
+{
+  "id": "language/variable/use_true_as_var",
+  "type": "file",
+  "data": "var true = \"value\" // expect error\n",
+  "timeout": 30
+}

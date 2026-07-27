@@ -1,0 +1,12 @@
+{
+  "id": "io/file/read_bytes_after_close",
+  "type": "file",
+  "data": "import \"io\" for File\n\nvar file = File.open(\"test/io/file/file.txt\")\nfile.close()\n\nfile.readBytes(3) // expect runtime error: File is not open.\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

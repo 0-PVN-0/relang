@@ -1,0 +1,12 @@
+{
+  "id": "language/nonlocal/localname_forward_declare",
+  "type": "file",
+  "data": "if (false) {\n  System.print(a)\n}\n\nvar a = 123 // expect error: Error at '123': Variable 'a' referenced before this definition (first use at line 2).",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

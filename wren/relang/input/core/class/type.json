@@ -1,0 +1,6 @@
+{
+  "id": "core/class/type",
+  "type": "file",
+  "data": "class Foo {}\n\n// A class is a class.\nSystem.print(Foo is Class) // expect: true\n\n// Its metatype is also a class.\nSystem.print(Foo.type is Class) // expect: true\n\n// The metatype's metatype is Class.\nSystem.print(Foo.type.type == Class) // expect: true\n\n// And Class's metatype circles back onto itself.\nSystem.print(Foo.type.type.type == Class) // expect: true\nSystem.print(Foo.type.type.type.type == Class) // expect: true\nSystem.print(Foo.type.type.type.type.type == Class) // expect: true\n",
+  "timeout": 30
+}

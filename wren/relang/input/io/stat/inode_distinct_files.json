@@ -1,0 +1,12 @@
+{
+  "id": "io/stat/inode_distinct_files",
+  "type": "file",
+  "data": "import \"io\" for File, Stat\n\nFile.create(\"stat_a.temp\") {|f| f.writeBytes(\"a\") }\nFile.create(\"stat_b.temp\") {|f| f.writeBytes(\"b\") }\nvar a = Stat.path(\"stat_a.temp\")\nvar b = Stat.path(\"stat_b.temp\")\nSystem.print(a.inode != b.inode) // expect: true\nFile.delete(\"stat_a.temp\")\nFile.delete(\"stat_b.temp\")\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

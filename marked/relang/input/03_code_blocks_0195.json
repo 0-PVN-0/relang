@@ -1,0 +1,6 @@
+{
+  "id": "03_code_blocks_0195",
+  "type": "stdin",
+  "data": "```javascript\nconsole.log('hello');\n```",
+  "timeout": 30
+}

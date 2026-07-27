@@ -1,0 +1,4 @@
+{
+  "id": "language/module/multiple_variables/multiple_variables",
+  "output": "ran module\nfrom module one\nfrom module two\nfrom module three\nfrom module four\nfrom module five\n"
+}

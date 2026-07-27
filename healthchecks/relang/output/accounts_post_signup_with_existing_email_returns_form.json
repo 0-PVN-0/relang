@@ -1,0 +1,4 @@
+{
+  "id": "accounts_post_signup_with_existing_email_returns_form",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 2}]"
+}

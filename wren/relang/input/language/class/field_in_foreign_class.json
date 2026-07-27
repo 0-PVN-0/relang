@@ -1,0 +1,9 @@
+{
+  "id": "language/class/field_in_foreign_class",
+  "type": "file",
+  "data": "foreign class Foo {\n  bar {\n    // Can't read a field.\n    System.print(_bar) // expect error\n\n    // Or write one.\n    _bar = \"value\" // expect error\n  }\n}\n",
+  "timeout": 30,
+  "files": {
+    "language/class/syntax.wren": "// Empty body.\nclass A {}\n\n// Newline body.\nclass B {\n\n}\n\n// No newline after last method.\nclass C {\n  method {} }\n"
+  }
+}

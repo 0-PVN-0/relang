@@ -1,0 +1,12 @@
+{
+  "id": "core/string/subscript",
+  "type": "file",
+  "data": "// Returns characters (as strings).\nSystem.print(\"abcd\"[0]) // expect: a\nSystem.print(\"abcd\"[1]) // expect: b\nSystem.print(\"abcd\"[2]) // expect: c\nSystem.print(\"abcd\"[3]) // expect: d\n\n// Allows indexing backwards from the end.\nSystem.print(\"abcd\"[-4]) // expect: a\nSystem.print(\"abcd\"[-3]) // expect: b\nSystem.print(\"abcd\"[-2]) // expect: c\nSystem.print(\"abcd\"[-1]) // expect: d\n\n// Regression: Make sure the string's internal buffer size is correct.\nSystem.print(\"abcd\"[1] == \"b\") // expect: true\n\n// Indexes by byte, not code point.\n//\n// Bytes:           11111\n//        012345678901234\n// Chars: sø mé ஃ  thî ng\nSystem.print(\"søméஃthîng\"[0]) // expect: s\nSystem.print(\"søméஃthîng\"[1]) // expect: ø\nSystem.print(\"søméஃthîng\"[3]) // expect: m\nSystem.print(\"søméஃthîng\"[6]) // expect: ஃ\nSystem.print(\"søméஃthîng\"[10]) // expect: h\nSystem.print(\"søméஃthîng\"[-1]) // expect: g\nSystem.print(\"søméஃthîng\"[-2]) // expect: n\nSystem.print(\"søméஃthîng\"[-4]) // expect: î\n\n// If the subscript is in the middle of a UTF-8 sequence, return the raw byte.\nSystem.print(\"søméஃthîng\"[2] == \"\\xb8\") // expect: true\nSystem.print(\"søméஃthîng\"[7] == \"\\xae\") // expect: true\nSystem.print(\"søméஃthîng\"[8] == \"\\x83\") // expect: true\nSystem.print(\"søméஃ\"[-1] == \"\\x83\") // expect: true\nSystem.print(\"søméஃ\"[-2] == \"\\xae\") // expect: true\n\n// 8-bit clean.\nSystem.print(\"a\\0b\\0c\"[0] == \"a\") // expect: true\nSystem.print(\"a\\0b\\0c\"[1] == \"\\0\") // expect: true\nSystem.print(\"a\\0b\\0c\"[2] == \"b\") // expect: true\nSystem.print(\"a\\0b\\0c\"[3] == \"\\0\") // expect: true\nSystem.print(\"a\\0b\\0c\"[4] == \"c\") // expect: true\n\n// Returns single byte strings for invalid UTF-8 sequences.\nSystem.print(\"\\xef\\xf7\"[0] == \"\\xef\") // expect: true\nSystem.print(\"\\xef\\xf7\"[1] == \"\\xf7\") // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

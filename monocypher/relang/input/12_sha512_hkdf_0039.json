@@ -1,0 +1,6 @@
+{
+  "id": "12_sha512_hkdf_0039",
+  "type": "stdin",
+  "data": "crypto_sha512_hkdf\ne0df4c2cf468f5e0fb0e26fbed2700237b98e456b4dc5689cc:\nf00ac5621d9bc7163b971af25c9bdbb6a1f2a7b0257bc5dfb77a1b12f6361c194c2ca4b1cee9024af784a2c1193a:\n2898e613d666553b96339aaadc666cf3a5082bef50d07369609da5:\n0d00000000000000:\n",
+  "timeout": 30
+}

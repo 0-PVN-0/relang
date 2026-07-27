@@ -1,0 +1,4 @@
+{
+  "id": "timer/sleep_nested_shortest_first",
+  "output": "main\nshort\nlong\ndone\n"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "language/method/not_found_eleven_arguments",
+  "type": "file",
+  "data": "class Foo {\n  construct new() {}\n}\n\nFoo.new().someUnknownMethod(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11) // expect runtime error: Foo does not implement 'someUnknownMethod(_,_,_,_,_,_,_,_,_,_,_)'.",
+  "timeout": 30
+}

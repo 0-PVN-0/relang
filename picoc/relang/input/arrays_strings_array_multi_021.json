@@ -1,0 +1,6 @@
+{
+  "id": "arrays_strings_array_multi_021",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int arr[2][3] = {{ 21, 22, 23 }, { 24, 25, 26 }};\n    for(int r = 0; r < 2; r++) {\n        for(int c = 0; c < 3; c++) {\n            printf(\"arr[%d][%d] = %d\\n\", r, c, arr[r][c]);\n        }\n    }\n    return 0;\n}\n",
+  "timeout": 30
+}

@@ -1,0 +1,4 @@
+{
+  "id": "08_escaping_entities_0712",
+  "output": "<p>&#0; null entity</p>\n\n"
+}

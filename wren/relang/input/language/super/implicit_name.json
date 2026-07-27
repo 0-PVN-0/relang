@@ -1,0 +1,6 @@
+{
+  "id": "language/super/implicit_name",
+  "type": "file",
+  "data": "class Base {\n  foo {\n    System.print(\"Base.foo\")\n  }\n}\n\nclass Derived is Base {\n  construct new() {}\n\n  foo {\n    System.print(\"Derived.foo\")\n    super\n  }\n}\n\nDerived.new().foo\n// expect: Derived.foo\n// expect: Base.foo\n",
+  "timeout": 30
+}

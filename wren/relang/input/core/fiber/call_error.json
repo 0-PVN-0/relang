@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/call_error",
+  "type": "file",
+  "data": "var fiber = Fiber.new {\n  Fiber.abort(\"Error!\")\n  System.print(\"should not get here\")\n}\n\nfiber.try()\nfiber.call() // expect runtime error: Cannot call an aborted fiber.\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

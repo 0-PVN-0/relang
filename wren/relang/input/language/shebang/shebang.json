@@ -1,0 +1,11 @@
+{
+  "id": "language/shebang/shebang",
+  "type": "file",
+  "data": "#!/bin/wren\nSystem.print(\"ok\") // expect: ok\n",
+  "timeout": 30,
+  "files": {
+    "language/shebang/shebang_at_eof.wren": "#!/bin/wren",
+    "language/shebang/shebang_at_other_line.wren": "// expect error line 3\nSystem.print(\"nope\")\n#!/bin/wren",
+    "language/shebang/shebang_invalid.wren": "#/invalid/shebang\n// expect error line 1\nSystem.print(\"nope\")\n"
+  }
+}

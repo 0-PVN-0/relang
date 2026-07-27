@@ -1,0 +1,6 @@
+{
+  "id": "language/method/not_found_multiple_arguments",
+  "type": "file",
+  "data": "class Foo {\n  construct new() {}\n}\n\nFoo.new().someUnknownMethod(1, 2) // expect runtime error: Foo does not implement 'someUnknownMethod(_,_)'.",
+  "timeout": 30
+}

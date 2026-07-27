@@ -1,0 +1,4 @@
+{
+  "id": "language/super/implicit_name",
+  "output": "Derived.foo\nBase.foo\n"
+}

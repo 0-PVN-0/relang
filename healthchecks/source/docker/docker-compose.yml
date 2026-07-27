@@ -1,0 +1,17 @@
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_NAME=/data/hc.sqlite
+      - SECRET_KEY=testing-fixed-secret-key-for-both-servers
+      - SITE_ROOT=http://localhost:8000
+      - ALLOWED_HOSTS=*
+      - DEBUG=True
+      - REGISTRATION_OPEN=True
+      - PING_ENDPOINT=http://localhost:8000/ping/
+      - SITE_NAME=Mychecks
+      - EMAIL_HOST=localhost

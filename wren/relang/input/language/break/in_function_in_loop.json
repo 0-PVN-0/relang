@@ -1,0 +1,6 @@
+{
+  "id": "language/break/in_function_in_loop",
+  "type": "file",
+  "data": "var done = false\nwhile (!done) {\n  Fn.new {\n    break // expect error\n  }\n  done = true\n}",
+  "timeout": 30
+}

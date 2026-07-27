@@ -1,0 +1,12 @@
+{
+  "id": "language/for/syntax",
+  "type": "file",
+  "data": "// Single-expression body.\nfor (i in [1]) System.print(i)\n// expect: 1\n\n// Block body.\nfor (i in [1]) {\n  System.print(i)\n}\n// expect: 1\n\n// Newline after \"in\".\nfor (i in\n  [1]) System.print(i)\n// expect: 1",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

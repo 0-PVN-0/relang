@@ -1,0 +1,4 @@
+{
+  "id": "io/file/is_open_false_after_close",
+  "output": "false\n"
+}

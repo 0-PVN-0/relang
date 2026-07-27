@@ -1,0 +1,4 @@
+{
+  "id": "front_get_project_checks_without_login_redirects",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 302, \"step\": 1}]"
+}

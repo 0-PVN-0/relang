@@ -1,0 +1,9 @@
+{
+  "id": "core/number/round",
+  "type": "file",
+  "data": "System.print(123.round)      // expect: 123\nSystem.print((-123).round)   // expect: -123\nSystem.print(0.round)        // expect: 0\nSystem.print((-0).round)     // expect: -0\nSystem.print(0.123.round)    // expect: 0\nSystem.print(12.3.round)     // expect: 12\nSystem.print((-0.123).round) // expect: -0\nSystem.print((-12.3).round)  // expect: -12\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

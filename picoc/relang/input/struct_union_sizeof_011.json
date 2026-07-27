@@ -1,0 +1,6 @@
+{
+  "id": "struct_union_sizeof_011",
+  "type": "file",
+  "data": "#include <stdio.h>\nstruct S1 { char c; int i; };\nstruct S2 { char c; char d; };\nstruct S3 { double d; char c; int i; };\nint main() {\n    printf(\"sizeof S1: %d\\n\", (int)sizeof(struct S1));\n    printf(\"sizeof S2: %d\\n\", (int)sizeof(struct S2));\n    printf(\"sizeof S3: %d\\n\", (int)sizeof(struct S3));\n    return 0;\n}\n",
+  "timeout": 30
+}

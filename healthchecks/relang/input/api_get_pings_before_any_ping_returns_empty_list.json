@@ -1,0 +1,43 @@
+{
+  "id": "api_get_pings_before_any_ping_returns_empty_list",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "content-type": "application/json",
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          },
+          "body": "{\"name\":\"No Pings Yet\",\"timeout\":3600,\"grace\":60}"
+        },
+        "expected": {
+          "status": 201
+        },
+        "storeCookies": {},
+        "store": {
+          "ns2_id5": "$.uuid"
+        },
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/api/v1/checks/{ns2_id5}/pings/",
+          "headers": {
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          }
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

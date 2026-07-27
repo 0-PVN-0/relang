@@ -1,0 +1,4 @@
+{
+  "id": "core/sequence/is_empty",
+  "output": "true\nfalse\nfalse\n"
+}

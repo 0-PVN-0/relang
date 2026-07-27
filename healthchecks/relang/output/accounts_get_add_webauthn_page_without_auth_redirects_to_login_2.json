@@ -1,0 +1,4 @@
+{
+  "id": "accounts_get_add_webauthn_page_without_auth_redirects_to_login_2",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 302, \"step\": 1}]"
+}

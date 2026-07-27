@@ -1,0 +1,6 @@
+{
+  "id": "08_aead_8439_0020",
+  "type": "stdin",
+  "data": "crypto_aead_write\n93bc2c63871e4b5c748dcab844478c02a031dae5c1a7914774dccfa71b2e8973:\n71705be3e340f268b3a8fc94:\nd6c0b415ebbc0891570059b1:\n3d863be47a4d57dc304710bfb86b72b5cca6b16c9ee6dbc5bdf220e7a08f930b5091d4b9ebddb2d54cdcb2dd65c5422d73362e095bca6dc56d412278de41e09ea2b506b41ffee4b7a3e007943deebd0dc66f2a78ffbdcba862b706cf643dcb841a9344fbdb6ce5b58b651a:\n",
+  "timeout": 30
+}

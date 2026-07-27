@@ -1,0 +1,6 @@
+{
+  "id": "edge_cases_chain_assign_019",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int a, b, c, d;\n    a = b = c = d = 285;\n    printf(\"a:%d b:%d c:%d d:%d\\n\", a, b, c, d);\n    return 0;\n}\n",
+  "timeout": 30
+}

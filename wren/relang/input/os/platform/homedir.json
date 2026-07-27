@@ -1,0 +1,12 @@
+{
+  "id": "os/platform/homedir",
+  "type": "file",
+  "data": "import \"io\" for File, Directory\nimport \"os\" for Platform\n\nSystem.print(Platform.homePath is String) // expect: true\nSystem.print(!Platform.homePath.isEmpty) // expect: true\nSystem.print(File.realPath(Platform.homePath) == Platform.homePath) // expect: true\nSystem.print(Directory.exists(Platform.homePath)) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

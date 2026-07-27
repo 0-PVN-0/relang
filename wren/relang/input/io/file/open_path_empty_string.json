@@ -1,0 +1,12 @@
+{
+  "id": "io/file/open_path_empty_string",
+  "type": "file",
+  "data": "import \"io\" for File\n\nvar f = Fiber.new { File.open(\"\") }\nf.try()\nSystem.print(f.error != null) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

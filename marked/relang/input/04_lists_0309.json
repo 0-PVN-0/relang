@@ -1,0 +1,6 @@
+{
+  "id": "04_lists_0309",
+  "type": "stdin",
+  "data": "- [x] done\n- [X] done cap\n- [ ] todo",
+  "timeout": 30
+}

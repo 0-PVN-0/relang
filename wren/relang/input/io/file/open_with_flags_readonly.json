@@ -1,0 +1,12 @@
+{
+  "id": "io/file/open_with_flags_readonly",
+  "type": "file",
+  "data": "import \"io\" for File, FileFlags\n\nvar file = File.openWithFlags(\"test/io/file/file.txt\", FileFlags.readOnly)\nSystem.print(file.isOpen) // expect: true\nvar content = file.readBytes(4)\nSystem.print(content) // expect: this\nfile.close()\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

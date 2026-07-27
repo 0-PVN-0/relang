@@ -1,0 +1,6 @@
+{
+  "id": "language/field/in_static_method_in_nested_class",
+  "type": "file",
+  "data": "// Refering to an instance method in a nested static class should *not* walk\n// out to find the nearest enclosing instance method. We could make that work,\n// but it's confusing to users, and would require some tricky work to make sure\n// the enclosing instance is closed over.\n\nclass Outer {\n  foo {\n    class Inner {\n      static bar {\n        _field = \"nope\" // expect error\n      }\n    }\n  }\n}\n",
+  "timeout": 30
+}

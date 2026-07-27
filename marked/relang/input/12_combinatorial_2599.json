@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_2599",
+  "type": "stdin",
+  "data": "~~~rust\ndef foo():\n    pass\n~~~",
+  "timeout": 30
+}

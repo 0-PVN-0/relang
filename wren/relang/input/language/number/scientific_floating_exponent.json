@@ -1,0 +1,6 @@
+{
+  "id": "language/number/scientific_floating_exponent",
+  "type": "file",
+  "data": "var x = 1.2e3.4 // expect error\n",
+  "timeout": 30
+}

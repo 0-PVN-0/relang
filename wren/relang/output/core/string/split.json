@@ -1,0 +1,4 @@
+{
+  "id": "core/string/split",
+  "output": "[so, ing]\n[, thing]\n[someth, ]\n[something]\n[so, ingso, ing]\n[abc, abc, abc]\n[, , , ]\n[sø, îng]\n[søméthîng]\n[a, b, c]\n"
+}

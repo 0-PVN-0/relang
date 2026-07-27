@@ -1,0 +1,6 @@
+{
+  "id": "language/return/return_null_if_newline",
+  "type": "file",
+  "data": "var f = Fn.new {\n  return\n  System.print(\"bad\")\n}\n\nSystem.print(f.call()) // expect: null\n",
+  "timeout": 30
+}

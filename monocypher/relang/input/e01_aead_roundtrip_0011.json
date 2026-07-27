@@ -1,0 +1,6 @@
+{
+  "id": "e01_aead_roundtrip_0011",
+  "type": "stdin",
+  "data": "crypto_aead_unlock\n47c579b3bb32616507eb2d03bc52bb1e1adb38049d3ced73acd37cfc3871dd45:\n6f392e118def12bfe3f846a3a298c336ce884095b77224ca:\nfc0d5e96383b22575c4a4cc2010f47fef427e2b57c8a7da80b3af10a0d22d1a3de6bb861:\nf5c9e086fd5ac6c23c1af53a28f78c1c8afd03936d5a9642a0de503631:\n41ea5cd6abd77ec03edae1340f6e9d79:\n",
+  "timeout": 30
+}

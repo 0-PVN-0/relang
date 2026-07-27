@@ -1,0 +1,12 @@
+{
+  "id": "io/stdout/flush_no_output",
+  "type": "file",
+  "data": "import \"io\" for Stdout\n\nStdout.flush()\nSystem.print(\"ok\") // expect: ok\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

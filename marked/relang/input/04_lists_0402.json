@@ -1,0 +1,6 @@
+{
+  "id": "04_lists_0402",
+  "type": "stdin",
+  "data": "1. item with \\# escape\n2. item with \\* escape",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "11_edge_cases_0996",
+  "type": "stdin",
+  "data": "1. list ending with escape\\\n2. next item",
+  "timeout": 30
+}

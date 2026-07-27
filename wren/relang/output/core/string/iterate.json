@@ -1,0 +1,4 @@
+{
+  "id": "core/string/iterate",
+  "output": "0\n1\n2\n4\n4\nfalse\nfalse\nfalse\nfalse\n0\n1\n2\n3\n4\nfalse\n0\n1\nfalse\n"
+}

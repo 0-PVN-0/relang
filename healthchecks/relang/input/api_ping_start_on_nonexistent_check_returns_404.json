@@ -1,0 +1,21 @@
+{
+  "id": "api_ping_start_on_nonexistent_check_returns_404",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/ping/00000000-0000-0000-0000-000000000000/start"
+        },
+        "expected": {
+          "status": 404
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

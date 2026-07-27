@@ -1,0 +1,12 @@
+{
+  "id": "io/file/open_path_tilde_not_start",
+  "type": "file",
+  "data": "import \"io\" for File\n\n// ~ in the middle should not be expanded — it's a literal char\n// This file doesn't exist so we just check the error is clean\nvar f = Fiber.new { File.open(\"test/io/file/~nonexistent\") }\nf.try()\nSystem.print(f.error != null) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

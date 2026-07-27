@@ -1,0 +1,12 @@
+{
+  "id": "io/directory/list_true",
+  "type": "file",
+  "data": "import \"io\" for Directory\n\nDirectory.list(true) // expect runtime error: Path must be a string.\n",
+  "timeout": 30,
+  "files": {
+    "io/directory/dir/c.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/file/file.txt": "this is a text file"
+  }
+}

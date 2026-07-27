@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/transfer_with_value_to_done",
+  "type": "file",
+  "data": "var a = Fiber.new {\n  System.print(\"run\")\n}\n\na.call() // expect: run\na.transfer(\"blah\") // expect runtime error: Cannot transfer to a finished fiber.\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

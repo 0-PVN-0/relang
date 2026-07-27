@@ -1,0 +1,6 @@
+{
+  "id": "09_html_passthrough_0749",
+  "type": "stdin",
+  "data": "<?php echo '>'; ?>*not emphasis*",
+  "timeout": 30
+}

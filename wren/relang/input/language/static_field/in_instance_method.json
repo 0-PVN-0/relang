@@ -1,0 +1,6 @@
+{
+  "id": "language/static_field/in_instance_method",
+  "type": "file",
+  "data": "class Foo {\n  construct new() {}\n\n  set(a, b, c, d, e) {\n    __a = a\n    __b = b\n    __c = c\n    __d = d\n    __e = e\n  }\n\n  write() {\n    System.print(__a)\n    System.print(__b)\n    System.print(__c)\n    System.print(__d)\n    System.print(__e)\n  }\n}\n\nFoo.new().set(1, 2, 3, 4, 5)\nFoo.new().write()\n// expect: 1\n// expect: 2\n// expect: 3\n// expect: 4\n// expect: 5\n",
+  "timeout": 30
+}

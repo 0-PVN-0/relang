@@ -1,0 +1,6 @@
+{
+  "id": "timer/sleep_zero",
+  "type": "file",
+  "data": "import \"scheduler\" for Scheduler\nimport \"timer\" for Timer\n\nScheduler.add {\n  System.print(\"a before\")\n  Timer.sleep(0)\n  System.print(\"a after\")\n}\n\nScheduler.add {\n  System.print(\"b before\")\n  Timer.sleep(0)\n  System.print(\"b after\")\n}\n\nSystem.print(\"main\")\nTimer.sleep(0) // This is enough to let the other fibers run to their sleep.\nSystem.print(\"main after\")\nTimer.sleep(0) // And now their sleeps complete.\nSystem.print(\"done\")\n\n// expect: main\n// expect: a before\n// expect: b before\n// expect: main after\n// expect: a after\n// expect: b after\n// expect: done\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "stdlib_malloc_020",
+  "type": "file",
+  "data": "#include <stdio.h>\n#include <stdlib.h>\nint main() {\n    int size = 5;\n    int *arr = (int*)malloc(size * sizeof(int));\n    if (arr == NULL) return 1;\n    for(int j = 0; j < size; j++) {\n        arr[j] = j * 20;\n    }\n    for(int j = 0; j < size; j++) {\n        printf(\"%d \", arr[j]);\n    }\n    printf(\"\\n\");\n    free(arr);\n    return 0;\n}\n",
+  "timeout": 30
+}

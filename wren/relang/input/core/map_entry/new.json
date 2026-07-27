@@ -1,0 +1,6 @@
+{
+  "id": "core/map_entry/new",
+  "type": "file",
+  "data": "var entry = MapEntry.new(\"key\", \"value\")\n\nSystem.print(entry.key)   // expect: key\nSystem.print(entry.value) // expect: value\n",
+  "timeout": 30
+}

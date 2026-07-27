@@ -1,0 +1,6 @@
+{
+  "id": "language/nonlocal/use_in_function",
+  "type": "file",
+  "data": "var Global = \"global\"\n\nFn.new {\n  System.print(Global) // expect: global\n}.call()\n",
+  "timeout": 30
+}

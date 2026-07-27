@@ -1,0 +1,6 @@
+{
+  "id": "02_headings_0143",
+  "type": "stdin",
+  "data": "# H1\n## H2\n### H3\n#### H4\n##### H5\n###### H6",
+  "timeout": 30
+}

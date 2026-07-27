@@ -1,0 +1,4 @@
+{
+  "id": "api_list_checks_with_wrong_api_key_length_33",
+  "output": "[{\"body\": \"{\\\"error\\\": \\\"missing api key\\\"}\", \"content-type\": \"application/json\", \"status\": 401, \"step\": 1}]"
+}

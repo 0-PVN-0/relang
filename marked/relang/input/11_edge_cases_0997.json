@@ -1,0 +1,6 @@
+{
+  "id": "11_edge_cases_0997",
+  "type": "stdin",
+  "data": "> quote ending with escape\\\n> continuation",
+  "timeout": 30
+}

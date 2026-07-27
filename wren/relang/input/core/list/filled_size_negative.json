@@ -1,0 +1,6 @@
+{
+  "id": "core/list/filled_size_negative",
+  "type": "file",
+  "data": "List.filled(-1, null) // expect runtime error: Size cannot be negative.\n",
+  "timeout": 30
+}

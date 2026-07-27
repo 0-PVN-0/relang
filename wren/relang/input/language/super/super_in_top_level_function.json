@@ -1,0 +1,6 @@
+{
+  "id": "language/super/super_in_top_level_function",
+  "type": "file",
+  "data": "Fn.new {\n  super.foo // expect error\n}\n",
+  "timeout": 30
+}

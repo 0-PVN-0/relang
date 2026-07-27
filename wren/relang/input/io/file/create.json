@@ -1,0 +1,12 @@
+{
+  "id": "io/file/create",
+  "type": "file",
+  "data": "import \"io\" for File\n\n// Create a new file.\nvar file = File.create(\"file.temp\")\nSystem.print(file.isOpen) // expect: true\nSystem.print(file.size) // expect: 0\n\nfile.writeBytes(\"stuff\")\nfile.close()\n\nSystem.print(File.size(\"file.temp\")) // expect: 5\n\n// Overwrite a file.\nfile = File.create(\"file.temp\")\n\n// Truncates.\nSystem.print(file.size) // expect: 0\nfile.close()\n\nFile.delete(\"file.temp\")\n\n// TODO: Test it cannot be read from.\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

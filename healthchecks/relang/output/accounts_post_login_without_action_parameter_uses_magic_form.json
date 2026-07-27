@@ -1,0 +1,4 @@
+{
+  "id": "accounts_post_login_without_action_parameter_uses_magic_form",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 2}]"
+}

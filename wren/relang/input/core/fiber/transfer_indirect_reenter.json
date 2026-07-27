@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/transfer_indirect_reenter",
+  "type": "file",
+  "data": "var A = Fiber.new {\n  System.print(2)\n  B.transfer()\n  System.print(\"nope\")\n}\n\nvar B = Fiber.new {\n  System.print(1)\n  A.transfer()\n  System.print(3)\n}\n\nB.call()\n// expect: 1\n// expect: 2\n// expect: 3\n// B remembers its original caller so returns to main.\nSystem.print(4) // expect: 4\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

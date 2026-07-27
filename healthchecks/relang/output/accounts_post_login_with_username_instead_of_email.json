@@ -1,0 +1,4 @@
+{
+  "id": "accounts_post_login_with_username_instead_of_email",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 2}]"
+}

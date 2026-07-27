@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/call_with_value",
+  "type": "file",
+  "data": "var fiber = Fiber.new {\n  System.print(\"fiber\")\n}\n\nSystem.print(\"before\") // expect: before\nfiber.call(\"value\")    // expect: fiber\nSystem.print(\"after\")  // expect: after\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

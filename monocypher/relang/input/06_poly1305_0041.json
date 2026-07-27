@@ -1,0 +1,6 @@
+{
+  "id": "06_poly1305_0041",
+  "type": "stdin",
+  "data": "crypto_poly1305\n29131bfdeb149089f64fb7ecba76f39a9eddebd9a5888d681c988f7a2c99d92b:\n4f2aac7e255eaf1a3069f53f64cb766e4dfe0f3d2ae1484039ba3a222e58:\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "01_basic_inline_0099",
+  "type": "stdin",
+  "data": "a ~~b ~~c~~ d~~ e",
+  "timeout": 30
+}

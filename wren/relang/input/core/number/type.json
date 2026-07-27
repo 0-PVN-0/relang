@@ -1,0 +1,9 @@
+{
+  "id": "core/number/type",
+  "type": "file",
+  "data": "System.print(123 is Num)      // expect: true\nSystem.print(123 is Object)   // expect: true\nSystem.print(123 is String)   // expect: false\nSystem.print(123.type == Num) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

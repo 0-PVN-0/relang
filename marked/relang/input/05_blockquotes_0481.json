@@ -1,0 +1,6 @@
+{
+  "id": "05_blockquotes_0481",
+  "type": "stdin",
+  "data": "> [link](url) and ![img](img.png)",
+  "timeout": 30
+}

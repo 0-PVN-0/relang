@@ -1,0 +1,4 @@
+{
+  "id": "io/file/file_read_entire",
+  "output": "this is a text file\n"
+}

@@ -1,0 +1,4 @@
+{
+  "id": "io/directory/create_list_delete_cycle",
+  "output": "true\ntrue\ntrue\nfalse\ntrue\nfalse\n"
+}

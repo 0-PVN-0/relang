@@ -1,0 +1,6 @@
+{
+  "id": "language/break/outside_loop",
+  "type": "file",
+  "data": "break // expect error\n",
+  "timeout": 30
+}

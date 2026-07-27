@@ -1,0 +1,6 @@
+{
+  "id": "16_eddsa_0072",
+  "type": "stdin",
+  "data": "crypto_eddsa_sign\n40e40d53edc2b277aa3e437ca7ee93e1fcc998ec9e23c9415b9fa518ba7121a6:\n3399ac7385ad11a3c3fdf3510d0a2ba256ea46b201cb58d470423f3584aef2d0:\nbbb58934781f8c5dcf2d91f5019ae6971f4749d48badb16db18821a4f64e093e120803c826bbfc87769b648ee3f25874cb5c6fe9d78c2155acd72bbd3296a62d42:\n",
+  "timeout": 30
+}

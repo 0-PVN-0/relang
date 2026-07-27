@@ -1,0 +1,13 @@
+{
+  "id": "core/number/fraction",
+  "type": "file",
+  "data": "System.print(123.fraction)      // expect: 0\nSystem.print((-123).fraction)   // expect: -0\nSystem.print(0.fraction)        // expect: 0\nSystem.print((-0).fraction)     // expect: -0\nSystem.print(0.123.fraction)    // expect: 0.123\nSystem.print(12.3.fraction)     // expect: 0.3\nSystem.print((-0.123).fraction) // expect: -0.123\nSystem.print((-12.3).fraction)  // expect: -0.3\n\n// Using 32-bit representation, a longer mantissa will lead to\n// approximation.\nSystem.print((1.23456789012345).fraction)  // expect: 0.23456789012345\nSystem.print((-1.23456789012345).fraction)  // expect: -0.23456789012345\n\nSystem.print((0.000000000000000000000000000000000000000001).fraction)  // expect: 1e-42\nSystem.print((-0.000000000000000000000000000000000000000001).fraction)  // expect: -1e-42\n\nSystem.print((1.000000000000000000000000000000000000000001).fraction)  // expect: 0\nSystem.print((-1.000000000000000000000000000000000000000001).fraction)  // expect: -0\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123.",
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

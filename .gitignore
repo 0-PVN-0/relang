@@ -1,0 +1,61 @@
+### Build artifacts (C/C++/Rust/Go)
+*.o
+*.obj
+*.out
+a.out
+*.dSYM/
+*.rlib
+*.d
+*.test
+
+### Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+venv/
+.venv/
+.python-version
+
+### JavaScript / TypeScript / Node
+node_modules/
+dist/
+.next/
+*.js.map
+*.tsbuildinfo
+
+### Java / Kotlin / JVM
+*.class
+*.jar
+*.war
+.gradle/
+build/
+*.iml
+
+### Ruby
+vendor/bundle/
+.bundle/
+Gemfile.lock
+
+### PHP
+vendor/
+composer.lock
+
+### Swift
+.build/
+
+### R
+.Rhistory
+.RData
+.Rproj.user
+
+### General junk
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

@@ -1,0 +1,6 @@
+{
+  "id": "bitwise_logical_bitwise_003",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    unsigned int a = 15;\n    unsigned int b = 15;\n    printf(\"and: %u\\n\", a & b);\n    printf(\"or: %u\\n\", a | b);\n    printf(\"xor: %u\\n\", a ^ b);\n    printf(\"not: %u\\n\", ~a);\n    printf(\"shl: %u\\n\", a << 2);\n    printf(\"shr: %u\\n\", b >> 3);\n    return 0;\n}\n",
+  "timeout": 30
+}

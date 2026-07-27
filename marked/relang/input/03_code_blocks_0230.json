@@ -1,0 +1,6 @@
+{
+  "id": "03_code_blocks_0230",
+  "type": "stdin",
+  "data": "> > ```\n> > nested code\n> > ```",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "core/list/iterator_value_iterator_too_large",
+  "type": "file",
+  "data": "var a = [1, 2, 3]\na.iteratorValue(4) // expect runtime error: Iterator out of bounds.\n",
+  "timeout": 30
+}

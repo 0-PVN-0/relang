@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_1369",
+  "type": "stdin",
+  "data": "- a\n  * b\n  * c\n- d",
+  "timeout": 30
+}

@@ -1,0 +1,9 @@
+{
+  "id": "language/module/change_imported_value/change_imported_value",
+  "type": "file",
+  "data": "import \"./module\" for Module, Other\n\nSystem.print(Module) // expect: before\n\n// Reassigning the variable in the other module does not affect this one's\n// binding.\nOther.change\nSystem.print(Module) // expect: before\n\n// But it does change there.\nOther.show // expect: after\n",
+  "timeout": 30,
+  "files": {
+    "language/module/change_imported_value/module.wren": "// nontest\nvar Module = \"before\"\n\nclass Other {\n  static change {\n    Module = \"after\"\n  }\n\n  static show {\n    System.print(Module)\n  }\n}\n"
+  }
+}

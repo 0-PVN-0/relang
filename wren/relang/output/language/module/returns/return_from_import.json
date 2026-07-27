@@ -1,0 +1,4 @@
+{
+  "id": "language/module/returns/return_from_import",
+  "output": "foo\nbaz\n"
+}

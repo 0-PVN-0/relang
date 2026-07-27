@@ -1,0 +1,4 @@
+{
+  "id": "scoping_static_003",
+  "output": "call1: 4\ncall2: 8\ncall3: 12\n"
+}

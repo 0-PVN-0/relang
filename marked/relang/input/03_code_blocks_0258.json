@@ -1,0 +1,6 @@
+{
+  "id": "03_code_blocks_0258",
+  "type": "stdin",
+  "data": "> text\n> ```\n> fence right after text\n> ```",
+  "timeout": 30
+}

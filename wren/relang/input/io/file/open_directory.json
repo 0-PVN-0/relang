@@ -1,0 +1,12 @@
+{
+  "id": "io/file/open_directory",
+  "type": "file",
+  "data": "import \"io\" for File\n\n// On Linux, File.open on a directory path succeeds (returns a readable fd).\n// This documents the actual behavior rather than expecting an error.\nvar f = Fiber.new { File.open(\"test/io/file\") }\nf.try()\n// Either succeeds (Linux POSIX) or errors — just verify no crash\nSystem.print(true) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "id": "io/stdout/flush_from_fiber",
+  "output": "in fiber\nafter flush\n"
+}

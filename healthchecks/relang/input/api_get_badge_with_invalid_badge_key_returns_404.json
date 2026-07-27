@@ -1,0 +1,21 @@
+{
+  "id": "api_get_badge_with_invalid_badge_key_returns_404",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/badge/nonexistent/0000000000000000000000000000000000000000/test-tag.svg"
+        },
+        "expected": {
+          "status": 404
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

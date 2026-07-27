@@ -1,0 +1,6 @@
+{
+  "id": "core/string_code_point_sequence/count",
+  "type": "file",
+  "data": "System.print(\"\".codePoints.count)   // expect: 0\nSystem.print(\"a string\".codePoints.count) // expect: 8\n\n// 8-bit clean.\nSystem.print(\"\\0\".codePoints.count)  // expect: 1\nSystem.print(\"a\\0b\".codePoints.count)  // expect: 3\nSystem.print(\"\\0c\".codePoints.count)  // expect: 2\nSystem.print((\"a\\0b\" + \"\\0c\").codePoints.count)  // expect: 5\n\n// Treats a UTF-8 sequence as a single item.\n//\n// Bytes:           11111\n//        012345678901234\n// Chars: sø mé ஃ  thî ng\nSystem.print(\"søméஃthîng\".codePoints.count) // expect: 10\n\n// Counts invalid UTF-8 one byte at a time.\nSystem.print(\"\\xefok\\xf7\".codePoints.count) // expect: 4\n",
+  "timeout": 30
+}

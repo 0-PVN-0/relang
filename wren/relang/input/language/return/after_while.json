@@ -1,0 +1,6 @@
+{
+  "id": "language/return/after_while",
+  "type": "file",
+  "data": "System.print(Fn.new {\n  while (true) return \"ok\"\n}.call()) // expect: ok\n",
+  "timeout": 30
+}

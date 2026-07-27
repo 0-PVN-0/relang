@@ -1,0 +1,6 @@
+{
+  "id": "language/if/dangling_else",
+  "type": "file",
+  "data": "// A dangling else binds to the right-most if.\nif (true) if (false) System.print(\"bad\") else System.print(\"good\") // expect: good\nif (false) if (true) System.print(\"bad\") else System.print(\"bad\")\n",
+  "timeout": 30
+}

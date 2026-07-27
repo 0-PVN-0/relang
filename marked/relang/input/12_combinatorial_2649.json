@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_2649",
+  "type": "stdin",
+  "data": "+ item at depth 1\n+ item at depth 1\n+ item at depth 1\n  + item at depth 2\n  + item at depth 2\n  + item at depth 2\n    + item at depth 3\n    + item at depth 3\n    + item at depth 3\n      + item at depth 4\n      + item at depth 4\n      + item at depth 4\n        + item at depth 5\n        + item at depth 5\n        + item at depth 5\n          + item at depth 6\n          + item at depth 6\n          + item at depth 6",
+  "timeout": 30
+}

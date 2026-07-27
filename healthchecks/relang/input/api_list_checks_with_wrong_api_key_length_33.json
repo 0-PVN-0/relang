@@ -1,0 +1,24 @@
+{
+  "id": "api_list_checks_with_wrong_api_key_length_33",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          }
+        },
+        "expected": {
+          "status": 401
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

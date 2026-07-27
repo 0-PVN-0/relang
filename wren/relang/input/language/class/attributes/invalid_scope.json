@@ -1,0 +1,6 @@
+{
+  "id": "language/class/attributes/invalid_scope",
+  "type": "file",
+  "data": "\n\n#valid\nclass Example {\n\n  #valid\n  method() {\n    #invalid    // expect error\n    var a = 3\n  }\n}",
+  "timeout": 30
+}

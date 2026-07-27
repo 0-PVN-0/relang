@@ -1,0 +1,6 @@
+{
+  "id": "language/matrix/ordering/less_than_left_pos_3_right_neg_5",
+  "type": "file",
+  "data": "System.print(3 < -5) // expect: false\n",
+  "timeout": 30
+}

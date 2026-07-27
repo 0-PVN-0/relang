@@ -1,0 +1,4 @@
+{
+  "id": "front_post_update_name_without_login_returns_403",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 403, \"step\": 1}]"
+}

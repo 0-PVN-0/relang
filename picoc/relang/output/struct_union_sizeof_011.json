@@ -1,0 +1,4 @@
+{
+  "id": "struct_union_sizeof_011",
+  "output": "sizeof S1: 8\nsizeof S2: 2\nsizeof S3: 16\n"
+}

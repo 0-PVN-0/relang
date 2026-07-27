@@ -1,0 +1,4 @@
+{
+  "id": "11_edge_cases_0943",
+  "output": "<h1>Header</h1>\n<table>\n<thead>\n<tr>\n<th>Col1</th>\n<th>Col2</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><code>**code**</code></td>\n<td><code>*code*</code></td>\n</tr>\n</tbody></table>\n\n"
+}

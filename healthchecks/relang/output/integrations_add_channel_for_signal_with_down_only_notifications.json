@@ -1,0 +1,4 @@
+{
+  "id": "integrations_add_channel_for_signal_with_down_only_notifications",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 2}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 3}, {\"content-type\": \"text/html\", \"status\": 404, \"step\": 4}]"
+}

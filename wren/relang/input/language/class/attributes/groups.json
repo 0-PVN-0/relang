@@ -1,0 +1,6 @@
+{
+  "id": "language/class/attributes/groups",
+  "type": "file",
+  "data": "// Groups store attributes by named group\n\n#!key //not combined\n#!group(key=combined)\n#!group(key=value, key=2, key=false)\nclass GroupedKeys {}\n\nvar ungroupedKeys = GroupedKeys.attributes.self[null]\nvar groupedKeys = GroupedKeys.attributes.self[\"group\"]\n\nSystem.print(ungroupedKeys.count)               // expect: 1\nSystem.print(groupedKeys.count)                 // expect: 1\nSystem.print(ungroupedKeys.containsKey(\"key\"))  // expect: true\nvar groupedKey = groupedKeys[\"key\"]\nSystem.print(groupedKey.count)                  // expect: 4\nSystem.print(groupedKey)                        // expect: [combined, value, 2, false]\n\n",
+  "timeout": 30
+}

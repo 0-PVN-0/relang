@@ -1,0 +1,6 @@
+{
+  "id": "language/super/super_at_top_level",
+  "type": "file",
+  "data": "super.foo // expect error\nsuper // expect error\nsuper.foo(\"bar\") // expect error\nsuper(\"foo\") // expect error\n",
+  "timeout": 30
+}

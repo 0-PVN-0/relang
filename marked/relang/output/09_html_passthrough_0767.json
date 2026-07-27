@@ -1,0 +1,4 @@
+{
+  "id": "09_html_passthrough_0767",
+  "output": "<p><a href=\"javascript:alert('xss')\">click</a></p>\n\n"
+}

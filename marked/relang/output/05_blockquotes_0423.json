@@ -1,0 +1,4 @@
+{
+  "id": "05_blockquotes_0423",
+  "output": "<blockquote>\n<table>\n<thead>\n<tr>\n<th>a</th>\n<th>b</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>1</td>\n<td>2</td>\n</tr>\n</tbody></table>\n</blockquote>\n\n"
+}

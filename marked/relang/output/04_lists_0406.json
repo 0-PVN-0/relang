@@ -1,0 +1,4 @@
+{
+  "id": "04_lists_0406",
+  "output": "<ul>\n<li><p>list</p>\n<table>\n<thead>\n<tr>\n<th>a</th>\n<th>b</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>1</td>\n<td>2</td>\n</tr>\n</tbody></table>\n</li>\n<li><p>more</p>\n</li>\n</ul>\n\n"
+}

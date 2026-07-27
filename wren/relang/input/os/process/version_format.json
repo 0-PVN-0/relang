@@ -1,0 +1,12 @@
+{
+  "id": "os/process/version_format",
+  "type": "file",
+  "data": "import \"os\" for Process\n\nvar v = Process.version\nSystem.print(v is String) // expect: true\n// Version should contain dots (e.g. \"0.4.0\")\nSystem.print(v.contains(\".\")) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "front_get_check_details_shows_timeout_and_grace_values",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "content-type": "application/json",
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          },
+          "body": "{\"name\":\"Detail View\",\"timeout\":7200,\"grace\":300}"
+        },
+        "expected": {
+          "status": 201
+        },
+        "storeCookies": {},
+        "store": {
+          "dvId": "$.uuid"
+        },
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/login/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {
+          "csrfToken": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/accounts/login/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "action=login&email=alice@example.org&password=password&csrfmiddlewaretoken={csrfToken}"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {
+          "csrfToken": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/checks/{dvId}/details/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

@@ -1,0 +1,6 @@
+{
+  "id": "language/foreign/unknown_method",
+  "type": "file",
+  "data": "class Foo {\n  foreign someUnknownMethod // expect runtime error: Could not find foreign method 'someUnknownMethod' for class Foo in module './test/language/foreign/unknown_method'.\n}\n",
+  "timeout": 30
+}

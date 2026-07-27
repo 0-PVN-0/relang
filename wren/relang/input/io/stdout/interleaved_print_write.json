@@ -1,0 +1,12 @@
+{
+  "id": "io/stdout/interleaved_print_write",
+  "type": "file",
+  "data": "import \"io\" for Stdout\n\n// Interleaved System.print and System.write then flush.\nSystem.write(\"hello \")\nSystem.print(\"world\")\nStdout.flush()\nSystem.write(\"foo\")\nStdout.flush()\nSystem.print(\"bar\")\n// expect: hello world\n// expect: foobar\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

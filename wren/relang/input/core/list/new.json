@@ -1,0 +1,6 @@
+{
+  "id": "core/list/new",
+  "type": "file",
+  "data": "var list = List.new()\n\nSystem.print(list.count) // expect: 0\nSystem.print(list) // expect: []\nlist.add(1)\nSystem.print(list) // expect: [1]\n",
+  "timeout": 30
+}

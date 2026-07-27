@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_2622",
+  "type": "stdin",
+  "data": "```ocaml\ndef foo():\n    pass\n```",
+  "timeout": 30
+}

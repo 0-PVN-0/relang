@@ -1,0 +1,6 @@
+{
+  "id": "language/nonlocal/duplicate_nonlocal",
+  "type": "file",
+  "data": "class Foo {\n  bar {\n    var A = \"value\"\n    var A = \"other\" // expect error\n  }\n}\n",
+  "timeout": 30
+}

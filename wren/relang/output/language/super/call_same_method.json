@@ -1,0 +1,4 @@
+{
+  "id": "language/super/call_same_method",
+  "output": "Derived.foo\nBase.foo\n"
+}

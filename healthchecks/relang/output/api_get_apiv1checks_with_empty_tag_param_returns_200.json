@@ -1,0 +1,4 @@
+{
+  "id": "api_get_apiv1checks_with_empty_tag_param_returns_200",
+  "output": "[{\"body\": \"{\\\"checks\\\": []}\", \"content-type\": \"application/json\", \"status\": 200, \"step\": 1}]"
+}

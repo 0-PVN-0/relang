@@ -1,0 +1,25 @@
+{
+  "id": "accounts_post_signup_without_csrf_returns_403",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/accounts/signup/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "identity=newuser%40example.org&password=password1"
+        },
+        "expected": {
+          "status": 403
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

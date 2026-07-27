@@ -1,0 +1,6 @@
+{
+  "id": "core/sequence/take",
+  "type": "file",
+  "data": "class TestSequence is Sequence {\n  construct new() {}\n\n  iterate(iterator) {\n    if (iterator == null) return 1\n    if (iterator == 3) return false\n    return iterator + 1\n  }\n\n  iteratorValue(iterator) { iterator }\n}\n\nvar test = TestSequence.new().take(3)\n\nSystem.print(test is Sequence) // expect: true\nSystem.print(test) // expect: instance of TakeSequence\n\n// Taking 0 produces empty list.\nSystem.print(test.take(0).isEmpty) // expect: true\n\n// Taking 1 works.\nSystem.print(test.take(1).toList) // expect: [1]\n\n// Taking more than length of sequence produces whole sequence.\nSystem.print(test.take(4).toList) // expect: [1, 2, 3]\n",
+  "timeout": 30
+}

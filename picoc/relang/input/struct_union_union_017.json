@@ -1,0 +1,6 @@
+{
+  "id": "struct_union_union_017",
+  "type": "file",
+  "data": "#include <stdio.h>\nunion Data {\n    int i;\n    float f;\n    char str[4];\n};\nint main() {\n    union Data d;\n    d.i = 1094861653;\n    printf(\"union_int: 0x%X\\n\", d.i);\n    printf(\"union_str: %.4s\\n\", d.str);\n    return 0;\n}\n",
+  "timeout": 30
+}

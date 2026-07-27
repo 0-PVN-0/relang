@@ -1,0 +1,6 @@
+{
+  "id": "os/process/ppid_is_positive",
+  "type": "file",
+  "data": "import \"os\" for Process\n\nSystem.print(Process.ppid > 0) // expect: true\n",
+  "timeout": 30
+}

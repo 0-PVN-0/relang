@@ -1,0 +1,4 @@
+{
+  "id": "11_edge_cases_0936",
+  "output": "<blockquote>\n<ul>\n<li><input checked=\"\" disabled=\"\" type=\"checkbox\"> <code>code</code> <strong>bold</strong> <em>italic</em></li>\n<li><input disabled=\"\" type=\"checkbox\"> more</li>\n</ul>\n</blockquote>\n\n"
+}

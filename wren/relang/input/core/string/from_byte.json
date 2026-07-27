@@ -1,0 +1,6 @@
+{
+  "id": "core/string/from_byte",
+  "type": "file",
+  "data": "System.print(String.fromByte(65))   // expect: A\nSystem.print(String.fromByte(0).bytes[0])   // expect: 0\nSystem.print(String.fromByte(255).bytes[0])   // expect: 255\n",
+  "timeout": 30
+}

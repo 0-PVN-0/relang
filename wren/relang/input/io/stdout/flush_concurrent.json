@@ -1,0 +1,12 @@
+{
+  "id": "io/stdout/flush_concurrent",
+  "type": "file",
+  "data": "import \"io\" for Stdout\nimport \"scheduler\" for Scheduler\nimport \"timer\" for Timer\n\nScheduler.add {\n  Stdout.flush()\n  System.print(\"a\") // expect: a\n}\nScheduler.add {\n  Stdout.flush()\n  System.print(\"b\") // expect: b\n}\nTimer.sleep(50)\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "id": "11_edge_cases_0959",
+  "type": "stdin",
+  "data": "[a](url 'single')\n[b](url \"double\")\n[c](url (paren))",
+  "timeout": 30
+}

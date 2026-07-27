@@ -1,0 +1,4 @@
+{
+  "id": "language/method/newlines",
+  "output": "method a b\nsubscript a b\n"
+}

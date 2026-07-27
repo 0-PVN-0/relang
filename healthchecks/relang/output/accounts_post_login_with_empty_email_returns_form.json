@@ -1,0 +1,4 @@
+{
+  "id": "accounts_post_login_with_empty_email_returns_form",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 2}]"
+}

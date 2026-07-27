@@ -1,0 +1,6 @@
+{
+  "id": "os/platform/mutual_exclusion",
+  "type": "file",
+  "data": "import \"os\" for Platform\n\nSystem.print(Platform.isPosix && Platform.isWindows) // expect: false\n",
+  "timeout": 30
+}

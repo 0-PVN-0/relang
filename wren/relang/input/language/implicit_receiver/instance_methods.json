@@ -1,0 +1,6 @@
+{
+  "id": "language/implicit_receiver/instance_methods",
+  "type": "file",
+  "data": "class Foo {\n  construct new() {}\n\n  getter {\n    System.print(\"getter\")\n  }\n\n  setter=(value) {\n    System.print(\"setter\")\n  }\n\n  method(a) {\n    System.print(\"method\")\n  }\n\n  test {\n    getter            // expect: getter\n    setter = \"value\"  // expect: setter\n    method(\"arg\")     // expect: method\n  }\n}\n\nFoo.new().test\n\n// TODO: Need to decide how these interact with globals.\n",
+  "timeout": 30
+}

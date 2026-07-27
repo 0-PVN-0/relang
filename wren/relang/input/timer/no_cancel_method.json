@@ -1,0 +1,6 @@
+{
+  "id": "timer/no_cancel_method",
+  "type": "file",
+  "data": "import \"timer\" for Timer\n\n// Timer has no cancel/clear method - accessing it produces a runtime error\nvar f = Fiber.new { Timer.cancel }\nvar r = f.try()\n// try() returns the value the fiber completed with (Timer.cancel evaluates to something)\n// but on error, returns null. Either way, error state tells us.\nSystem.print(f.error != null) // expect: true\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "01_verify_0112",
+  "type": "stdin",
+  "data": "crypto_verify32\n4721d93a487182fd94b9e49e7019de01ea5e48c099147775c652d02751347fa0:\n4721d93a487182fd94b9e49e7019de01ea5e48c099147775c652d02751347fa0:\n",
+  "timeout": 30
+}

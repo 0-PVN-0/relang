@@ -1,0 +1,6 @@
+{
+  "id": "08_escaping_entities_0664",
+  "type": "stdin",
+  "data": "\\[not a link\\](url)",
+  "timeout": 30
+}

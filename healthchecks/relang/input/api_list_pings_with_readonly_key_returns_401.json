@@ -1,0 +1,43 @@
+{
+  "id": "api_list_pings_with_readonly_key_returns_401",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "content-type": "application/json",
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          },
+          "body": "{\"name\":\"RO Ping Check\",\"timeout\":3600,\"grace\":60}"
+        },
+        "expected": {
+          "status": 201
+        },
+        "storeCookies": {},
+        "store": {
+          "roPingCheckId": "$.uuid"
+        },
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/api/v1/checks/{roPingCheckId}/pings/",
+          "headers": {
+            "x-api-key": "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR"
+          }
+        },
+        "expected": {
+          "status": 401
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

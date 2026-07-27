@@ -1,0 +1,4 @@
+{
+  "id": "03_code_blocks_0258",
+  "output": "<blockquote>\n<p>text</p>\n<pre><code>fence right after text\n</code></pre>\n</blockquote>\n\n"
+}

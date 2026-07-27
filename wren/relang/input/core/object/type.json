@@ -1,0 +1,6 @@
+{
+  "id": "core/object/type",
+  "type": "file",
+  "data": "class Foo {}\n\n// Object's class is a class.\nSystem.print(Object is Class) // expect: true\n\n// Its metatype is also a class.\nSystem.print(Object.type is Class) // expect: true\n\n// The metatype's metatype is Class.\nSystem.print(Object.type.type == Class) // expect: true\n\n// Object has a distinct metaclass.\nSystem.print(Object.type.name) // expect: Object metaclass\n",
+  "timeout": 30
+}

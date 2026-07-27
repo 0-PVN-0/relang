@@ -1,0 +1,6 @@
+{
+  "id": "timer/sleep_not_num_fiber",
+  "type": "file",
+  "data": "import \"timer\" for Timer\n\nTimer.sleep(Fiber.new {}) // expect runtime error: Milliseconds must be a number.\n",
+  "timeout": 30
+}

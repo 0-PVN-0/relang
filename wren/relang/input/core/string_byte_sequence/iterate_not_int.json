@@ -1,0 +1,6 @@
+{
+  "id": "core/string_byte_sequence/iterate_not_int",
+  "type": "file",
+  "data": "\"str\".bytes.iterate(12.34) // expect runtime error: Iterator must be an integer.\n",
+  "timeout": 30
+}

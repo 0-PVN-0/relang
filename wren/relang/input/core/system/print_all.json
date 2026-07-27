@@ -1,0 +1,6 @@
+{
+  "id": "core/system/print_all",
+  "type": "file",
+  "data": "class Foo {\n  construct new() {}\n\n  toString { \"Foo\" }\n}\n\nSystem.printAll([]) // expect:\nSystem.printAll([1, true, Foo.new(), \"s\"]) // expect: 1trueFoos\n",
+  "timeout": 30
+}

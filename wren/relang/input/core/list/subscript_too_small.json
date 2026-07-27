@@ -1,0 +1,6 @@
+{
+  "id": "core/list/subscript_too_small",
+  "type": "file",
+  "data": "var a = [1, 2, 3]\na[-5] // expect runtime error: Subscript out of bounds.\n",
+  "timeout": 30
+}

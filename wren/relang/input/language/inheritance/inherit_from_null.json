@@ -1,0 +1,6 @@
+{
+  "id": "language/inheritance/inherit_from_null",
+  "type": "file",
+  "data": "class Foo is null {} // expect runtime error: Class 'Foo' cannot inherit from a non-class object.\n",
+  "timeout": 30
+}

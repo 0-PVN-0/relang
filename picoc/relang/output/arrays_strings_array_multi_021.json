@@ -1,0 +1,4 @@
+{
+  "id": "arrays_strings_array_multi_021",
+  "output": "arr[0][0] = 21\narr[0][1] = 22\narr[0][2] = 23\narr[1][0] = 24\narr[1][1] = 25\narr[1][2] = 26\n"
+}

@@ -1,0 +1,4 @@
+{
+  "id": "language/tostring_override",
+  "output": "my-object\nmy-object\n"
+}

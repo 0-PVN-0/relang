@@ -1,0 +1,6 @@
+{
+  "id": "core/string/subscript_range_to_exclusive_too_small",
+  "type": "file",
+  "data": "var a = \"123\"\na[0...-5] // expect runtime error: Range end out of bounds.\n",
+  "timeout": 30
+}

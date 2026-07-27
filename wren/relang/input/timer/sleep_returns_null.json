@@ -1,0 +1,6 @@
+{
+  "id": "timer/sleep_returns_null",
+  "type": "file",
+  "data": "import \"timer\" for Timer\n\nvar result = Timer.sleep(0)\nSystem.print(result == null) // expect: true\n",
+  "timeout": 30
+}

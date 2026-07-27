@@ -1,0 +1,6 @@
+{
+  "id": "language/inheritance/do_not_inherit_static_methods",
+  "type": "file",
+  "data": "class Foo {\n  static methodOnFoo { System.print(\"foo\") }\n}\n\nclass Bar is Foo {}\n\nBar.methodOnFoo // expect runtime error: Bar metaclass does not implement 'methodOnFoo'.\n",
+  "timeout": 30
+}

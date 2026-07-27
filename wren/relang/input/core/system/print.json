@@ -1,0 +1,6 @@
+{
+  "id": "core/system/print",
+  "type": "file",
+  "data": "class Foo {\n  construct new() {}\n\n  toString { \"Foo.toString\" }\n}\n\n// Calls toString on argument.\nSystem.print(Foo.new()) // expect: Foo.toString\n\n// Returns the argument.\nSystem.print(System.print(1) == 1) // expect: 1\n                                   // expect: true\n",
+  "timeout": 30
+}

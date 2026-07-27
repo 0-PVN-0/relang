@@ -1,0 +1,12 @@
+{
+  "id": "io/directory/list_returns_names",
+  "type": "file",
+  "data": "import \"io\" for Directory\n\n// list on test/io/file returns file names, not full paths\nvar listing = Directory.list(\"test/io/file\")\n// \"file.txt\" should be in the listing as just \"file.txt\", not \"test/io/file/file.txt\"\nSystem.print(listing.contains(\"file.txt\")) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/directory/dir/c.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/file/file.txt": "this is a text file"
+  }
+}

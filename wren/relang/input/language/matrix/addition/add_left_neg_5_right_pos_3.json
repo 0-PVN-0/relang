@@ -1,0 +1,6 @@
+{
+  "id": "language/matrix/addition/add_left_neg_5_right_pos_3",
+  "type": "file",
+  "data": "System.print(-5 + 3) // expect: -2\n",
+  "timeout": 30
+}

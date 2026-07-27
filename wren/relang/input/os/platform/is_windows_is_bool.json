@@ -1,0 +1,6 @@
+{
+  "id": "os/platform/is_windows_is_bool",
+  "type": "file",
+  "data": "import \"os\" for Platform\n\nSystem.print(Platform.isWindows is Bool) // expect: true\n",
+  "timeout": 30
+}

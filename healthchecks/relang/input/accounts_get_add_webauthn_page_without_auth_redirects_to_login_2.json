@@ -1,0 +1,21 @@
+{
+  "id": "accounts_get_add_webauthn_page_without_auth_redirects_to_login_2",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/two_factor/webauthn/"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

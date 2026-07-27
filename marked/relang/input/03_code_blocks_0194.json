@@ -1,0 +1,6 @@
+{
+  "id": "03_code_blocks_0194",
+  "type": "stdin",
+  "data": "```python\ndef hello():\n    print('hi')\n```",
+  "timeout": 30
+}

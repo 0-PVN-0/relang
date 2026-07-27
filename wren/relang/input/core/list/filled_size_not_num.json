@@ -1,0 +1,6 @@
+{
+  "id": "core/list/filled_size_not_num",
+  "type": "file",
+  "data": "List.filled(\"not num\", null) // expect runtime error: Size must be a number.\n",
+  "timeout": 30
+}

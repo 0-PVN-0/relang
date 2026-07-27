@@ -1,0 +1,6 @@
+{
+  "id": "04_xchacha20_0122",
+  "type": "stdin",
+  "data": "crypto_chacha20_x\nffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff:\nffffffffffffffffffffffffffffffffffffffffffffffff:\nffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff:\nffffffffffffffff:\n",
+  "timeout": 30
+}

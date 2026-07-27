@@ -1,0 +1,6 @@
+{
+  "id": "03_code_blocks_0268",
+  "type": "stdin",
+  "data": "```c++\n// comment\nint x = 1;\n```",
+  "timeout": 30
+}

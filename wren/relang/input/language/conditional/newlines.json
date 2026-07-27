@@ -1,0 +1,6 @@
+{
+  "id": "language/conditional/newlines",
+  "type": "file",
+  "data": "// Newline after '?'.\nSystem.print(true ?\n  \"yes\" : \"no\") // expect: yes\n\n// Newline after ':'.\nSystem.print(false ? \"yes\" :\n  \"no\") // expect: no\n",
+  "timeout": 30
+}

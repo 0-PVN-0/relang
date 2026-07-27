@@ -1,0 +1,39 @@
+{
+  "id": "accounts_post_signup_with_existing_email_returns_form",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/signup/csrf/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {
+          "csrfToken": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/accounts/signup/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "identity=alice@example.org&csrfmiddlewaretoken={csrfToken}"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

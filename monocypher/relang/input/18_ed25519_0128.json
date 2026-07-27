@@ -1,0 +1,6 @@
+{
+  "id": "18_ed25519_0128",
+  "type": "stdin",
+  "data": "crypto_ed25519_check\n59e2db1c5fae7e2153bacac95af8818e84dd0496997f4660a657016a8913faa8d2c2d7d6da9f1266387dafb1588f34e0826a0c25d6814bcedacd75dc7509eae1:\nafae98ad998ba7c9a67a03a265ae7d65e3cebc5544e243946281f6222b86aee1:\n5e25c314176350f27f6140ab0bea8e:\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "language/variable/use_this_as_var",
+  "type": "file",
+  "data": "var this = \"value\" // expect error\n",
+  "timeout": 30
+}

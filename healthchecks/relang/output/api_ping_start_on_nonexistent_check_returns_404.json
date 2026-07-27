@@ -1,0 +1,4 @@
+{
+  "id": "api_ping_start_on_nonexistent_check_returns_404",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 404, \"step\": 1}]"
+}

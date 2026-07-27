@@ -1,0 +1,6 @@
+{
+  "id": "os/process/pid_is_num",
+  "type": "file",
+  "data": "import \"os\" for Process\n\nSystem.print(Process.pid is Num) // expect: true\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "project_id": 3,
+  "name": "monocypher",
+  "input_type": "stdin",
+  "description": "Cryptographic library (Monocypher port)"
+}

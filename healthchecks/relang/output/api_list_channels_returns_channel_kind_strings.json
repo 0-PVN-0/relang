@@ -1,0 +1,4 @@
+{
+  "id": "api_list_channels_returns_channel_kind_strings",
+  "output": "[{\"body\": \"{\\\"channels\\\": []}\", \"content-type\": \"application/json\", \"status\": 200, \"step\": 1}]"
+}

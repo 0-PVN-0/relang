@@ -1,0 +1,6 @@
+{
+  "id": "timer/sleep_nested_shortest_first",
+  "type": "file",
+  "data": "import \"scheduler\" for Scheduler\nimport \"timer\" for Timer\n\n// A fiber that sleeps, and while sleeping, another fiber schedules a shorter\n// sleep. The shorter one must resolve first.\nScheduler.add {\n  Timer.sleep(50)\n  System.print(\"long\")\n}\n\nScheduler.add {\n  Timer.sleep(10)\n  System.print(\"short\")\n}\n\nSystem.print(\"main\")\nTimer.sleep(100)\nSystem.print(\"done\")\n\n// expect: main\n// expect: short\n// expect: long\n// expect: done\n",
+  "timeout": 30
+}

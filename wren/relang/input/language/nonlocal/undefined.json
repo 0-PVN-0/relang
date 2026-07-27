@@ -1,0 +1,6 @@
+{
+  "id": "language/nonlocal/undefined",
+  "type": "file",
+  "data": "var fn = Fn.new {\n  System.print(Foo) // expect error\n  System.print(Bar) // expect error\n}\n",
+  "timeout": 30
+}

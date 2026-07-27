@@ -1,0 +1,12 @@
+{
+  "id": "io/directory/create_list_delete_cycle",
+  "type": "file",
+  "data": "import \"io\" for Directory\n\n// Full create/list/delete lifecycle using /tmp for the new directory\n// (Directory.create in wren-cli creates with mode 0 in CWD, but /tmp works)\n// Here we verify the lifecycle using the existing tmp directory pattern\n// (same as the existing create_delete.wren test)\n\n// Use the existing test directory for list operations\nvar listing = Directory.list(\"test/io/file\")\nSystem.print(listing is List)   // expect: true\nSystem.print(listing.count > 0) // expect: true\nSystem.print(listing.contains(\"file.txt\")) // expect: true\n\n// Verify create/delete cycle with the existing \"tmp\" dir pattern\nif (Directory.exists(\"tmp\")) {\n  Directory.delete(\"tmp\")\n}\nSystem.print(Directory.exists(\"tmp\")) // expect: false\nDirectory.create(\"tmp\")\nSystem.print(Directory.exists(\"tmp\")) // expect: true\nDirectory.delete(\"tmp\")\nSystem.print(Directory.exists(\"tmp\")) // expect: false\n",
+  "timeout": 30,
+  "files": {
+    "io/directory/dir/c.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/file/file.txt": "this is a text file"
+  }
+}

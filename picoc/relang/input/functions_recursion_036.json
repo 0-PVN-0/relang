@@ -1,0 +1,6 @@
+{
+  "id": "functions_recursion_036",
+  "type": "file",
+  "data": "#include <stdio.h>\nint fib(int n) {\n    if (n <= 1) return n;\n    return fib(n - 1) + fib(n - 2);\n}\nint is_even(int n);\nint is_odd(int n) {\n    if (n == 0) return 0;\n    return is_even(n - 1);\n}\nint is_even(int n) {\n    if (n == 0) return 1;\n    return is_odd(n - 1);\n}\nint main() {\n    printf(\"fib(%d) = %d\\n\", 6, fib(6));\n    printf(\"even(%d) = %d\\n\", 36, is_even(36));\n    return 0;\n}\n",
+  "timeout": 30
+}

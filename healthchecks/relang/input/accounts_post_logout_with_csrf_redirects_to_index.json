@@ -1,0 +1,39 @@
+{
+  "id": "accounts_post_logout_with_csrf_redirects_to_index",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/login/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {
+          "csrfToken": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/accounts/logout/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "csrfmiddlewaretoken={csrfToken}"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

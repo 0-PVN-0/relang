@@ -1,0 +1,67 @@
+{
+  "id": "integrations_get_add_webhook_form_returns_200_2",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/login/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {
+          "csrfToken": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/accounts/login/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "action=login&email=alice@example.org&password=password&csrfmiddlewaretoken={csrfToken}"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {
+          "csrfToken": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {
+          "ec6_3uid": "/projects/([0-9a-f-]{36})/"
+        }
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/projects/{ec6_3uid}/add_webhook/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

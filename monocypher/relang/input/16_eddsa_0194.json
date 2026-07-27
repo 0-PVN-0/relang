@@ -1,0 +1,6 @@
+{
+  "id": "16_eddsa_0194",
+  "type": "stdin",
+  "data": "crypto_eddsa_reduce\n366068702792ea395840818abf16668a21ee6893aae4baccd37425dd1b246206860beb5af27c8390468b5142afed3c3f9f0dc04dfe7cd68570a4751efe8fab6c:\n",
+  "timeout": 30
+}

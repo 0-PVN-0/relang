@@ -1,0 +1,12 @@
+{
+  "id": "io/directory/list_empty",
+  "type": "file",
+  "data": "import \"io\" for Directory\n\n// The test/io/directory directory has many .wren files\n// It should NOT include \".\" or \"..\" in its listing\nvar listing = Directory.list(\"test/io/directory\")\nSystem.print(listing is List) // expect: true\n// A non-empty directory should have count > 0\nSystem.print(listing.count > 0) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/directory/dir/c.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/file/file.txt": "this is a text file"
+  }
+}

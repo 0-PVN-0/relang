@@ -1,0 +1,4 @@
+{
+  "id": "06_tables_0587",
+  "output": "<table>\n<thead>\n<tr>\n<th align=\"left\">a</th>\n<th align=\"right\">b</th>\n</tr>\n</thead>\n<tbody><tr>\n<td align=\"left\">left</td>\n<td align=\"right\">right</td>\n</tr>\n</tbody></table>\n\n"
+}

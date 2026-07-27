@@ -1,0 +1,6 @@
+{
+  "id": "language/inheritance/inherit_from_fiber",
+  "type": "file",
+  "data": "class Subclass is Fiber {} // expect runtime error: Class 'Subclass' cannot inherit from built-in class 'Fiber'.\n",
+  "timeout": 30
+}

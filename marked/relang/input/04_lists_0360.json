@@ -1,0 +1,6 @@
+{
+  "id": "04_lists_0360",
+  "type": "stdin",
+  "data": "- [ ] a\n- [ ] b\n- [x] c",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "core/null/type",
+  "type": "file",
+  "data": "System.print(null is Null)      // expect: true\nSystem.print(null is Object)    // expect: true\nSystem.print(null is Bool)      // expect: false\nSystem.print(null.type == Null) // expect: true\n",
+  "timeout": 30
+}

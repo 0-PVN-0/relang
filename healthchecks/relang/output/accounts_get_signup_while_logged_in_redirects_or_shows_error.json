@@ -1,0 +1,4 @@
+{
+  "id": "accounts_get_signup_while_logged_in_redirects_or_shows_error",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 2}, {\"content-type\": \"text/html\", \"status\": 405, \"step\": 3}]"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "language/list/duplicate_comma",
+  "type": "file",
+  "data": "[1,,2] // expect error\n",
+  "timeout": 30
+}

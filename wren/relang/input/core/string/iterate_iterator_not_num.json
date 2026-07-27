@@ -1,0 +1,6 @@
+{
+  "id": "core/string/iterate_iterator_not_num",
+  "type": "file",
+  "data": "\"s\".iterate(\"2\") // expect runtime error: Iterator must be a number.\n",
+  "timeout": 30
+}

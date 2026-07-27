@@ -1,0 +1,12 @@
+{
+  "id": "io/file/file_read_entire",
+  "type": "file",
+  "data": "import \"io\" for File\n\nvar content = File.read(\"test/io/file/file.txt\")\nSystem.print(content) // expect: this is a text file\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

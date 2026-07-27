@@ -1,0 +1,6 @@
+{
+  "id": "language/continue/in_while_loop",
+  "type": "file",
+  "data": "var i = 0\nwhile (true) {\n  i = i + 1\n  System.print(i)\n  if (i <= 2) continue\n  System.print(i)\n  break\n}\n// expect: 1\n// expect: 2\n// expect: 3\n// expect: 3\n",
+  "timeout": 30
+}

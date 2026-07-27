@@ -1,0 +1,4 @@
+{
+  "id": "module/logical_dir/logical_dir",
+  "output": "ran foo module\nran bar module\nfrom foo\n"
+}

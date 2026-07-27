@@ -1,0 +1,4 @@
+{
+  "id": "12_combinatorial_1404",
+  "output": "<ul>\n<li><input disabled=\"\" type=\"checkbox\"> task</li>\n<li><input checked=\"\" disabled=\"\" type=\"checkbox\"> done</li>\n<li><input disabled=\"\" type=\"checkbox\"> pending</li>\n</ul>\n\n"
+}

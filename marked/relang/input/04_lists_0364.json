@@ -1,0 +1,6 @@
+{
+  "id": "04_lists_0364",
+  "type": "stdin",
+  "data": "- [x] ~~strikethrough task~~\n- [ ] **bold task**",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "control_flow_switch_042",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int x = 2;\n    switch(x) {\n        case 0:\n        case 1:\n            printf(\"zero or one\\n\");\n            break;\n        case 2:\n            printf(\"two\\n\");\n            /* fall through */\n        case 3:\n            printf(\"three\\n\");\n            break;\n        case 4:\n        case 5:\n        case 6:\n            printf(\"four to six\\n\");\n            break;\n        default:\n            printf(\"default\\n\");\n            break;\n    }\n    return 0;\n}\n",
+  "timeout": 30
+}

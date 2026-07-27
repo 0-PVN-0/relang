@@ -1,0 +1,6 @@
+{
+  "id": "05_blockquotes_0477",
+  "type": "stdin",
+  "data": "> ```\n> code\n> ```\n>\n> > nested quote after code",
+  "timeout": 30
+}

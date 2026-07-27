@@ -1,0 +1,4 @@
+{
+  "id": "core/system/print",
+  "output": "Foo.toString\n1\ntrue\n"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "11_edge_cases_0944",
+  "type": "stdin",
+  "data": "before  \nafter\n\nbefore\\\nafter",
+  "timeout": 30
+}

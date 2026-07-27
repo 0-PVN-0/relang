@@ -1,0 +1,4 @@
+{
+  "id": "accounts_get_login_with_redirect_to_project_checks",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 2}]"
+}

@@ -1,0 +1,4 @@
+{
+  "id": "stdlib_printf_015",
+  "output": "char: P\nint: -35\nunsigned: 1015\nhex: 109\nfloat: 18.750000\npadded: 00015\n"
+}

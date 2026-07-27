@@ -1,0 +1,6 @@
+{
+  "id": "language/list/duplicate_trailing_comma",
+  "type": "file",
+  "data": "[1,,] // expect error\n",
+  "timeout": 30
+}

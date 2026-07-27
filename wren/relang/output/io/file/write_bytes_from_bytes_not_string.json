@@ -1,0 +1,4 @@
+{
+  "id": "io/file/write_bytes_from_bytes_not_string",
+  "output": "Bytes must be a string.\n"
+}

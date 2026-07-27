@@ -1,0 +1,6 @@
+{
+  "id": "language/module/module_dir/something/module",
+  "type": "file",
+  "data": "var Index = \"index\"",
+  "timeout": 30
+}

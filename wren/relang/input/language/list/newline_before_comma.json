@@ -1,0 +1,6 @@
+{
+  "id": "language/list/newline_before_comma",
+  "type": "file",
+  "data": "var list = [\"a\"\n, \"b\"] // expect error\n",
+  "timeout": 30
+}

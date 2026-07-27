@@ -1,0 +1,4 @@
+{
+  "id": "06_tables_0552",
+  "output": "<table>\n<thead>\n<tr>\n<th><del>a</del></th>\n<th><a href=\"u\">b</a></th>\n<th><img src=\"i\" alt=\"c\"></th>\n</tr>\n</thead>\n<tbody><tr>\n<td><del>1</del></td>\n<td><a href=\"u\">2</a></td>\n<td><img src=\"i\" alt=\"3\"></td>\n</tr>\n</tbody></table>\n\n"
+}

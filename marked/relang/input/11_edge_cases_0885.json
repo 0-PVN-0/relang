@@ -1,0 +1,6 @@
+{
+  "id": "11_edge_cases_0885",
+  "type": "stdin",
+  "data": "**unclosed\n\n*another\n\n~~strike",
+  "timeout": 30
+}

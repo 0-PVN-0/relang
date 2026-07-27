@@ -1,0 +1,6 @@
+{
+  "id": "core/list/subscript_range_from_too_large",
+  "type": "file",
+  "data": "var a = [1, 2, 3]\na[3..2] // expect runtime error: Range start out of bounds.\n",
+  "timeout": 30
+}

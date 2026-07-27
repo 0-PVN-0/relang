@@ -1,0 +1,6 @@
+{
+  "id": "core/list/count_predicate_non_function_arg",
+  "type": "file",
+  "data": "var a = [1, 2, 3]\n\na.count(\"string\") // expect runtime error: String does not implement 'call(_)'.\n",
+  "timeout": 30
+}

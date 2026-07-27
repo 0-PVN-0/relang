@@ -1,0 +1,6 @@
+{
+  "id": "core/string/equality",
+  "type": "file",
+  "data": "System.print(\"\" == \"\")          // expect: true\nSystem.print(\"abcd\" == \"abcd\")  // expect: true\nSystem.print(\"abcd\" == \"d\")     // expect: false\nSystem.print(\"e\" == \"abcd\")     // expect: false\nSystem.print(\"\" == \"abcd\")      // expect: false\n\n// Not equal to other types.\nSystem.print(\"1\" == 1)        // expect: false\nSystem.print(\"true\" == true)  // expect: false\n\nSystem.print(\"\" != \"\")          // expect: false\nSystem.print(\"abcd\" != \"abcd\")  // expect: false\nSystem.print(\"abcd\" != \"d\")     // expect: true\nSystem.print(\"e\" != \"abcd\")     // expect: true\nSystem.print(\"\" != \"abcd\")      // expect: true\n\n// Not equal to other types.\nSystem.print(\"1\" != 1)        // expect: true\nSystem.print(\"true\" != true)  // expect: true\n\n// Non-ASCII.\nSystem.print(\"vålue\" == \"value\") // expect: false\nSystem.print(\"vålue\" == \"vålue\") // expect: true\n\n// 8-bit clean.\nSystem.print(\"a\\0b\\0c\" == \"a\") // expect: false\nSystem.print(\"a\\0b\\0c\" == \"abc\") // expect: false\nSystem.print(\"a\\0b\\0c\" == \"a\\0b\\0c\") // expect: true\n",
+  "timeout": 30
+}

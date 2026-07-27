@@ -1,0 +1,12 @@
+{
+  "id": "module/logical_dir/logical_dir",
+  "type": "file",
+  "data": "// Import a module from within a named package.\nimport \"foo/within_foo\" for Foo\n// expect: ran foo module\n// expect: ran bar module\n\nSystem.print(Foo) // expect: from foo\n",
+  "timeout": 30,
+  "files": {
+    "module/logical_dir/wren_modules/bar/within_bar.wren": "// nontest\nvar Bar = \"from bar\"\nSystem.print(\"ran bar module\")\n\nimport \"foo/within_foo\"\n",
+    "module/logical_dir/wren_modules/foo/within_foo.wren": "// nontest\nvar Foo = \"from foo\"\nSystem.print(\"ran foo module\")\n\nimport \"bar/within_bar\"\n",
+    "module/logical_dir/wren_modules/bar/.gitkeep": "",
+    "module/logical_dir/wren_modules/foo/.gitkeep": ""
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "id": "core/number/pow",
+  "type": "file",
+  "data": "System.print(2.pow(4))     // expect: 16\nSystem.print(2.pow(10))    // expect: 1024\n\nSystem.print(1.pow(0))     // expect: 1\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "language/string/invalid_byte_escape",
+  "type": "file",
+  "data": "// expect error line 2\n\"\\x0!\"",
+  "timeout": 30,
+  "files": {
+    "language/string/incomplete_byte_escape_at_eof.wren": "// expect error line 2\n\"\\x0",
+    "language/string/unterminated_raw.wren": "// expect error line 2\n\"\"\"this string has no close quote",
+    "language/string/incomplete_unicode_escape_at_eof.wren": "// expect error line 2\n\"\\u004",
+    "language/string/unicode_two_bytes_to_long_escape.wren": "// expect error line 2\n\"\\U0060\"\n",
+    "language/string/invalid_escape.wren": "// expect error line 2\n\"not a \\m real escape\"",
+    "language/string/invalid_unicode_escape.wren": "// expect error line 2\n\"\\u00no\"",
+    "language/string/incomplete_unicode_escape.wren": "// expect error line 2\n\"\\u00\"",
+    "language/string/unterminated.wren": "// expect error line 2\n\"this string has no close quote",
+    "language/string/incomplete_byte_escape.wren": "// expect error line 2\n\"\\x0\"",
+    "language/string/incomplete_long_unicode_escape.wren": "// expect error line 2\n\"\\U01F603\"\n"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "id": "16_eddsa_0266",
+  "type": "stdin",
+  "data": "crypto_eddsa_check_equation\n22d77917f78a5ac608991818220c34c46e8aa72effd730243ebcc1f67c0ed89fb1eaa987ee6d79966c6548072b77752b9c391a40cc576f644d166f79e3e7ca72:\n9e5941c6bd5cb3e0f1fb333de2ca477b7a941403a207fce8b6e6c36c1147102f:\n5fd9231900c498c85f128d4ca6c24da87af2c8410411b26bb699dfc7d621533b:\n",
+  "timeout": 30
+}

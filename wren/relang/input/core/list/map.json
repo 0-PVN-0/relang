@@ -1,0 +1,6 @@
+{
+  "id": "core/list/map",
+  "type": "file",
+  "data": "var a = [1, 2, 3]\nvar b = a.map {|x| x + 1 }.toList\nSystem.print(b) // expect: [2, 3, 4]\n",
+  "timeout": 30
+}

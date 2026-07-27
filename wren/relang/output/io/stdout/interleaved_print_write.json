@@ -1,0 +1,4 @@
+{
+  "id": "io/stdout/interleaved_print_write",
+  "output": "hello world\nfoobar\n"
+}

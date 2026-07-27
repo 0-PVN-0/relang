@@ -1,0 +1,4 @@
+{
+  "id": "08_escaping_entities_0701",
+  "output": "<p>AT&amp;T is &lt;bold&gt;</p>\n\n"
+}

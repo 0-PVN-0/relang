@@ -1,0 +1,21 @@
+{
+  "id": "api_get_checks_without_auth_header_returns_401",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/api/v1/checks/"
+        },
+        "expected": {
+          "status": 401
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

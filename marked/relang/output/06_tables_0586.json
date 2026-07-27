@@ -1,0 +1,4 @@
+{
+  "id": "06_tables_0586",
+  "output": "<table>\n<thead>\n<tr>\n<th>a</th>\n<th>b</th>\n<th>c</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>`</td>\n<td>`</td>\n<td><code>|</code></td>\n</tr>\n</tbody></table>\n\n"
+}

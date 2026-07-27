@@ -1,0 +1,6 @@
+{
+  "id": "core/list/subscript_range_from_not_int",
+  "type": "file",
+  "data": "var a = [1, 2, 3]\na[1.5..2] // expect runtime error: Range start must be an integer.\n",
+  "timeout": 30
+}

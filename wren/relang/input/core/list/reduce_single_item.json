@@ -1,0 +1,6 @@
+{
+  "id": "core/list/reduce_single_item",
+  "type": "file",
+  "data": "System.print([1].reduce {|a, b| 42 }) // expect: 1\nSystem.print([].reduce(1) {|a, b| 42 }) // expect: 1\n",
+  "timeout": 30
+}

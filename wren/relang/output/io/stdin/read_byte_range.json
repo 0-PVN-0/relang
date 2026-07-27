@@ -1,0 +1,4 @@
+{
+  "id": "io/stdin/read_byte_range",
+  "output": "true\ntrue\ntrue\n65\n"
+}

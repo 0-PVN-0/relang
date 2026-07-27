@@ -1,0 +1,6 @@
+{
+  "id": "language/logical_operator/and_truth",
+  "type": "file",
+  "data": "// False and null are false.\nSystem.print(false && \"bad\") // expect: false\nSystem.print(null && \"bad\") // expect: null\n\n// Everything else is true.\nSystem.print(true && \"ok\") // expect: ok\nSystem.print(0 && \"ok\") // expect: ok\nSystem.print(\"\" && \"ok\") // expect: ok\n",
+  "timeout": 30
+}

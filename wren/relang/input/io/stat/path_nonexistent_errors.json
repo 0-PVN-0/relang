@@ -1,0 +1,12 @@
+{
+  "id": "io/stat/path_nonexistent_errors",
+  "type": "file",
+  "data": "import \"io\" for Stat\n\nvar f = Fiber.new { Stat.path(\"does_not_exist_xyz_abc.wren\") }\nf.try()\nSystem.print(f.error != null) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

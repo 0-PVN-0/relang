@@ -1,0 +1,4 @@
+{
+  "id": "stdlib_printf_021",
+  "output": "char: V\nint: -29\nunsigned: 1021\nhex: 10f\nfloat: 26.250000\npadded: 00021\n"
+}

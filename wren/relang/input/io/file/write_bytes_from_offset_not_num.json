@@ -1,0 +1,12 @@
+{
+  "id": "io/file/write_bytes_from_offset_not_num",
+  "type": "file",
+  "data": "import \"io\" for File\n\nSystem.print(Fiber.new {\n  File.create(\"file.temp\") {|file|\n    file.writeBytes(\"\", \"string\")\n  }\n}.try()) // expect: Offset must be an integer.\n\nFile.delete(\"file.temp\")\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

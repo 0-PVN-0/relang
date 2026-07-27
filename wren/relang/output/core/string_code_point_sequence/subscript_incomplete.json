@@ -1,0 +1,4 @@
+{
+  "id": "core/string_code_point_sequence/subscript_incomplete",
+  "output": "-1\n-1\n-1\n"
+}

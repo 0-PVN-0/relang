@@ -1,0 +1,6 @@
+{
+  "id": "18_ed25519_0069",
+  "type": "stdin",
+  "data": "crypto_ed25519_sign\n94754338e0a713bd58de3bcf07c4f6d41f01d7167bcb3c53d5630c318b682ed4:\n4e6519f45046dcf20199bd0c492923ca8585bfd4d4c88c7cb5271e9f05d6a8b4:\na0599f687b36a1f927b3:\n",
+  "timeout": 30
+}

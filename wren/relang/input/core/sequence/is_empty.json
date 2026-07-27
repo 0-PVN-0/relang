@@ -1,0 +1,6 @@
+{
+  "id": "core/sequence/is_empty",
+  "type": "file",
+  "data": "System.print([].isEmpty) // expect: true\nSystem.print([1].isEmpty) // expect: false\n\nclass InfiniteSequence is Sequence {\n  construct new() {}\n  iterate(iterator) { true }\n  iteratorValue(iterator) { iterator }\n}\n\n// Should not try to iterate the whole sequence.\nSystem.print(InfiniteSequence.new().isEmpty) // expect: false\n",
+  "timeout": 30
+}

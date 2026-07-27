@@ -1,0 +1,4 @@
+{
+  "id": "basic_types_inc_dec_026",
+  "output": "post_inc_a: 31\npre_inc_a: 33\npost_dec_b: 29\npre_dec_b: 27\ncombined: 61\nfinal_a: 34, final_b: 28\n"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "io/file/stat",
+  "type": "file",
+  "data": "import \"io\" for File, Stat\n\nvar file = File.open(\"test/io/file/file.txt\")\nvar stat = file.stat\n\nSystem.print(stat is Stat)            // expect: true\nSystem.print(stat.device is Num)      // expect: true\nSystem.print(stat.inode is Num)       // expect: true\nSystem.print(stat.mode is Num)        // expect: true\nSystem.print(stat.linkCount)          // expect: 1\nSystem.print(stat.user is Num)        // expect: true\nSystem.print(stat.group is Num)       // expect: true\nSystem.print(stat.specialDevice)      // expect: 0\nSystem.print(stat.size)               // expect: 19\nSystem.print(stat.blockSize is Num)   // expect: true\nSystem.print(stat.blockCount is Num)  // expect: true\n\nfile.close()\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

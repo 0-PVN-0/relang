@@ -1,0 +1,6 @@
+{
+  "id": "core/null/no_constructor",
+  "type": "file",
+  "data": "Null.new() // expect runtime error: Null metaclass does not implement 'new()'.\n",
+  "timeout": 30
+}

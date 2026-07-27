@@ -1,0 +1,6 @@
+{
+  "id": "core/string_code_point_sequence/subscript_incomplete",
+  "type": "file",
+  "data": "// The first byte of a two-octet sequence.\nSystem.print(\"\\xc0\".codePoints[0]) // expect: -1\n\n// The first byte of a three-octet sequence.\nSystem.print(\"\\xe0\".codePoints[0]) // expect: -1\n\n// The first two bytes of a three-octet sequence.\nSystem.print(\"\\xe0\\xae\".codePoints[0]) // expect: -1\n",
+  "timeout": 30
+}

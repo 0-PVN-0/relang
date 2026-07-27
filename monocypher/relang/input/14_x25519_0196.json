@@ -1,0 +1,6 @@
+{
+  "id": "14_x25519_0196",
+  "type": "stdin",
+  "data": "crypto_x25519_inverse\nc061f0fd39d62b34df388cfc8efa868fdcc3e86eb38acb01e9d8247781384ad1:\nfd274cc3da086f19e0f86c0c9dc19856baa4c6c2ef8bf0f1ab067c08b6534b1a:\n",
+  "timeout": 30
+}

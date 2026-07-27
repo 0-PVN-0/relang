@@ -1,0 +1,4 @@
+{
+  "id": "api_post_bounce_with_valid_signing",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}]"
+}

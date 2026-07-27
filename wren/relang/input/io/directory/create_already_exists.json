@@ -1,0 +1,12 @@
+{
+  "id": "io/directory/create_already_exists",
+  "type": "file",
+  "data": "import \"io\" for Directory\n\n// Ensure clean state\nvar cleanup = Fiber.new { Directory.delete(\"dir_exists_test2.temp\") }\ncleanup.try()\nDirectory.create(\"dir_exists_test2.temp\")\n// Creating again should error (EEXIST)\nvar fi = Fiber.new { Directory.create(\"dir_exists_test2.temp\") }\nfi.try()\nSystem.print(fi.error != null) // expect: true\nDirectory.delete(\"dir_exists_test2.temp\")\n",
+  "timeout": 30,
+  "files": {
+    "io/directory/dir/c.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/file/file.txt": "this is a text file"
+  }
+}

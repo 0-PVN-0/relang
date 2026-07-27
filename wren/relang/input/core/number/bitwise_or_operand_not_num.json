@@ -1,0 +1,9 @@
+{
+  "id": "core/number/bitwise_or_operand_not_num",
+  "type": "file",
+  "data": "1 | false // expect runtime error: Right operand must be a number.\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

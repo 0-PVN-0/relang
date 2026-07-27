@@ -1,0 +1,4 @@
+{
+  "id": "core/sequence/take",
+  "output": "true\ninstance of TakeSequence\ntrue\n[1]\n[1, 2, 3]\n"
+}

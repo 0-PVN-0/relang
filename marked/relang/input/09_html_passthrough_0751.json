@@ -1,0 +1,6 @@
+{
+  "id": "09_html_passthrough_0751",
+  "type": "stdin",
+  "data": "<!--\nmulti\nline\ncomment\n-->",
+  "timeout": 30
+}

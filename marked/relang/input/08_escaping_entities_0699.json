@@ -1,0 +1,6 @@
+{
+  "id": "08_escaping_entities_0699",
+  "type": "stdin",
+  "data": "\\\\\\* not italic at all",
+  "timeout": 30
+}

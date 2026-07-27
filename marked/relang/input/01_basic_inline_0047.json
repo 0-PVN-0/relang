@@ -1,0 +1,6 @@
+{
+  "id": "01_basic_inline_0047",
+  "type": "stdin",
+  "data": "*italic and **nested bold** text*",
+  "timeout": 30
+}

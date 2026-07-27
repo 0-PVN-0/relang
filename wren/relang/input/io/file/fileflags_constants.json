@@ -1,0 +1,12 @@
+{
+  "id": "io/file/fileflags_constants",
+  "type": "file",
+  "data": "import \"io\" for FileFlags\n\nSystem.print(FileFlags.readOnly)  // expect: 1\nSystem.print(FileFlags.writeOnly) // expect: 2\nSystem.print(FileFlags.readWrite) // expect: 4\nSystem.print(FileFlags.sync)      // expect: 8\nSystem.print(FileFlags.create)    // expect: 16\nSystem.print(FileFlags.truncate)  // expect: 32\nSystem.print(FileFlags.exclusive) // expect: 64\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

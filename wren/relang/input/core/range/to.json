@@ -1,0 +1,6 @@
+{
+  "id": "core/range/to",
+  "type": "file",
+  "data": "// Ordered range.\nSystem.print((2..5).to) // expect: 5\nSystem.print((3..3).to) // expect: 3\nSystem.print((0..3).to) // expect: 3\nSystem.print((-5..3).to) // expect: 3\nSystem.print((-5..-2).to) // expect: -2\n\n// Backwards range.\nSystem.print((5..2).to) // expect: 2\nSystem.print((3..0).to) // expect: 0\nSystem.print((3..-5).to) // expect: -5\nSystem.print((-2..-5).to) // expect: -5\n\n// Exclusive ordered range.\nSystem.print((2...5).to) // expect: 5\nSystem.print((3...3).to) // expect: 3\nSystem.print((0...3).to) // expect: 3\nSystem.print((-5...3).to) // expect: 3\nSystem.print((-5...-2).to) // expect: -2\n\n// Exclusive backwards range.\nSystem.print((5...2).to) // expect: 2\nSystem.print((3...0).to) // expect: 0\nSystem.print((3...-5).to) // expect: -5\nSystem.print((-2...-5).to) // expect: -5\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "timer/sleep_not_num_map",
+  "type": "file",
+  "data": "import \"timer\" for Timer\n\nTimer.sleep({}) // expect runtime error: Milliseconds must be a number.\n",
+  "timeout": 30
+}

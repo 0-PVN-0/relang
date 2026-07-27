@@ -1,0 +1,6 @@
+{
+  "id": "language/class/attributes/literals",
+  "type": "file",
+  "data": "// Keys must be a name, and values can be any literal value\n\n#!name = name\n#!string = \"string\"\n#!integer = 32\n#!number = 2.5\n#!bool = true\nclass Literals {}\n\nvar literalGroup = Literals.attributes.self[null]\n\nSystem.print(literalGroup.count)                  // expect: 5\nSystem.print(literalGroup[\"string\"][0] is String) // expect: true\nSystem.print(literalGroup[\"string\"][0])           // expect: string\nSystem.print(literalGroup[\"integer\"][0] is Num)   // expect: true\nSystem.print(literalGroup[\"integer\"][0])          // expect: 32\nSystem.print(literalGroup[\"number\"][0] is Num)    // expect: true\nSystem.print(literalGroup[\"number\"][0])           // expect: 2.5\nSystem.print(literalGroup[\"bool\"][0] is Bool)     // expect: true\nSystem.print(literalGroup[\"bool\"][0])             // expect: true\n",
+  "timeout": 30
+}

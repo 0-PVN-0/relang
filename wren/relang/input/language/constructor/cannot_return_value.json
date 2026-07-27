@@ -1,0 +1,6 @@
+{
+  "id": "language/constructor/cannot_return_value",
+  "type": "file",
+  "data": "class Foo {\n  construct new() {\n    return 1 // expect error\n  }\n}",
+  "timeout": 30
+}

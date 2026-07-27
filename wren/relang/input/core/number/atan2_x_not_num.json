@@ -1,0 +1,9 @@
+{
+  "id": "core/number/atan2_x_not_num",
+  "type": "file",
+  "data": "0.atan(false) // expect runtime error: x value must be a number.",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "id": "11_edge_cases_0993",
+  "type": "stdin",
+  "data": "# `*` heading edge\n## `_` heading edge\n### `~~` heading edge",
+  "timeout": 30
+}

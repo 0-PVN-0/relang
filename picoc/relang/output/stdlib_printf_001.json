@@ -1,0 +1,4 @@
+{
+  "id": "stdlib_printf_001",
+  "output": "char: B\nint: -49\nunsigned: 1001\nhex: fb\nfloat: 1.250000\npadded: 00001\n"
+}

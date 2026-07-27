@@ -1,0 +1,6 @@
+{
+  "project_id": 2,
+  "name": "marked",
+  "input_type": "stdin",
+  "description": "Markdown to HTML processor"
+}

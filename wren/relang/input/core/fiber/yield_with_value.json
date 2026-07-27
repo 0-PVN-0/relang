@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/yield_with_value",
+  "type": "file",
+  "data": "var fiber = Fiber.new {\n  System.print(\"fiber 1\")\n  Fiber.yield(\"yield 1\")\n  System.print(\"fiber 2\")\n  Fiber.yield(\"yield 2\")\n  System.print(\"fiber 3\")\n}\n\nSystem.print(fiber.call())  // expect: fiber 1\n                            // expect: yield 1\nSystem.print(fiber.call())  // expect: fiber 2\n                            // expect: yield 2\nSystem.print(fiber.call())  // expect: fiber 3\n                            // expect: null\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

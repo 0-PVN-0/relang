@@ -1,0 +1,6 @@
+{
+  "id": "core/string/ends_with",
+  "type": "file",
+  "data": "System.print(\"abcd\".endsWith(\"cd\")) // expect: true\nSystem.print(\"abcd\".endsWith(\"abcde\")) // expect: false\nSystem.print(\"abcd\".endsWith(\"abcd\")) // expect: true\nSystem.print(\"abcd\".endsWith(\"f\")) // expect: false\nSystem.print(\"abcd\".endsWith(\"\")) // expect: true\n\n// Non-ASCII.\nSystem.print(\"søméthîng\".endsWith(\"thîng\"))  // expect: true\nSystem.print(\"søméthîng\".endsWith(\"thing\")) // expect: false\n\n// 8-bit clean.\nSystem.print(\"a\\0b\\0c\".endsWith(\"\\0\"))  // expect: false\nSystem.print(\"a\\0b\\0c\".endsWith(\"c\"))  // expect: true\nSystem.print(\"a\\0b\\0c\".endsWith(\"\\0c\"))  // expect: true\nSystem.print(\"a\\0b\\0c\".endsWith(\"\\0b\"))  // expect: false\n",
+  "timeout": 30
+}

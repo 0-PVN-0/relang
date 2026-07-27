@@ -1,0 +1,4 @@
+{
+  "id": "api_create_with_wrong_api_key_returns_401",
+  "output": "[{\"body\": \"{\\\"error\\\": \\\"missing api key\\\"}\", \"content-type\": \"application/json\", \"status\": 401, \"step\": 1}]"
+}

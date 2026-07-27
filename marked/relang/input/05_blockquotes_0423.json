@@ -1,0 +1,6 @@
+{
+  "id": "05_blockquotes_0423",
+  "type": "stdin",
+  "data": "> | a | b |\n> |---|---|\n> | 1 | 2 |",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "pointers_ptr_void_025",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int x = 125;\n    void *vp = &x;\n    int *ip = (int*)vp;\n    printf(\"vp_val: %d\\n\", *ip);\n    \n    double d = 25.125;\n    vp = &d;\n    double *dp = (double*)vp;\n    printf(\"vp_double: %.4f\\n\", *dp);\n    return 0;\n}\n",
+  "timeout": 30
+}

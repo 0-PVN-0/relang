@@ -1,0 +1,24 @@
+{
+  "id": "api_get_checks_with_wrong_header_name_x_apikey_returns_401",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "x-apikey": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          }
+        },
+        "expected": {
+          "status": 401
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

@@ -1,0 +1,25 @@
+{
+  "id": "front_post_search_docs_with_xss_attempt_sanitized",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/docs/search/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "q=%3Cscript%3Ealert(1)%3C/script%3E"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

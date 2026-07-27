@@ -1,0 +1,4 @@
+{
+  "id": "08_escaping_entities_0727",
+  "output": "<p>&amp;#xZZ; invalid hex</p>\n\n"
+}

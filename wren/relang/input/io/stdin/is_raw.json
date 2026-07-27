@@ -1,0 +1,15 @@
+{
+  "id": "io/stdin/is_raw",
+  "type": "file",
+  "data": "import \"io\" for Stdin\n\n// Defaults to false.\nSystem.print(Stdin.isRaw) // expect: false\n\n// stdin: abcdefgh\nfor (i in 1..4) {\n  System.print(Stdin.readByte())\n}\n// expect: 97\n// expect: 98\n// expect: 99\n// expect: 100\n\nStdin.isRaw = true\nSystem.print(Stdin.isRaw) // expect: true\n\nfor (i in 1..4) {\n  System.print(Stdin.readByte())\n}\n// expect: 101\n// expect: 102\n// expect: 103\n// expect: 104\n\n// TODO: This doesn't actually detect a visible difference between raw and\n// non-raw mode. Maybe add support to the test runner for writing non-printing\n// characters to stdin?\n",
+  "timeout": 30,
+  "files": {
+    "io/stdin/read_byte_eof.wren": "// skip: \nimport \"io\" for Stdin\n\nStdin.readLine() // stdin: one line\n\nvar error = Fiber.new {\n  Stdin.readByte()\n}.try()\n\nSystem.print(error) // expect: Stdin was closed.\n",
+    "io/stdin/read_line_eof.wren": "// skip: \nimport \"io\" for Stdin\n\nStdin.readLine() // stdin: one line\n\nvar error = Fiber.new {\n  Stdin.readLine()\n}.try()\n\nSystem.print(error) // expect: Stdin was closed.\n",
+    "io/stdin/read_line.wren": "// skip: \nimport \"io\" for Stdin\n\nSystem.write(\"> \")\nSystem.print(\"1 %(Stdin.readLine())\")\nSystem.write(\"> \")\nSystem.print(\"2 %(Stdin.readLine())\")\n\n// stdin: first\n// stdin: second\n// expect: > 1 first\n// expect: > 2 second\n",
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

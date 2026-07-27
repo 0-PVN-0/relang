@@ -1,0 +1,6 @@
+{
+  "id": "core/string_code_point_sequence/subscript_not_int",
+  "type": "file",
+  "data": "System.print(\"string\".codePoints[12.34]) // expect runtime error: Index must be an integer.\n",
+  "timeout": 30
+}

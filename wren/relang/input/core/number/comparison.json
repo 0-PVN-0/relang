@@ -1,0 +1,9 @@
+{
+  "id": "core/number/comparison",
+  "type": "file",
+  "data": "System.print(1 < 2)    // expect: true\nSystem.print(2 < 2)    // expect: false\nSystem.print(2 < 1)    // expect: false\n\nSystem.print(1 <= 2)    // expect: true\nSystem.print(2 <= 2)    // expect: true\nSystem.print(2 <= 1)    // expect: false\n\nSystem.print(1 > 2)    // expect: false\nSystem.print(2 > 2)    // expect: false\nSystem.print(2 > 1)    // expect: true\n\nSystem.print(1 >= 2)    // expect: false\nSystem.print(2 >= 2)    // expect: true\nSystem.print(2 >= 1)    // expect: true\n\n// Zero and negative zero compare the same.\nSystem.print(0 < -0) // expect: false\nSystem.print(-0 < 0) // expect: false\nSystem.print(0 > -0) // expect: false\nSystem.print(-0 > 0) // expect: false\nSystem.print(0 <= -0) // expect: true\nSystem.print(-0 <= 0) // expect: true\nSystem.print(0 >= -0) // expect: true\nSystem.print(-0 >= 0) // expect: true\n\n// TODO: Wrong type for RHS.\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

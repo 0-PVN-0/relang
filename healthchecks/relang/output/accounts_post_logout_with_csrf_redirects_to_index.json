@@ -1,0 +1,4 @@
+{
+  "id": "accounts_post_logout_with_csrf_redirects_to_index",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 2}]"
+}

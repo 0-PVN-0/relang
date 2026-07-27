@@ -1,0 +1,6 @@
+{
+  "id": "language/method/long_name",
+  "type": "file",
+  "data": "class Foo {\n  construct new() {}\n  thisHasAMethodNameThatIsExactly64CharactersLongWhichIsTheMaximum {\n    return \"result\"\n  }\n}\n\nSystem.print(Foo.new().thisHasAMethodNameThatIsExactly64CharactersLongWhichIsTheMaximum) // expect: result\n",
+  "timeout": 30
+}

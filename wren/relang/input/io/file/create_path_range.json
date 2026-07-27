@@ -1,0 +1,12 @@
+{
+  "id": "io/file/create_path_range",
+  "type": "file",
+  "data": "import \"io\" for File\n\nFile.create(1..3) // expect runtime error: Path must be a string.\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

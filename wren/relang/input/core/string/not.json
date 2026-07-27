@@ -1,0 +1,6 @@
+{
+  "id": "core/string/not",
+  "type": "file",
+  "data": "System.print(!\"s\") // expect: false\nSystem.print(!\"\") // expect: false\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "06_tables_0570",
+  "type": "stdin",
+  "data": "| a | b |\n|---|:---|\n| 1 | 2 |",
+  "timeout": 30
+}

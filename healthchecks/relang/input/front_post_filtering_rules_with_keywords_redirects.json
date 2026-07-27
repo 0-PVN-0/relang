@@ -1,0 +1,88 @@
+{
+  "id": "front_post_filtering_rules_with_keywords_redirects",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/login/"
+        },
+        "expected": {},
+        "storeCookies": {
+          "kwCsrf": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/accounts/login/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "action=login&email=alice@example.org&password=password&csrfmiddlewaretoken={kwCsrf}"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {
+          "kwSess": "sessionid"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "content-type": "application/json",
+            "x-api-key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+          },
+          "body": "{\"name\":\"Keyword Check\",\"timeout\":3600,\"grace\":60}"
+        },
+        "expected": {
+          "status": 201
+        },
+        "storeCookies": {},
+        "store": {
+          "kwCheckId": "$.uuid"
+        },
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/checks/{kwCheckId}/details/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {
+          "kwCsrfToken": "csrfmiddlewaretoken\" value=\"([^\"]+)\""
+        }
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/checks/{kwCheckId}/filtering_rules/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "csrfmiddlewaretoken={kwCsrfToken}&filter_subject=on&filter_body=on&keywords=error+fail+critical"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

@@ -1,0 +1,6 @@
+{
+  "id": "05_blockquotes_0434",
+  "type": "stdin",
+  "data": "> Outer\n> > Inner\n> > > Deepest",
+  "timeout": 30
+}

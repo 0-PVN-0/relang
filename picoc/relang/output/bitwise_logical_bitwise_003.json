@@ -1,0 +1,4 @@
+{
+  "id": "bitwise_logical_bitwise_003",
+  "output": "and: 15\nor: 15\nxor: 0\nnot: 4294967280\nshl: 60\nshr: 1\n"
+}

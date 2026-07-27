@@ -1,0 +1,4 @@
+{
+  "id": "language/nonlocal/use_in_function",
+  "output": "global\n"
+}

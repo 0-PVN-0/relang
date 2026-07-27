@@ -1,0 +1,6 @@
+{
+  "id": "core/null/not",
+  "type": "file",
+  "data": "System.print(!null) // expect: true\n",
+  "timeout": 30
+}

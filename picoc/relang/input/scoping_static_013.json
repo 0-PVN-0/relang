@@ -1,0 +1,6 @@
+{
+  "id": "scoping_static_013",
+  "type": "file",
+  "data": "#include <stdio.h>\nint counter() {\n    static int val = 0;\n    val += 14;\n    return val;\n}\nint main() {\n    printf(\"call1: %d\\n\", counter());\n    printf(\"call2: %d\\n\", counter());\n    printf(\"call3: %d\\n\", counter());\n    return 0;\n}\n",
+  "timeout": 30
+}

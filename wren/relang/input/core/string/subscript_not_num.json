@@ -1,0 +1,6 @@
+{
+  "id": "core/string/subscript_not_num",
+  "type": "file",
+  "data": "var a = \"123\"\na[\"2\"] // expect runtime error: Subscript must be a number or a range.\n",
+  "timeout": 30
+}

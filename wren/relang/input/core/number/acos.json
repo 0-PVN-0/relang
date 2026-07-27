@@ -1,0 +1,9 @@
+{
+  "id": "core/number/acos",
+  "type": "file",
+  "data": "System.print(0.acos)        // expect: 1.5707963267949\nSystem.print(1.acos)        // expect: 0\nSystem.print((-1).acos)     // expect: 3.1415926535898\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

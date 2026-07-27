@@ -1,0 +1,6 @@
+{
+  "id": "stdlib_printf_008",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    printf(\"char: %c\\n\", 'I');\n    printf(\"int: %d\\n\", -42);\n    printf(\"unsigned: %u\\n\", 1008);\n    printf(\"hex: %x\\n\", 258);\n    printf(\"float: %f\\n\", 10.0);\n    printf(\"padded: %05d\\n\", 8);\n    return 0;\n}\n",
+  "timeout": 30
+}

@@ -1,0 +1,4 @@
+{
+  "id": "05_blockquotes_0486",
+  "output": "<blockquote>\n<ul>\n<li><input checked=\"\" disabled=\"\" type=\"checkbox\"> done</li>\n<li><input disabled=\"\" type=\"checkbox\"> pending</li>\n<li>normal</li>\n</ul>\n</blockquote>\n\n"
+}

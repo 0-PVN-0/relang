@@ -1,0 +1,6 @@
+{
+  "id": "language/continue/closure_in_while",
+  "type": "file",
+  "data": "var f\nwhile (f == null) {\n  var i = \"i\"\n  f = Fn.new { System.print(i) }\n  continue\n}\n\nf.call()\n// expect: i\n",
+  "timeout": 30
+}

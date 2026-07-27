@@ -1,0 +1,85 @@
+{
+  "id": "integrations_post_with_both_urls_empty_shows_error",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/accounts/login/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {
+          "csrfToken": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/accounts/login/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "action=login&email=alice@example.org&password=password&csrfmiddlewaretoken={csrfToken}"
+        },
+        "expected": {
+          "status": 302
+        },
+        "storeCookies": {
+          "csrfToken": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {
+          "projectCode": "/projects/([0-9a-f-]{36})/"
+        }
+      },
+      {
+        "request": {
+          "method": "GET",
+          "path": "/projects/{projectCode}/add_webhook/"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {
+          "csrfToken": "csrftoken"
+        },
+        "store": {},
+        "storeHtml": {}
+      },
+      {
+        "request": {
+          "method": "POST",
+          "path": "/projects/{projectCode}/add_webhook/",
+          "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+          },
+          "body": "url_down=&method_down=GET&url_up=&method_up=GET&csrfmiddlewaretoken={csrfToken}"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

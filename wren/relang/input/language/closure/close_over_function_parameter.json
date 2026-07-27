@@ -1,0 +1,6 @@
+{
+  "id": "language/closure/close_over_function_parameter",
+  "type": "file",
+  "data": "var f = null\n\nFn.new {|param|\n  f = Fn.new {\n    System.print(param)\n  }\n}.call(\"param\")\n\nf.call() // expect: param\n",
+  "timeout": 30
+}

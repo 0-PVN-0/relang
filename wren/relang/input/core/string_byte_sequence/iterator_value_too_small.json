@@ -1,0 +1,6 @@
+{
+  "id": "core/string_byte_sequence/iterator_value_too_small",
+  "type": "file",
+  "data": "\"abcd\".bytes.iteratorValue(-5) // expect runtime error: Index out of bounds.\n",
+  "timeout": 30
+}

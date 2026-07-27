@@ -1,0 +1,6 @@
+{
+  "id": "language/matrix/list_index/list_start_neg_5_index_01",
+  "type": "file",
+  "data": "System.print([-5, -4, -3, -2, -1, 0, 1, 2, 3, 4][1]) // expect: -4\n",
+  "timeout": 30
+}

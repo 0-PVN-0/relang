@@ -1,0 +1,4 @@
+{
+  "id": "core/fiber/yield_with_value",
+  "output": "fiber 1\nyield 1\nfiber 2\nyield 2\nfiber 3\nnull\n"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "typedef_coercion_coercion_005",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    double d = 128.45600000000002;\n    int x = (int)d;\n    float f = (float)x;\n    printf(\"double: %.3f, cast_int: %d, cast_float: %.1f\\n\", d, x, f);\n    \n    unsigned char uc = 250;\n    int promoted = uc + 5;\n    printf(\"promoted: %d\\n\", promoted);\n    return 0;\n}\n",
+  "timeout": 30
+}

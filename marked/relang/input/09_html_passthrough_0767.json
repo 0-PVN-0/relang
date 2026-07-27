@@ -1,0 +1,6 @@
+{
+  "id": "09_html_passthrough_0767",
+  "type": "stdin",
+  "data": "[click](javascript:alert('xss'))",
+  "timeout": 30
+}

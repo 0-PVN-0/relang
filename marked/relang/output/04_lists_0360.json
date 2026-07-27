@@ -1,0 +1,4 @@
+{
+  "id": "04_lists_0360",
+  "output": "<ul>\n<li><input disabled=\"\" type=\"checkbox\"> a</li>\n<li><input disabled=\"\" type=\"checkbox\"> b</li>\n<li><input checked=\"\" disabled=\"\" type=\"checkbox\"> c</li>\n</ul>\n\n"
+}

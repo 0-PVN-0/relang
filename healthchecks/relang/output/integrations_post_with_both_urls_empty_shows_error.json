@@ -1,0 +1,4 @@
+{
+  "id": "integrations_post_with_both_urls_empty_shows_error",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 2}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 3}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 4}, {\"content-type\": \"text/html\", \"status\": 200, \"step\": 5}]"
+}

@@ -1,0 +1,6 @@
+{
+  "id": "edge_cases_syntax_025",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main(  )\n{\n    int   a    =    25   ;\n    int   b\n    =\n    26;\n    printf(\n        \"res: %d\\n\",\n        a\n        +\n        b\n    );\n    return 0;\n}\n",
+  "timeout": 30
+}

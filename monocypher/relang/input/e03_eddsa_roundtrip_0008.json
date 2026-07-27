@@ -1,0 +1,6 @@
+{
+  "id": "e03_eddsa_roundtrip_0008",
+  "type": "stdin",
+  "data": "crypto_eddsa_check\n3f6bb9f3cfd10a9f84f4fac7f30eadd7f0fd37ff830344ceb2bb2d8d215430cfe1da6138b8f2fdf1ed43c33e386dcb397825e4036326e0186d06ef2ece9e7900:\ne6107449cefb36bfaf44ca5d8d163aa04e063acd50f53f83a036ee9ba1b8e790:\nc784e3ff6721:\n",
+  "timeout": 30
+}

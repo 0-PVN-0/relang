@@ -1,0 +1,6 @@
+{
+  "id": "core/string/iterator_value",
+  "type": "file",
+  "data": "var s = \"abçd\"\nSystem.print(s.iteratorValue(0)) // expect: a\nSystem.print(s.iteratorValue(1)) // expect: b\nSystem.print(s.iteratorValue(2)) // expect: ç\n// Iterator value in middle of UTF sequence is the unencoded byte.\nSystem.print(s.iteratorValue(3) == \"\\xa7\") // expect: true\nSystem.print(s.iteratorValue(4)) // expect: d\n\n// 8-bit clean.\nvar t = \"a\\0b\\0c\"\nSystem.print(t.iteratorValue(0) == \"a\") // expect: true\nSystem.print(t.iteratorValue(1) == \"\\0\") // expect: true\nSystem.print(t.iteratorValue(2) == \"b\") // expect: true\nSystem.print(t.iteratorValue(3) == \"\\0\") // expect: true\nSystem.print(t.iteratorValue(4) == \"c\") // expect: true\n\n// Returns single byte strings for invalid UTF-8 sequences.\nSystem.print(\"\\xef\\xf7\".iteratorValue(0) == \"\\xef\") // expect: true\nSystem.print(\"\\xef\\xf7\".iteratorValue(1) == \"\\xf7\") // expect: true\n",
+  "timeout": 30
+}

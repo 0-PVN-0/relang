@@ -1,0 +1,12 @@
+{
+  "id": "core/map/reuse_tombstone",
+  "type": "file",
+  "data": "// Regression test for #373.\nvar map = {}\nmap[2] = \"two\"\nmap[0] = \"zero\"\nmap.remove(2)\nmap[0] = \"zero again\"\nmap.remove(0)\n\nSystem.print(map.containsKey(0)) // expect: false\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "id": "api_list_badges_without_api_key_returns_401",
+  "output": "[{\"body\": \"{\\\"error\\\": \\\"missing api key\\\"}\", \"content-type\": \"application/json\", \"status\": 401, \"step\": 1}]"
+}

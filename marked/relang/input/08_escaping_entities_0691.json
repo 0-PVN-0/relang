@@ -1,0 +1,6 @@
+{
+  "id": "08_escaping_entities_0691",
+  "type": "stdin",
+  "data": "[foo\\\nbar]: https://example.com",
+  "timeout": 30
+}

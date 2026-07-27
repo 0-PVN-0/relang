@@ -1,0 +1,9 @@
+{
+  "id": "language/module/compile_error/compile_error",
+  "type": "file",
+  "data": "System.print(\"before\") // expect: before\nimport \"./module\" for Module // expect runtime error: Could not compile module './test/language/module/compile_error/module'.\n",
+  "timeout": 30,
+  "files": {
+    "language/module/compile_error/module.wren": "// nontest\nundefined\n"
+  }
+}

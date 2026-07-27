@@ -1,0 +1,4 @@
+{
+  "id": "accounts_get_unsubscribe_alerts_with_invalid_token",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 404, \"step\": 1}]"
+}

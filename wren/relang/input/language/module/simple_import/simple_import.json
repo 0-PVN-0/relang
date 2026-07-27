@@ -1,0 +1,9 @@
+{
+  "id": "language/module/simple_import/simple_import",
+  "type": "file",
+  "data": "import \"./module\" for Module\n// expect: ran module\n\nSystem.print(Module) // expect: from module\n",
+  "timeout": 30,
+  "files": {
+    "language/module/simple_import/module.wren": "// nontest\nvar Module = \"from module\"\nSystem.print(\"ran module\")\n"
+  }
+}

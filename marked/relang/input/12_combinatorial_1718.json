@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_1718",
+  "type": "stdin",
+  "data": "[x][x] [y][y] [z][z]\n\n[x]: /x\n[y]: /y\n[z]: /z",
+  "timeout": 30
+}

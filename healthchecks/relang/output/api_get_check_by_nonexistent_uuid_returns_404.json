@@ -1,0 +1,4 @@
+{
+  "id": "api_get_check_by_nonexistent_uuid_returns_404",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 404, \"step\": 1}]"
+}

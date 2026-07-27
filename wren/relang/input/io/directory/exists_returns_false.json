@@ -1,0 +1,12 @@
+{
+  "id": "io/directory/exists_returns_false",
+  "type": "file",
+  "data": "import \"io\" for Directory\n\n// Nonexistent path returns false, not an error\nSystem.print(Directory.exists(\"nonexistent_xyz_abc_def\")) // expect: false\n",
+  "timeout": 30,
+  "files": {
+    "io/directory/dir/c.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/file/file.txt": "this is a text file"
+  }
+}

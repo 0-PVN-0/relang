@@ -1,0 +1,6 @@
+{
+  "id": "01_verify_0234",
+  "type": "stdin",
+  "data": "crypto_verify64\n7cb24be88be5590988e02bffff980fb8ea97d1512d93e28a6d8a6d444141a2293b42f3442467b439dfdeb3c8e0a82d5df9d0a5e8c5de7c7d43685c31c7e2a273:\n7cb24be88be5590988e02bffff980fb8ea97d1512d93e28a6d8a6d444141a2293b42f3442467b539dfdeb3c8e0a82d5df9d0a5e8c5de7c7d43685c31c7e2a273:\n",
+  "timeout": 30
+}

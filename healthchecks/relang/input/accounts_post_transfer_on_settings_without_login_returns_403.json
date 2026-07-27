@@ -1,0 +1,21 @@
+{
+  "id": "accounts_post_transfer_on_settings_without_login_returns_403",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/projects/00000000-0000-0000-0000-000000000000/settings/"
+        },
+        "expected": {
+          "status": 403
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

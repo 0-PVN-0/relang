@@ -1,0 +1,4 @@
+{
+  "id": "api_get_checks_without_auth_header_returns_401",
+  "output": "[{\"body\": \"{\\\"error\\\": \\\"missing api key\\\"}\", \"content-type\": \"application/json\", \"status\": 401, \"step\": 1}]"
+}

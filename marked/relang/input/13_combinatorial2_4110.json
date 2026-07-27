@@ -1,0 +1,6 @@
+{
+  "id": "13_combinatorial2_4110",
+  "type": "stdin",
+  "data": "| [g](u) | ![h](p) |\n|-----|-----|\n| [g](u) | ![h](p) |",
+  "timeout": 30
+}

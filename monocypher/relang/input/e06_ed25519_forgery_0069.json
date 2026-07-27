@@ -1,0 +1,6 @@
+{
+  "id": "e06_ed25519_forgery_0069",
+  "type": "stdin",
+  "data": "crypto_ed25519_check\n6820daf9112a4161b21346fe2b6d7dcf19eabdafcb0c5b72e7144ae98010a697beaba4986a703c8784fc6ca2b212625887f78c5c46a4625827c0ee84ba101b08:\n34f6070eb13e2c71e8333a11d1a96f367fab4ff06d0771adfe92f1389d4a3e59:\n15353d:\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "09_html_passthrough_0757",
+  "type": "stdin",
+  "data": "<img src='x.png' alt='x'>",
+  "timeout": 30
+}

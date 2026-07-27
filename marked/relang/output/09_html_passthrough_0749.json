@@ -1,0 +1,4 @@
+{
+  "id": "09_html_passthrough_0749",
+  "output": "<?php echo '>'; ?>*not emphasis*\n"
+}

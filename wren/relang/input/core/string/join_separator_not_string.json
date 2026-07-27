@@ -1,0 +1,6 @@
+{
+  "id": "core/string/join_separator_not_string",
+  "type": "file",
+  "data": "\"string\".join(2) // // expect runtime error: Right operand must be a string.\n",
+  "timeout": 30
+}

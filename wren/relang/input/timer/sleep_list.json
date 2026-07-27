@@ -1,0 +1,6 @@
+{
+  "id": "timer/sleep_list",
+  "type": "file",
+  "data": "import \"timer\" for Timer\n\nTimer.sleep([100]) // expect runtime error: Milliseconds must be a number.\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "language/for/return_inside",
+  "type": "file",
+  "data": "var f = Fn.new {\n  for (i in [1, 2, 3]) {\n    return i\n  }\n}\n\nSystem.print(f.call())\n// expect: 1\n",
+  "timeout": 30
+}

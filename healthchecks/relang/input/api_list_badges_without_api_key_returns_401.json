@@ -1,0 +1,21 @@
+{
+  "id": "api_list_badges_without_api_key_returns_401",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "GET",
+          "path": "/api/v1/badges/"
+        },
+        "expected": {
+          "status": 401
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_2920",
+  "type": "stdin",
+  "data": "| a | b |\n|---|:---|\n| 1 | 2 |\n| 3 | 4 |",
+  "timeout": 30
+}

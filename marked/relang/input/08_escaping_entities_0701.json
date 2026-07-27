@@ -1,0 +1,6 @@
+{
+  "id": "08_escaping_entities_0701",
+  "type": "stdin",
+  "data": "AT&amp;T is &lt;bold&gt;",
+  "timeout": 30
+}

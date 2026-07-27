@@ -1,0 +1,6 @@
+{
+  "id": "core/list/insert_index_too_small",
+  "type": "file",
+  "data": "var a = [1, 2, 3]\na.insert(-5, \"value\") // expect runtime error: Index out of bounds.\n",
+  "timeout": 30
+}

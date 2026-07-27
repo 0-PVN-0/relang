@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_2883",
+  "type": "stdin",
+  "data": "| H1 | H2 | H3 | H4 | H5 | H6 |\n|:---|:---|:---|:---|:---|:---|\n| c1 | c2 | c3 | c4 | c5 | c6 |",
+  "timeout": 30
+}

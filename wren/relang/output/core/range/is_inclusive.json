@@ -1,0 +1,4 @@
+{
+  "id": "core/range/is_inclusive",
+  "output": "true\nfalse\ntrue\nfalse\n"
+}

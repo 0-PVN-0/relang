@@ -1,0 +1,4 @@
+{
+  "id": "language/system_print_non_string_tostring",
+  "output": "printable value\n"
+}

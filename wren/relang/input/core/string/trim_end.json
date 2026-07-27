@@ -1,0 +1,6 @@
+{
+  "id": "core/string/trim_end",
+  "type": "file",
+  "data": "System.print(\"\".trimEnd() == \"\") // expect: true\nSystem.print(\"foo\".trimEnd() == \"foo\") // expect: true\nSystem.print(\" \\t\\r\\nfoo b\\tar \\t\\r\\n\".trimEnd() == \" \\t\\r\\nfoo b\\tar\") // expect: true\nSystem.print(\" \\t\\r\\n \\t\\r\\n\".trimEnd() == \"\") // expect: true\nSystem.print(\"søméஃthîng \\n\\n\\t\".trimEnd() == \"søméஃthîng\") // expect: true\n\nSystem.print(\"\".trimEnd(\"abc\") == \"\") // expect: true\nSystem.print(\"foo\".trimEnd(\"abc\") == \"foo\") // expect: true\nSystem.print(\"foo\".trimEnd(\"\") == \"foo\") // expect: true\nSystem.print(\"cbacbfoobarab\".trimEnd(\"abc\") == \"cbacbfoobar\") // expect: true\nSystem.print(\"abcbacba\".trimEnd(\"abc\") == \"\") // expect: true\nSystem.print(\"søméஃthîngsøméஃ\".trimEnd(\"ஃmésø\") == \"søméஃthîng\") // expect: true\n\n// 8-bit clean.\nSystem.print(\" \\t\\ra\\0b \\t\\r\".trimEnd() == \" \\t\\ra\\0b\") // expect: true\nSystem.print(\"\\0a\\0b\\0c\\0\".trimEnd(\"c\\0\") == \"\\0a\\0b\") // expect: true\n",
+  "timeout": 30
+}

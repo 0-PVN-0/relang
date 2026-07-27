@@ -1,0 +1,25 @@
+{
+  "id": "api_post_bounce_with_valid_signing",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/bounces/",
+          "headers": {
+            "content-type": "application/json"
+          },
+          "body": "{\"signed\":true,\"type\":\"Bounce\"}"
+        },
+        "expected": {
+          "status": 200
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

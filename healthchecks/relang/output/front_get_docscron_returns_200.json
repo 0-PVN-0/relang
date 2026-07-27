@@ -1,0 +1,4 @@
+{
+  "id": "front_get_docscron_returns_200",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}]"
+}

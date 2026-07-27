@@ -1,0 +1,26 @@
+{
+  "id": "api_create_with_wrong_api_key_returns_401",
+  "type": "http_replay",
+  "data": {
+    "steps": [
+      {
+        "request": {
+          "method": "POST",
+          "path": "/api/v1/checks/",
+          "headers": {
+            "content-type": "application/json",
+            "x-api-key": "wrong-key-here-32-chars!!"
+          },
+          "body": "{\"name\":\"Wrong Key\",\"timeout\":3600,\"grace\":60}"
+        },
+        "expected": {
+          "status": 401
+        },
+        "storeCookies": {},
+        "store": {},
+        "storeHtml": {}
+      }
+    ]
+  },
+  "timeout": 300
+}

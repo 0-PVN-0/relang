@@ -1,0 +1,6 @@
+{
+  "id": "functions_func_args_041",
+  "type": "file",
+  "data": "#include <stdio.h>\nint sum_many(int a, int b, int c, int d, int e, int f) {\n    return a + b + c + d + e + f;\n}\nvoid mutate(int *p, int val) {\n    *p = val;\n}\nint main() {\n    int s = sum_many(41, 42, 43, 44, 45, 46);\n    printf(\"sum: %d\\n\", s);\n    int x = 0;\n    mutate(&x, 4100);\n    printf(\"mutated: %d\\n\", x);\n    return 0;\n}\n",
+  "timeout": 30
+}

@@ -1,0 +1,4 @@
+{
+  "id": "core/number/is_integer",
+  "output": "true\ntrue\ntrue\nfalse\nfalse\nfalse\nfalse\n"
+}

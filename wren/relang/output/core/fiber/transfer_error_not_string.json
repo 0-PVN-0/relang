@@ -1,0 +1,4 @@
+{
+  "id": "core/fiber/transfer_error_not_string",
+  "output": "123\n"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "language/interpolation/unterminated",
+  "type": "file",
+  "data": "\" %(\n// expect error",
+  "timeout": 30,
+  "files": {
+    "language/interpolation/empty.wren": "// expect error line 3\n\" %() \"\n",
+    "language/interpolation/unterminated_expression.wren": "// expect error line 2\n\" %(123\""
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "id": "os/platform/home_path_not_empty",
+  "type": "file",
+  "data": "import \"os\" for Platform\n\nSystem.print(Platform.homePath.count > 0) // expect: true\n",
+  "timeout": 30
+}

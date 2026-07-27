@@ -1,0 +1,6 @@
+{
+  "id": "basic_types_basic_061",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    unsigned int a = 12;\n    char b = 5;\n    double res = (double)(a + b);\n    printf(\"res: %.4f\\n\", res);\n    return 0;\n}\n",
+  "timeout": 30
+}

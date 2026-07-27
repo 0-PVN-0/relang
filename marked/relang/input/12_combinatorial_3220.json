@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_3220",
+  "type": "stdin",
+  "data": "# *italic*\n\n> ~~strike~~\n\n- ~~strike~~",
+  "timeout": 30
+}

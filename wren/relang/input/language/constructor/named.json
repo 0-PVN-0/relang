@@ -1,0 +1,6 @@
+{
+  "id": "language/constructor/named",
+  "type": "file",
+  "data": "class Foo {\n  construct named() { _field = \"named\" }\n  construct other() { _field = \"other\" }\n\n  toString { _field }\n}\n\nSystem.print(Foo.named()) // expect: named\nSystem.print(Foo.other()) // expect: other\n\n// Returns the new instance.\nvar foo = Foo.named()\nSystem.print(foo is Foo) // expect: true\nSystem.print(foo.toString) // expect: named\n",
+  "timeout": 30
+}

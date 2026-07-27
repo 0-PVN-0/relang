@@ -1,0 +1,6 @@
+{
+  "id": "language/function/empty_body",
+  "type": "file",
+  "data": "var f = Fn.new {}\nSystem.print(f.call()) // expect: null\n",
+  "timeout": 30
+}

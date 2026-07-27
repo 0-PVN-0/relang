@@ -1,0 +1,4 @@
+{
+  "id": "timer/sleep_zero",
+  "output": "main\na before\nb before\nmain after\na after\nb after\ndone\n"
+}

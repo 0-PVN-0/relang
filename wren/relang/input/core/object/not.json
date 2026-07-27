@@ -1,0 +1,6 @@
+{
+  "id": "core/object/not",
+  "type": "file",
+  "data": "class Foo {\n  construct new() {}\n}\nSystem.print(!Foo.new()) // expect: false\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "e10_conversions_0006",
+  "type": "stdin",
+  "data": "crypto_eddsa_to_x25519\n33d7a1f5ee8e10fb74f16c0cd7d65a19bdf55279103e611192568ecd5d0d11bb:\n",
+  "timeout": 30
+}

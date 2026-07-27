@@ -1,0 +1,6 @@
+{
+  "id": "08_escaping_entities_0672",
+  "type": "stdin",
+  "data": "\\!\\#\\*\\_\\`\\[\\\\",
+  "timeout": 30
+}

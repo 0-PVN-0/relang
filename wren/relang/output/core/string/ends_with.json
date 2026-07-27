@@ -1,0 +1,4 @@
+{
+  "id": "core/string/ends_with",
+  "output": "true\nfalse\ntrue\nfalse\ntrue\ntrue\nfalse\nfalse\ntrue\ntrue\nfalse\n"
+}

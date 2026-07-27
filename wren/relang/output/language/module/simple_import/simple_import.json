@@ -1,0 +1,4 @@
+{
+  "id": "language/module/simple_import/simple_import",
+  "output": "ran module\nfrom module\n"
+}

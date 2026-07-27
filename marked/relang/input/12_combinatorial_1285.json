@@ -1,0 +1,6 @@
+{
+  "id": "12_combinatorial_1285",
+  "type": "stdin",
+  "data": "~~~ rust\nx = 1\n~~~",
+  "timeout": 30
+}

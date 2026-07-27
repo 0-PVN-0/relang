@@ -1,0 +1,4 @@
+{
+  "id": "accounts_login_with_next_to_a_different_project_redirects_to_that_project",
+  "output": "[{\"content-type\": \"text/html\", \"status\": 200, \"step\": 1}, {\"content-type\": \"text/html\", \"status\": 302, \"step\": 2}]"
+}

@@ -1,0 +1,4 @@
+{
+  "id": "stdlib_printf_037",
+  "output": "char: L\nint: -13\nunsigned: 1037\nhex: 11f\nfloat: 46.250000\npadded: 00037\n"
+}

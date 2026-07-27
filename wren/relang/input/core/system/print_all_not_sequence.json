@@ -1,0 +1,6 @@
+{
+  "id": "core/system/print_all_not_sequence",
+  "type": "file",
+  "data": "System.printAll(123) // expect runtime error: Num does not implement 'iterate(_)'.\n",
+  "timeout": 30
+}

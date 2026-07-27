@@ -1,0 +1,4 @@
+{
+  "id": "api_create_with_null_desc_is_accepted",
+  "output": "[{\"body\": \"{\\\"error\\\": \\\"json validation error: desc is not a string\\\"}\", \"content-type\": \"application/json\", \"status\": 400, \"step\": 1}]"
+}

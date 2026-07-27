@@ -1,0 +1,6 @@
+{
+  "id": "core/string/join",
+  "type": "file",
+  "data": "var str = \"string\"\n\nSystem.print(str.join(\"\") == str) // expect: true\n\nSystem.print(str.join(\", \")) // expect: s, t, r, i, n, g\n\n// 8-bit clean.\nvar ing = \"a\\0b\\0c\"\nSystem.print(ing.join(\"\") == ing) // expect: true\nSystem.print(ing.join(\", \") == \"a, \\0, b, \\0, c\") // expect: true\n",
+  "timeout": 30
+}

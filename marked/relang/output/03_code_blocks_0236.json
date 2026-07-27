@@ -1,0 +1,4 @@
+{
+  "id": "03_code_blocks_0236",
+  "output": "<ul>\n<li><p>list</p>\n<pre><code>code in list\n</code></pre>\n</li>\n<li><p>another</p>\n</li>\n</ul>\n\n"
+}

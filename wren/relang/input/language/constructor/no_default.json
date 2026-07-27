@@ -1,0 +1,6 @@
+{
+  "id": "language/constructor/no_default",
+  "type": "file",
+  "data": "class Foo {}\n\n// Classes do not get a constructor by default.\nvar foo = Foo.new() // expect runtime error: Foo metaclass does not implement 'new()'.\n",
+  "timeout": 30
+}

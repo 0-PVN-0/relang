@@ -1,0 +1,6 @@
+{
+  "id": "arrays_strings_array_decay_023",
+  "type": "file",
+  "data": "#include <stdio.h>\nvoid print_arr(int *p, int size) {\n    for(int j = 0; j < size; j++) {\n        printf(\"%d \", p[j]);\n    }\n    printf(\"\\n\");\n}\nint main() {\n    int arr[] = { 23, 24, 25, 26 };\n    print_arr(arr, 4);\n    return 0;\n}\n",
+  "timeout": 30
+}

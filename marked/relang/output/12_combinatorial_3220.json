@@ -1,0 +1,4 @@
+{
+  "id": "12_combinatorial_3220",
+  "output": "<h1><em>italic</em></h1>\n<blockquote>\n<p><del>strike</del></p>\n</blockquote>\n<ul>\n<li><del>strike</del></li>\n</ul>\n\n"
+}

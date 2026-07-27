@@ -1,0 +1,6 @@
+{
+  "id": "07_aead_ietf_0176",
+  "type": "stdin",
+  "data": "crypto_aead_lock\na57a48a88d3198c616a4cc26d54fbf2b5a1d97c3d0808e1e68aaa5f14f03d127:\n4e5e7136621ea8599b9fa19302ab4452fe721d8b186b387f:\n6eadc0817d88416fedd78fe96da0236b:\ncbfa4f16374c2127aed0db01b9f73f1e1afb25684399f90053676af5e27c84443d73eed7c33058f23f5b37c6ef7d93be1faf7c975717966861cb081cdde2c828:\n",
+  "timeout": 30
+}

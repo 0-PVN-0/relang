@@ -1,0 +1,6 @@
+{
+  "id": "core/sequence/all",
+  "type": "file",
+  "data": "var a = [1, 2, 3]\nSystem.print(a.all {|x| x > 1 }) // expect: false\nSystem.print(a.all {|x| x > 0 }) // expect: true\nSystem.print([].all {|x| false }) // expect: true\n\n// Returns first falsey value.\nSystem.print(a.all {|x| x < 2 ? null : false }) // expect: null\n\n// Returns last truthy value.\nSystem.print(a.all {|x| x }) // expect: 3",
+  "timeout": 30
+}

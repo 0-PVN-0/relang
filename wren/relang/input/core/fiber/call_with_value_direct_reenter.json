@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/call_with_value_direct_reenter",
+  "type": "file",
+  "data": "var fiber\n\nfiber = Fiber.new {\n  fiber.call(2) // expect runtime error: Fiber has already been called.\n}\n\nfiber.call(1)\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

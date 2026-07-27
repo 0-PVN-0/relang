@@ -1,0 +1,6 @@
+{
+  "id": "core/range/is_inclusive",
+  "type": "file",
+  "data": "System.print((0..0).isInclusive) // expect: true\nSystem.print((0...0).isInclusive) // expect: false\n\nSystem.print((-1..1).isInclusive) // expect: true\nSystem.print((-1...1).isInclusive) // expect: false\n",
+  "timeout": 30
+}

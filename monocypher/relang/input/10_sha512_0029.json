@@ -1,0 +1,6 @@
+{
+  "id": "10_sha512_0029",
+  "type": "stdin",
+  "data": "crypto_sha512\n601e0879a3cc78389ba0f1eaba1fdef2bd0bcc67f559e27e2d90cc24d0717483bf961a8e24de8416df730f7a7ad0e8960eb8249953843aa38ff51aaf7f72c7ba73a85d0da47dfb7a3d:\n",
+  "timeout": 30
+}

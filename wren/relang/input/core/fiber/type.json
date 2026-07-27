@@ -1,0 +1,9 @@
+{
+  "id": "core/fiber/type",
+  "type": "file",
+  "data": "var fiber = Fiber.new {}\nSystem.print(fiber is Fiber)      // expect: true\nSystem.print(fiber is Object)     // expect: true\nSystem.print(fiber is Bool)       // expect: false\nSystem.print(fiber.type == Fiber) // expect: true\n",
+  "timeout": 30,
+  "files": {
+    "core/fiber/yield_from_import_module.wren": "// nontest\nSystem.print(\"module 1\")\nFiber.yield()\nSystem.print(\"module 2\")\n"
+  }
+}

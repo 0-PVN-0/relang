@@ -1,0 +1,6 @@
+{
+  "id": "23_conversions_0041",
+  "type": "stdin",
+  "data": "crypto_eddsa_to_x25519\nffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff:\n",
+  "timeout": 30
+}

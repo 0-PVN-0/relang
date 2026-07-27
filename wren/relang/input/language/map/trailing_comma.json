@@ -1,0 +1,6 @@
+{
+  "id": "language/map/trailing_comma",
+  "type": "file",
+  "data": "var map = {\n  \"a\": 1,\n  \"b\": 2,\n}\n\nSystem.print(map[\"a\"]) // expect: 1\nSystem.print(map[\"b\"]) // expect: 2\n",
+  "timeout": 30
+}

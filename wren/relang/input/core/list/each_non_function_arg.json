@@ -1,0 +1,6 @@
+{
+  "id": "core/list/each_non_function_arg",
+  "type": "file",
+  "data": "[1, 2, 3].each(\"string\") // expect runtime error: String does not implement 'call(_)'.\n",
+  "timeout": 30
+}

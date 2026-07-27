@@ -1,0 +1,4 @@
+{
+  "id": "03_code_blocks_0194",
+  "output": "<pre><code class=\"language-python\">def hello():\n    print(&#39;hi&#39;)\n</code></pre>\n\n"
+}

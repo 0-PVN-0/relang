@@ -1,0 +1,12 @@
+{
+  "id": "io/stdout/flush_multiple",
+  "type": "file",
+  "data": "import \"io\" for Stdout\n\n// Multiple flush() calls in a row - no-op, no throw.\nStdout.flush()\nStdout.flush()\nStdout.flush()\nSystem.print(\"ok\") // expect: ok\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

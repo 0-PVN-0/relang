@@ -1,0 +1,6 @@
+{
+  "id": "09_blake2b_0256",
+  "type": "stdin",
+  "data": "crypto_blake2b_keyed\n6d7367:\nffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff:\n",
+  "timeout": 30
+}

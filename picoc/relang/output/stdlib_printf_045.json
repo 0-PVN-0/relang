@@ -1,0 +1,4 @@
+{
+  "id": "stdlib_printf_045",
+  "output": "char: T\nint: -5\nunsigned: 1045\nhex: 127\nfloat: 56.250000\npadded: 00045\n"
+}

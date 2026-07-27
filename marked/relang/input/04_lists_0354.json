@@ -1,0 +1,6 @@
+{
+  "id": "04_lists_0354",
+  "type": "stdin",
+  "data": "- a\n\n  ```\n  code in loose list\n  ```\n\n- b",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "language/if/newline_after_else",
+  "type": "file",
+  "data": "if (true) \"ok\" else // expect error\n",
+  "timeout": 30
+}

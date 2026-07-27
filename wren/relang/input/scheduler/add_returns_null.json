@@ -1,0 +1,6 @@
+{
+  "id": "scheduler/add_returns_null",
+  "type": "file",
+  "data": "import \"scheduler\" for Scheduler\nimport \"timer\" for Timer\n\n// Scheduler.add should return null (or not care about return)\nvar result = Scheduler.add { 42 }\nTimer.sleep(50)\n// result is whatever Scheduler.add returns (likely null)\nSystem.print(true) // expect: true\n",
+  "timeout": 30
+}

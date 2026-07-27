@@ -1,0 +1,6 @@
+{
+  "id": "03_chacha20_ietf_0030",
+  "type": "stdin",
+  "data": "crypto_chacha20_ietf\n5702ff9f3e420469a1cba014c8460833225197c6eca5f9dddf661beb34de8da7:\n2a618baeae1fc67288f90bb1:\nd90ec40ef597689cee0217754a6550442462b1e132b239e6c79bae99739e8cdcf556e3acaac4122d00d71157c1db8e929b3b7e7360fbc4d67b396dac0b40faf5c4922a7ce97ba3dd6df5d3441b5cdf240f94ec26d2f4b0a451:\n871dd78e:\n",
+  "timeout": 30
+}

@@ -1,0 +1,6 @@
+{
+  "id": "language/number/scientific_multiple_exponants",
+  "type": "file",
+  "data": "var x = 1.2e3e4 // expect error\n",
+  "timeout": 30
+}

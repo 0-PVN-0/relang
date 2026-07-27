@@ -1,0 +1,6 @@
+{
+  "id": "preprocessor_cond_comp_018",
+  "type": "file",
+  "data": "#include <stdio.h>\n#define FLAG1 1\n#define FLAG2 1\nint main() {\n#if FLAG1\n    printf(\"FLAG1 is true\\n\");\n#if FLAG2\n    printf(\"FLAG2 is also true\\n\");\n#else\n    printf(\"FLAG2 is false\\n\");\n#endif\n#else\n    printf(\"FLAG1 is false\\n\");\n#ifdef FLAG2\n    printf(\"FLAG2 is defined\\n\");\n#endif\n#endif\n    return 0;\n}\n",
+  "timeout": 30
+}

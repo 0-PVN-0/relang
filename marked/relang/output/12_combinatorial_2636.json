@@ -1,0 +1,4 @@
+{
+  "id": "12_combinatorial_2636",
+  "output": "<ul>\n<li>item at depth 1</li>\n<li>item at depth 1</li>\n<li>item at depth 1<ul>\n<li>item at depth 2</li>\n<li>item at depth 2</li>\n<li>item at depth 2<ul>\n<li>item at depth 3</li>\n<li>item at depth 3</li>\n<li>item at depth 3<ul>\n<li>item at depth 4</li>\n<li>item at depth 4</li>\n<li>item at depth 4<ul>\n<li>item at depth 5</li>\n<li>item at depth 5</li>\n<li>item at depth 5</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n</li>\n</ul>\n\n"
+}

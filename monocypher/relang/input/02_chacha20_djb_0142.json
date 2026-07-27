@@ -1,0 +1,6 @@
+{
+  "id": "02_chacha20_djb_0142",
+  "type": "stdin",
+  "data": "crypto_chacha20_djb\ncf7a773c63a09cafb1540b2e1192e4a86d4a5944ba171b307cf24b1ffed44513:\n486d4e10f374bab0:\ne286baf9e99e7f5b803b76bbbb353debe1cc2747b0f012dc30eb17e86633:\nfc670638f590e1bf:\n",
+  "timeout": 30
+}

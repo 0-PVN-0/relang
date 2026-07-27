@@ -1,0 +1,11 @@
+{
+  "id": "module/use_nearest_modules_dir/a/b/use_nearest_modules_dir",
+  "type": "file",
+  "data": "// Stops as soon as it finds a wren_modules directory, regardless of whether or\n// not it contains the desired module.\nimport \"foo\" // expect runtime error: Could not load module 'foo'.\n",
+  "timeout": 30,
+  "files": {
+    "module/use_nearest_modules_dir/a/wren_modules/empty.txt": "This file exists just to make Git create the containing directory.\n",
+    "module/use_nearest_modules_dir/wren_modules/foo/.gitkeep": "",
+    "module/use_nearest_modules_dir/wren_modules/foo/foo.wren": "// nontest\nSystem.print(\"ran foo module\")\n"
+  }
+}

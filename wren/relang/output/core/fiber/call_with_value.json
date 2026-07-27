@@ -1,0 +1,4 @@
+{
+  "id": "core/fiber/call_with_value",
+  "output": "before\nfiber\nafter\n"
+}

@@ -1,0 +1,4 @@
+{
+  "id": "api_create_with_non_numeric_timeout_returns_400",
+  "output": "[{\"body\": \"{\\\"error\\\": \\\"json validation error: timeout is not a number\\\"}\", \"content-type\": \"application/json\", \"status\": 400, \"step\": 1}]"
+}

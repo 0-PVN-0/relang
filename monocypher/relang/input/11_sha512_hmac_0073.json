@@ -1,0 +1,6 @@
+{
+  "id": "11_sha512_hmac_0073",
+  "type": "stdin",
+  "data": "crypto_sha512_hmac\n906873a88475d3a13ecefdbb52f00023fa937e8c2be2002ec794f4639ce3b4b237ee5fae7898:\n7cb46acc0b4fe8f7d952f4e0c97a748aff01d4abe256a14c5921097be2a64f0ec488be811280fd410d43542925:\n",
+  "timeout": 30
+}

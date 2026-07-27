@@ -1,0 +1,6 @@
+{
+  "id": "language/if/truth",
+  "type": "file",
+  "data": "// False and null are false.\nif (false) System.print(\"bad\") else System.print(\"false\") // expect: false\nif (null) System.print(\"bad\") else System.print(\"null\") // expect: null\n\n// Everything else is true.\nif (true) System.print(true) // expect: true\nif (0) System.print(0) // expect: 0\nif (\"\") System.print(\"empty\") // expect: empty\n",
+  "timeout": 30
+}

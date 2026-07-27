@@ -1,0 +1,4 @@
+{
+  "id": "04_lists_0363",
+  "output": "<ol>\n<li><input disabled=\"\" type=\"checkbox\"> ordered task</li>\n<li><input checked=\"\" disabled=\"\" type=\"checkbox\"> ordered done</li>\n</ol>\n\n"
+}

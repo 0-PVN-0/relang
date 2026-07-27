@@ -1,0 +1,6 @@
+{
+  "id": "scheduler/add_many",
+  "type": "file",
+  "data": "import \"scheduler\" for Scheduler\nimport \"timer\" for Timer\n\nvar count = 0\nvar i = 0\nwhile (i < 100) {\n  Scheduler.add { count = count + 1 }\n  i = i + 1\n}\nTimer.sleep(200)\nSystem.print(count) // expect: 100\n",
+  "timeout": 30
+}

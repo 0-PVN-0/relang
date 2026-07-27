@@ -1,0 +1,4 @@
+{
+  "id": "language/implicit_receiver/instance_methods",
+  "output": "getter\nsetter\nmethod\n"
+}

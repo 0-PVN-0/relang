@@ -1,0 +1,6 @@
+{
+  "id": "15_x25519_pk_0042",
+  "type": "stdin",
+  "data": "crypto_x25519_public_key\n971b427ac0c32a8aad0faf61a43ed9b901adcf92b4cf35888173c9098ca3a88c:\n",
+  "timeout": 30
+}

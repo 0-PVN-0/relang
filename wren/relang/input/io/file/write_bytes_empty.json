@@ -1,0 +1,12 @@
+{
+  "id": "io/file/write_bytes_empty",
+  "type": "file",
+  "data": "import \"io\" for File\n\nFile.create(\"write_empty_test.temp\") {|f|\n  f.writeBytes(\"hello\")\n  f.writeBytes(\"\")\n}\nvar content = File.read(\"write_empty_test.temp\")\nSystem.print(content) // expect: hello\nFile.delete(\"write_empty_test.temp\")\n",
+  "timeout": 30,
+  "files": {
+    "io/file/file.txt": "this is a text file",
+    "io/directory/dir/a.txt": "this is a text file",
+    "io/directory/dir/b.txt": "this is a text file",
+    "io/directory/dir/c.txt": "this is a text file"
+  }
+}

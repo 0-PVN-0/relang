@@ -1,0 +1,4 @@
+{
+  "id": "language/bool_to_string",
+  "output": "true\nfalse\n"
+}

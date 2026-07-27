@@ -1,0 +1,9 @@
+{
+  "id": "core/number/is_integer",
+  "type": "file",
+  "data": "System.print(123.isInteger) // expect: true\nSystem.print(123.0.isInteger) // expect: true\nSystem.print(0.isInteger) // expect: true\nSystem.print(1.0000001.isInteger) // expect: false\nSystem.print((-2.3).isInteger) // expect: false\n\n// NaN is not an integer.\nSystem.print((0/0).isInteger) // expect: false\n\n// Infinity is not an integer.\nSystem.print((1/0).isInteger)  // expect: false\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

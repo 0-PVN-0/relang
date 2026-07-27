@@ -1,0 +1,6 @@
+{
+  "id": "09_blake2b_0225",
+  "type": "stdin",
+  "data": "crypto_blake2b_keyed\nd3a5732327e1982981346e8e24645241dad44d2193bf0fa39d66fa1122c91bfb6dcd8e17cfbc22a9117aadfe8a915824dc95b5ca8cb3c3c151218238ae:\ne9f1ae6a3b97b6f670759f5fe43d35e2131b76bb860b940c1f08ba2cb5b826defd5aecfa1c3b4a4329a6:\n",
+  "timeout": 30
+}

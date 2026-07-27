@@ -1,0 +1,6 @@
+{
+  "id": "core/range/contains",
+  "type": "file",
+  "data": "// Ordered range.\nSystem.print((2..5).contains(1)) // expect: false\nSystem.print((2..5).contains(2)) // expect: true\nSystem.print((2..5).contains(5)) // expect: true\nSystem.print((2..5).contains(6)) // expect: false\n\n// Backwards range.\nSystem.print((5..2).contains(1)) // expect: false\nSystem.print((5..2).contains(2)) // expect: true\nSystem.print((5..2).contains(5)) // expect: true\nSystem.print((5..2).contains(6)) // expect: false\n\n// Exclusive ordered range.\nSystem.print((2...5).contains(1)) // expect: false\nSystem.print((2...5).contains(2)) // expect: true\nSystem.print((2...5).contains(5)) // expect: false\nSystem.print((2...5).contains(6)) // expect: false\n\n// Exclusive backwards range.\nSystem.print((5...2).contains(1)) // expect: false\nSystem.print((5...2).contains(2)) // expect: false\nSystem.print((5...2).contains(5)) // expect: true\nSystem.print((5...2).contains(6)) // expect: false\n",
+  "timeout": 30
+}

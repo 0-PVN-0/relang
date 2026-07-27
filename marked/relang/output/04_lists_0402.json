@@ -1,0 +1,4 @@
+{
+  "id": "04_lists_0402",
+  "output": "<ol>\n<li>item with # escape</li>\n<li>item with * escape</li>\n</ol>\n\n"
+}

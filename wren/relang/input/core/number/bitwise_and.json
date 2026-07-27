@@ -1,0 +1,9 @@
+{
+  "id": "core/number/bitwise_and",
+  "type": "file",
+  "data": "System.print(0 & 0) // expect: 0\nSystem.print(0xaaaaaaaa & 0x55555555) // expect: 0\nSystem.print(0xf0f0f0f0 & 0x3c3c3c3c) // expect: 808464432\n\n// Max u32 value.\nSystem.print(0xffffffff & 0xffffffff) // expect: 4294967295\n\n// TODO: Negative numbers.\n// TODO: Floating-point numbers.\n// TODO: Numbers that don't fit in u32.\n",
+  "timeout": 30,
+  "files": {
+    "core/number/decimal_point_at_eof.wren": "// expect error line 2\n123."
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "id": "core/list/remove",
+  "type": "file",
+  "data": "var a = [1, 2, 3]\na.remove(2)\nSystem.print(a) // expect: [1, 3]\n\nvar b = [1, 2, 3]\nb.remove(1)\nSystem.print(b) // expect: [2, 3]\n\nvar c = [1, 2, 3]\nc.remove(3)\nSystem.print(c) // expect: [1, 2]\n\n// Return the removed value.\nSystem.print([3, 4, 5].remove(4)) // expect: 4\nSystem.print([3, 4, 5].remove(5)) // expect: 5\n\n// Return null when not found\nSystem.print([1, 2, 3].remove(8)) // expect: null\n",
+  "timeout": 30
+}

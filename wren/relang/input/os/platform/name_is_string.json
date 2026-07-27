@@ -1,0 +1,6 @@
+{
+  "id": "os/platform/name_is_string",
+  "type": "file",
+  "data": "import \"os\" for Platform\n\nSystem.print(Platform.name is String) // expect: true\n",
+  "timeout": 30
+}

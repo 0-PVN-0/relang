@@ -1,0 +1,48 @@
+# picoc
+
+C interpreter — executes a subset of the C language.
+
+| Field | Value |
+|-------|-------|
+| **Type** | Medium |
+| **Score** | 400 |
+| **Reference** | C |
+
+## Prerequisites
+
+- GCC
+- GNU Make
+- libreadline-dev
+
+## Prerequisites
+
+Your target language toolchain (whatever your implementation needs).
+
+## Build
+
+Build instructions for your target language implementation in `target/`.
+
+## Run
+
+```bash
+<your-program-command>
+```
+
+Replace `<your-program-command>` with the command to run your implementation in `target/`.
+
+## Validate (local)
+
+```bash
+cd relang && python3 validate.py "../target/<your-program-command>"
+```
+
+## Submit
+
+```bash
+source ../setup.sh
+relang "<your-program-command>"
+```
+
+> ⚠️ **Do NOT submit the source reference implementation.**  
+> Only implement and submit your code from `target/`.  
+> Submitting `source/` may result in **disqualification**.

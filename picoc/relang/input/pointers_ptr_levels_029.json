@@ -1,0 +1,6 @@
+{
+  "id": "pointers_ptr_levels_029",
+  "type": "file",
+  "data": "#include <stdio.h>\nint main() {\n    int val = 290;\n    int *p1 = &val;\n    int **p2 = &p1;\n    int ***p3 = &p2;\n    printf(\"val: %d, *p1: %d, **p2: %d, ***p3: %d\\n\", val, *p1, **p2, ***p3);\n    ***p3 = 580;\n    printf(\"new val: %d\\n\", val);\n    return 0;\n}\n",
+  "timeout": 30
+}
