@@ -440,7 +440,7 @@ def bubble_collision(bubble, anim):
 
 def add_all_fish(anim):
     screen_size = (anim.height() - 9) * anim.width()
-    fish_count = int(screen_size / 350)
+    fish_count = int(screen_size / 150)
     for _ in range(fish_count):
         add_fish(None, anim)
 
