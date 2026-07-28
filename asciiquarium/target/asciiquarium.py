@@ -1,63 +1,271 @@
 #!/usr/bin/env python3
-#
-#############################################################################
-# Asciiquarium - An aquarium animation in ASCII art
-#
-# This program displays an aquarium/sea animation using ASCII art.
-# It requires the curses module (built-in). Asciiquarium will
-# only run on platforms with a curses library, so Windows is not supported.
-#
-# The current version of this program is available at:
-#
-# http://robobunny.com/projects/asciiquarium
-#
-#############################################################################
-# Author:
-#   Kirk Baucom <kbaucom@schizoid.com>
-#
-# Python port:
-#   Literal 1:1 port from Perl for the reLang hackathon
-#
-# Contributors:
-#   Joan Stark: http://www.geocities.com/SoHo/7373/
-#     most of the ASCII art
-#
-#   Claudio Matsuoka <cmatsuoka@gmail.com>
-#     improved marine biodiversity (backported from the Asciiquarium Live
-#     Wallaper for Android)
-#     https://market.android.com/details?id=org.helllabs.android.asciiquarium
-#
-# License:
-#
-# Copyright (C) 2003 Kirk Baucom (kbaucom@schizoid.com)
-#
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
-#############################################################################
+"""
+Asciiquarium - An aquarium animation in ASCII art
+Python translation of the Perl original by Kirk Baucom.
+"""
 
-import curses
-import argparse
-import signal
 import sys
+import os
 import time
 import random
+import curses
+import signal
+
+VERSION = "1.1"
+
+COLOR_MAP = {
+    'c': curses.COLOR_CYAN,
+    'C': curses.COLOR_CYAN,
+    'r': curses.COLOR_RED,
+    'R': curses.COLOR_RED,
+    'y': curses.COLOR_YELLOW,
+    'Y': curses.COLOR_YELLOW,
+    'b': curses.COLOR_BLUE,
+    'B': curses.COLOR_BLUE,
+    'g': curses.COLOR_GREEN,
+    'G': curses.COLOR_GREEN,
+    'm': curses.COLOR_MAGENTA,
+    'M': curses.COLOR_MAGENTA,
+    'w': curses.COLOR_WHITE,
+    'W': curses.COLOR_WHITE,
+}
+
+COLOR_NAMES = ['c', 'C', 'r', 'R', 'y', 'Y', 'b', 'B', 'g', 'G', 'm', 'M']
+COLOR_PAIRS = {}
+_next_pair = 1
+
+def get_color_pair(fg_char):
+    global _next_pair
+    if fg_char not in COLOR_PAIRS:
+        fg = COLOR_MAP.get(fg_char, curses.COLOR_WHITE)
+        curses.init_pair(_next_pair, fg, 0)
+        COLOR_PAIRS[fg_char] = _next_pair
+        _next_pair += 1
+    return curses.color_pair(COLOR_PAIRS[fg_char])
 
 
-version = "1.1"
-new_fish = 1
-new_monster = 1
+class Entity:
+    def __init__(self, **kwargs):
+        self.name = kwargs.get('name', '')
+        self.type = kwargs.get('type', '')
+        self.shape = kwargs.get('shape', '')
+        self.position = list(kwargs.get('position', [0, 0, 0]))
+        self.default_color = kwargs.get('default_color', 'WHITE')
+        self.color_mask = kwargs.get('color', None)
+        self.callback = kwargs.get('callback', None)
+        self.callback_args = list(kwargs.get('callback_args', [])) if kwargs.get('callback_args') else []
+        self.die_time = kwargs.get('die_time', None)
+        self.die_offscreen = kwargs.get('die_offscreen', False)
+        self.die_frame = kwargs.get('die_frame', None)
+        self.death_cb = kwargs.get('death_cb', None)
+        self.physical = kwargs.get('physical', False)
+        self.coll_handler = kwargs.get('coll_handler', None)
+        self.auto_trans = kwargs.get('auto_trans', False)
+        self.transparent = kwargs.get('transparent', None)
+        self.depth_val = kwargs.get('depth', 0)
+        self.alive = True
+        self.frame = 0
+        self.frame_acc = 0.0
+        self.width = 0
+        self.height = 0
+        self._parse_shape()
+        self.X = self.position[0]
+        self.Y = self.position[1]
+        self.WIDTH = self.width
+        self.HEIGHT = self.height
 
+    def _parse_shape(self):
+        if isinstance(self.shape, list):
+            first = self.shape[0] if self.shape else ''
+            lines = first.split('\n')
+            self.width = max(len(l) for l in lines) if lines else 0
+            self.height = len(lines)
+        elif isinstance(self.shape, str):
+            lines = self.shape.split('\n')
+            self.width = max(len(l) for l in lines) if lines else 0
+            self.height = len(lines)
+        else:
+            self.width = 0
+            self.height = 0
+
+    def get_shape_lines(self):
+        if isinstance(self.shape, list):
+            idx = min(self.frame, len(self.shape) - 1)
+            return self.shape[idx].split('\n')
+        elif isinstance(self.shape, str):
+            return self.shape.split('\n')
+        return []
+
+    def get_mask_lines(self):
+        if self.color_mask is None:
+            return None
+        if isinstance(self.color_mask, list):
+            idx = min(self.frame, len(self.color_mask) - 1)
+            return self.color_mask[idx].split('\n')
+        elif isinstance(self.color_mask, str):
+            return self.color_mask.split('\n')
+        return None
+
+    def position_tuple(self):
+        return (self.position[0], self.position[1], self.position[2])
+
+    def size(self):
+        return (self.width, self.height)
+
+    def kill(self):
+        self.alive = False
+
+    def move_entity(self, anim):
+        args = self.callback_args
+        if len(args) >= 2:
+            dx = args[0] if args[0] is not None else 0
+            dy = args[1] if args[1] is not None else 0
+        else:
+            dx = 0
+            dy = 0
+
+        anim_speed = args[3] if len(args) > 3 else 0
+
+        if dx != 0 or dy != 0:
+            self.position[0] += dx
+            self.position[1] += dy
+            self.X = self.position[0]
+            self.Y = self.position[1]
+
+        if anim_speed > 0 and isinstance(self.shape, list) and len(self.shape) > 1:
+            self.frame_acc += anim_speed
+            while self.frame_acc >= 1.0:
+                self.frame_acc -= 1.0
+                self.frame = (self.frame + 1) % len(self.shape)
+
+        if self.die_offscreen:
+            if self.position[0] + self.width < 0 or self.position[0] > anim.width:
+                self.kill()
+            if self.position[1] + self.height < 0 or self.position[1] > anim.height:
+                self.kill()
+
+        if self.die_frame is not None:
+            self.die_frame -= 1
+            if self.die_frame <= 0:
+                self.kill()
+
+        return 1
+
+
+class Animation:
+    def __init__(self, stdscr):
+        self.stdscr = stdscr
+        self._entities = []
+        self._color_enabled = True
+        self.width = 0
+        self.height = 0
+        self.frame_count = 0
+        self._update_term_size()
+        curses.curs_set(0)
+
+    def _update_term_size(self):
+        self.height, self.width = self.stdscr.getmaxyx()
+
+    def update_term_size(self):
+        self._update_term_size()
+
+    def color(self, val):
+        self._color_enabled = val
+
+    def new_entity(self, **kwargs):
+        ent = Entity(**kwargs)
+        self._entities.append(ent)
+        return ent
+
+    def add_entity(self, entity):
+        self._entities.append(entity)
+
+    def remove_all_entities(self):
+        self._entities = []
+
+    def del_entity(self, entity):
+        if entity in self._entities:
+            self._entities.remove(entity)
+
+    def get_entities_of_type(self, etype):
+        return [e for e in self._entities if e.type == etype]
+
+    def _render_entity(self, ent):
+        if not ent.alive:
+            return
+        lines = ent.get_shape_lines()
+        mask_lines = ent.get_mask_lines()
+        x = int(round(ent.position[0]))
+        y = int(round(ent.position[1]))
+        default_color = ent.default_color
+        transparent = ent.transparent
+        sh, sw = self.height, self.width
+
+        for row_idx, line in enumerate(lines):
+            screen_y = y + row_idx
+            if screen_y < 0 or screen_y >= sh:
+                continue
+            mask_row = mask_lines[row_idx] if mask_lines and row_idx < len(mask_lines) else ''
+            for col_idx, ch in enumerate(line):
+                screen_x = x + col_idx
+                if screen_x < 0 or screen_x >= sw:
+                    continue
+                if transparent and ch == transparent:
+                    continue
+                if ch == ' ' or ch == '\r':
+                    continue
+                if mask_row and col_idx < len(mask_row) and mask_row[col_idx] != ' ':
+                    mask_ch = mask_row[col_idx]
+                    if mask_ch in COLOR_MAP:
+                        pair = get_color_pair(mask_ch)
+                        self.stdscr.addch(screen_y, screen_x, ch, pair)
+                    else:
+                        self.stdscr.addch(screen_y, screen_x, ch)
+                else:
+                    if default_color and default_color in COLOR_MAP:
+                        pair = get_color_pair(default_color[0].lower() if default_color.isupper() else default_color[0])
+                        self.stdscr.addch(screen_y, screen_x, ch, pair)
+                    else:
+                        pair = get_color_pair('W')
+                        self.stdscr.addch(screen_y, screen_x, ch, pair)
+
+    def redraw_screen(self):
+        self.stdscr.erase()
+        self._render_all()
+        self.stdscr.refresh()
+
+    def _render_all(self):
+        sorted_ents = sorted([e for e in self._entities if e.alive],
+                             key=lambda e: e.position[2] if len(e.position) > 2 else 0)
+        for ent in sorted_ents:
+            self._render_entity(ent)
+
+    def animate(self):
+        self.frame_count += 1
+        dead = []
+        for ent in self._entities:
+            if not ent.alive:
+                dead.append(ent)
+                continue
+            if ent.callback:
+                ent.callback(ent, self)
+            elif ent.callback_args:
+                ent.move_entity(self)
+            if ent.die_time and time.time() >= ent.die_time:
+                ent.kill()
+            if not ent.alive:
+                dead.append(ent)
+        for ent in dead:
+            if ent.death_cb:
+                ent.death_cb(ent, self)
+        self._entities = [e for e in self._entities if e.alive]
+        self.stdscr.erase()
+        self._render_all()
+        self.stdscr.refresh()
+
+
+new_fish = True
+new_monster = True
 
 depth = {
     'guiText': 0,
@@ -78,244 +286,15 @@ depth = {
 }
 
 
-class Entity:
-    def __init__(self, **kwargs):
-        self.type = kwargs.get('type', '')
-        raw_shape = kwargs.get('shape', '')
-        self.auto_trans = kwargs.get('auto_trans', 0)
-        self.color = kwargs.get('color', '')
-        self.default_color = kwargs.get('default_color', 'WHITE')
-        self._callback = kwargs.get('callback', None)
-        self._callback_args = list(kwargs.get('callback_args', []))
-        self.die_time = kwargs.get('die_time', None)
-        self.death_cb = kwargs.get('death_cb', None)
-        self.die_offscreen = kwargs.get('die_offscreen', 0)
-        self._coll_handler = kwargs.get('coll_handler', None)
-        self.transparent = kwargs.get('transparent', None)
-        self.die_frame = kwargs.get('die_frame', None)
-        self.depth = kwargs.get('depth', None)
-        self.physical = kwargs.get('physical', 0)
-        position = kwargs.get('position', [0, 0, 0])
-        self.x = position[0]
-        self.y = position[1]
-        self.z = position[2] if len(position) > 2 else 0
-        self.frame = 0
-        self.frame_count = 0
-        self.killed = False
-        self.anim = None
-        if isinstance(raw_shape, str):
-            self.frames = [raw_shape]
+def rand_color(color_mask):
+    colors = ['c', 'C', 'r', 'R', 'y', 'Y', 'b', 'B', 'g', 'G', 'm', 'M']
+    result = ''
+    for ch in color_mask:
+        if ch.isdigit() and '1' <= ch <= '9':
+            result += random.choice(colors)
         else:
-            self.frames = list(raw_shape)
-        if self.frames:
-            lines = self.frames[0].split('\n')
-            self.HEIGHT = len(lines)
-            self.WIDTH = max((len(l) for l in lines), default=0)
-        else:
-            self.HEIGHT = 0
-            self.WIDTH = 0
-
-    def position(self):
-        return [self.x, self.y, self.z]
-
-    def size(self):
-        return [self.WIDTH, self.HEIGHT]
-
-    @property
-    def height(self):
-        return self.HEIGHT
-
-    def callback_args(self):
-        return self._callback_args
-
-    def kill(self):
-        self.killed = True
-
-    def collisions(self):
-        if self.anim is None:
-            return []
-        result = []
-        for e in self.anim.entities:
-            if e is not self and e.physical:
-                if (self.x < e.x + e.WIDTH and
-                        self.x + self.WIDTH > e.x and
-                        self.y < e.y + e.HEIGHT and
-                        self.y + self.HEIGHT > e.y):
-                    result.append(e)
-        return result
-
-    def move_entity(self, anim):
-        speed = self._callback_args
-        if len(speed) > 0:
-            self.x += speed[0]
-        if len(speed) > 1:
-            self.y += speed[1]
-        if self.die_offscreen:
-            if (self.x + self.WIDTH < 0 or
-                    self.x > anim.width() or
-                    self.y + self.HEIGHT < 0 or
-                    self.y > anim.height()):
-                return 1
-        return 0
-
-
-class Animation:
-    def __init__(self, stdscr):
-        self.stdscr = stdscr
-        self._color_enabled = 0
-        self.entities = []
-        self._init_colors()
-        self._update_size()
-
-    def _init_colors(self):
-        curses.init_pair(1, curses.COLOR_RED, curses.COLOR_BLACK)
-        curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
-        curses.init_pair(3, curses.COLOR_YELLOW, curses.COLOR_BLACK)
-        curses.init_pair(4, curses.COLOR_BLUE, curses.COLOR_BLACK)
-        curses.init_pair(5, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
-        curses.init_pair(6, curses.COLOR_CYAN, curses.COLOR_BLACK)
-        curses.init_pair(7, curses.COLOR_WHITE, curses.COLOR_BLACK)
-
-    def _update_size(self):
-        self.height_val, self.width_val = self.stdscr.getmaxyx()
-
-    def width(self):
-        return self.width_val
-
-    def height(self):
-        return self.height_val
-
-    def color(self, flag):
-        self._color_enabled = flag
-
-    def new_entity(self, **kwargs):
-        entity = Entity(**kwargs)
-        self.add_entity(entity)
-        return entity
-
-    def add_entity(self, entity):
-        entity.anim = self
-        self.entities.append(entity)
-
-    def del_entity(self, entity):
-        if entity in self.entities:
-            self.entities.remove(entity)
-
-    def remove_all_entities(self):
-        self.entities = []
-
-    def get_entities_of_type(self, type_name):
-        return [e for e in self.entities if e.type == type_name]
-
-    def update_term_size(self):
-        self._update_size()
-
-    def _color_to_attr(self, c):
-        pair_map = {
-            'r': 1, 'R': 1,
-            'g': 2, 'G': 2,
-            'y': 3, 'Y': 3,
-            'b': 4, 'B': 4,
-            'm': 5, 'M': 5,
-            'c': 6, 'C': 6,
-            'W': 7,
-        }
-        pair = pair_map.get(c, 0)
-        if pair:
-            attr = curses.color_pair(pair)
-            if c.isupper():
-                attr |= curses.A_BOLD
-            return attr
-        return 0
-
-    def _draw_entity(self, entity):
-        frame_str = entity.frames[entity.frame % len(entity.frames)]
-        lines = frame_str.split('\n')
-        if entity.color:
-            if isinstance(entity.color, str):
-                masks = [entity.color]
-            else:
-                masks = list(entity.color)
-            if masks:
-                mask_idx = entity.frame % len(masks)
-                mask_lines = masks[mask_idx].split('\n')
-            else:
-                mask_lines = None
-        else:
-            mask_lines = None
-        for i, line in enumerate(lines):
-            y = entity.y + i
-            if y < 0 or y >= self.height_val:
-                continue
-            ml = mask_lines[i] if mask_lines is not None and i < len(mask_lines) else None
-            for j, ch in enumerate(line):
-                x = entity.x + j
-                if x < 0 or x >= self.width_val:
-                    continue
-                if entity.transparent is not None and ch == entity.transparent:
-                    continue
-                if entity.auto_trans and ch == ' ':
-                    continue
-                attr = 0
-                if ml is not None and j < len(ml) and ml[j] != ' ':
-                    attr = self._color_to_attr(ml[j])
-                if attr:
-                    try:
-                        self.stdscr.addch(y, x, ch, attr)
-                    except Exception:
-                        pass
-                else:
-                    try:
-                        self.stdscr.addch(y, x, ch)
-                    except Exception:
-                        pass
-
-    def animate(self):
-        dead = []
-        for entity in self.entities:
-            if entity.killed:
-                dead.append(entity)
-                continue
-            if entity.die_time is not None and time.time() >= entity.die_time:
-                dead.append(entity)
-                continue
-            if entity.die_frame is not None and entity.frame_count >= entity.die_frame:
-                dead.append(entity)
-                continue
-            if entity._callback:
-                result = entity._callback(entity, self)
-                if result:
-                    dead.append(entity)
-                    continue
-            else:
-                if entity._callback_args and len(entity._callback_args) > 0:
-                    entity.x += entity._callback_args[0]
-                if entity._callback_args and len(entity._callback_args) > 1:
-                    entity.y += entity._callback_args[1]
-                if entity.die_offscreen:
-                    if (entity.x + entity.WIDTH < 0 or
-                            entity.x > self.width_val or
-                            entity.y + entity.HEIGHT < 0 or
-                            entity.y > self.height_val):
-                        dead.append(entity)
-                        continue
-            if entity._coll_handler:
-                entity._coll_handler(entity, self)
-            if len(entity.frames) > 1:
-                entity.frame = (entity.frame + 1) % len(entity.frames)
-            entity.frame_count += 1
-        for d in dead:
-            if d.death_cb:
-                d.death_cb(d, self)
-            self.del_entity(d)
-        self.redraw_screen()
-
-    def redraw_screen(self):
-        self.stdscr.erase()
-        sorted_entities = sorted(self.entities, key=lambda e: e.depth if e.depth is not None else e.z)
-        for entity in sorted_entities:
-            self._draw_entity(entity)
-        self.stdscr.refresh()
+            result += ch
+    return result
 
 
 def add_environment(anim):
@@ -326,18 +305,18 @@ def add_environment(anim):
         '^^      ^^^^      ^^^    ^^^^^^  '
     ]
     segment_size = len(water_line_segment[0])
-    segment_repeat = int(anim.width() / segment_size) + 1
+    segment_repeat = int(anim.width / segment_size) + 1
     for i in range(len(water_line_segment)):
         water_line_segment[i] = water_line_segment[i] * segment_repeat
     for i in range(len(water_line_segment)):
         anim.new_entity(
-            name='water_seg_{}'.format(i),
-            type='waterline',
+            name="water_seg_{}".format(i),
+            type="waterline",
             shape=water_line_segment[i],
-            position=[0, i + 5, depth['water_line' + str(i)]],
-            default_color='cyan',
+            position=[0, i + 5, depth['water_line{}'.format(i)]],
+            default_color='CYAN',
             depth=22,
-            physical=1,
+            physical=True,
         )
 
 
@@ -348,15 +327,15 @@ def add_castle(anim):
               /^\\
              /   \\
  _   _   _  /     \\  _   _   _
-[ ]_[ ]_[ ]/ _   _ \\[ ]_[ ]_[ ]
+[ ]_[ ]_[ ]/ _   _ \[ ]_[ ]_[ ]
 |_=__-_ =_|_[ ]_[ ]_|_=-___-__|
  | _- =  | =_ = _    |= _=   |
  |= -[]  |- = _ =    |_-=_[] |
  | =_    |= - ___    | =_ =  |
- |=  []- |-  /| |\\   |=_ =[] |
- |- =_   | =| | | |  |- = -  |
- |_______|__|_|_|_|__|_______|
-"""
+|=  []- |-  /| |\\   |=_ =[] |
+|- =_   | =| | | |  |- = -  |
+|_______|__|_|_|_|__|_______|"""
+
     castle_mask = """
                 RR
 
@@ -370,19 +349,19 @@ def add_castle(anim):
               yyy
              yy yy
             y y y y
-            yyyyyyy
-"""
+            yyyyyyy"""
+
     anim.new_entity(
-        name='castle',
+        name="castle",
         shape=castle_image,
         color=castle_mask,
-        position=[anim.width() - 32, anim.height() - 13, depth['castle']],
+        position=[anim.width - 32, anim.height - 13, depth['castle']],
         default_color='BLACK',
     )
 
 
 def add_all_seaweed(anim):
-    seaweed_count = int(anim.width() / 15)
+    seaweed_count = int(anim.width / 15)
     for _ in range(seaweed_count):
         add_seaweed(None, anim)
 
@@ -392,14 +371,14 @@ def add_seaweed(old_seaweed, anim):
     height = int(random.random() * 4) + 3
     for i in range(1, height + 1):
         left_side = i % 2
-        right_side = not left_side
-        seaweed_image[left_side] += '(\n'
-        seaweed_image[right_side] += ' )\n'
-    x = int(random.random() * (anim.width() - 2)) + 1
-    y = anim.height() - height
+        right_side = 1 - left_side
+        seaweed_image[left_side] += "(\n"
+        seaweed_image[right_side] += " )\n"
+    x = int(random.random() * (anim.width - 2)) + 1
+    y = anim.height - height
     anim_speed = random.random() * 0.05 + 0.25
     anim.new_entity(
-        name='seaweed' + str(random.random()),
+        name='seaweed{}'.format(random.random()),
         shape=seaweed_image,
         position=[x, y, depth['seaweed']],
         callback_args=[0, 0, 0, anim_speed],
@@ -410,11 +389,11 @@ def add_seaweed(old_seaweed, anim):
 
 
 def add_bubble(fish, anim):
-    cb_args = fish.callback_args()
+    cb_args = fish.callback_args
     fish_size = fish.size()
-    fish_pos = fish.position()
+    fish_pos = fish.position
     bubble_pos = list(fish_pos)
-    if cb_args[0] > 0:
+    if cb_args and len(cb_args) > 0 and cb_args[0] > 0:
         bubble_pos[0] += fish_size[0]
     bubble_pos[1] += int(fish_size[1] / 2)
     bubble_pos[2] -= 1
@@ -423,115 +402,433 @@ def add_bubble(fish, anim):
         type='bubble',
         position=bubble_pos,
         callback_args=[0, -1, 0, 0.1],
-        die_offscreen=1,
-        physical=1,
+        die_offscreen=True,
+        physical=True,
         coll_handler=bubble_collision,
         default_color='CYAN',
     )
 
 
 def bubble_collision(bubble, anim):
-    collisions = bubble.collisions()
-    for col_obj in collisions:
-        if col_obj.type == 'waterline':
-            bubble.kill()
-            break
+    for col_obj in anim._entities:
+        if col_obj.alive and col_obj.type == 'waterline':
+            if _check_collision(bubble, col_obj):
+                bubble.kill()
+                return
+
+
+def _check_collision(a, b):
+    ax = int(round(a.position[0]))
+    ay = int(round(a.position[1]))
+    aw = a.width
+    ah = a.height
+    bx = int(round(b.position[0]))
+    by = int(round(b.position[1]))
+    bw = b.width
+    bh = b.height
+    if ax + aw <= bx or bx + bw <= ax:
+        return False
+    if ay + ah <= by or by + bh <= ay:
+        return False
+    return True
 
 
 def add_all_fish(anim):
-    screen_size = (anim.height() - 9) * anim.width()
-    fish_count = max(40, int(screen_size / 40))
+    screen_size = (anim.height - 9) * anim.width
+    fish_count = int(screen_size / 350)
     for _ in range(fish_count):
         add_fish(None, anim)
 
 
-def add_fish(*parm):
+def add_fish(old_fish, anim):
     if new_fish:
         if int(random.random() * 12) > 8:
-            add_new_fish(*parm)
+            add_new_fish(old_fish, anim)
         else:
-            add_old_fish(*parm)
+            add_old_fish(old_fish, anim)
     else:
-        add_old_fish(*parm)
+        add_old_fish(old_fish, anim)
 
 
 def add_new_fish(old_fish, anim):
-    fish_image = [
-"><'>\n",
-"1243\n",
-"<'_><\n",
-"1W231\n",
-">= >\n",
-"12W2\n",
-"< =<\n",
-"1W21\n",
-"><>'\n",
-"12431\n",
-"<'><\n",
-"1W23\n",
-">=('>\n",
-"12W41\n",
-"<')=<\n",
-"1W341\n",
+    fish_images = [
+"""
+   \\
+  / \\
+>=_('>
+  \\_/
+   /
+""",
+"""
+   1
+  1 1
+663745
+  111
+   3
+""",
+"""
+  /
+ / \\
+<')_=<
+ \\_/
+  \\
+""",
+"""
+   2
+  111
+547366
+  111
+   3
+""",
+"""
+      ,
+      }\\
+\\  .'  `\\
+}}<   ( 6>
+/  `,  .'
+      }/
+      '
+""",
+"""
+      2
+      22
+6  11  11
+661   7 45
+6  11  11
+      33
+      3
+""",
+"""
+    ,
+   {/
+ /'  `.  /
+<6 )   >{{
+ `.  ,'  \\
+   \\{
+    `
+""",
+"""
+    2
+   22
+ 11  11  6
+54 7   166
+ 11  11  6
+   33
+    3
+""",
+"""
+            \\'`.
+             )  \\
+(`.??????_.-`' ' '`-.
+ \\ `.??.`        (o) \\_
+  >  ><     (((       (
+ / .`??`._      /_|  /'
+(.`???????`-. _  _.-`
+            /__/
+
+""",
+"""
+            1111
+             1  1
+111      11111 1 1111
+ 1 11  11        141 11
+  1  11     777       5
+ 1 11  111      333  11
+111       111 1  1111
+            11111
+
+""",
+"""
+       .'`/
+      /  (
+  .-'` ` `'-._??????.')
+_/ (o)        '.??.' /
+)       )))     ><  <
+`\\  |_\\      _.'??'. \\
+  '-._  _ .-'???????'.)
+      `\\__\\
+""",
+"""
+       1111
+      1  1
+  1111 1 11111      111
+11 141        11  11 1
+5       777     11  1
+11  333      111  11 1
+  1111  1 111       111
+      11111
+""",
+"""
+       ,--,_
+__    _\\.---'-.
+\\ '.-"     // o\\
+/_.'-._    \\\\  /
+        `"--(/"`
+""",
+"""
+       22222
+66    121111211
+6 6111     77 41
+6661111    77  1
+       11113311
+""",
+"""
+    _,--,
+ .-'---./_    __
+/o \\\\     "-.' /
+\\  //    _.-'._\\
+ `"\\)--"`
+""",
+"""
+    22222
+ 112111121    66
+14 77     1116 6
+1  77    1111666
+ 11331111
+""",
     ]
-    add_fish_entity(anim, *fish_image)
+    add_fish_entity(anim, fish_images)
 
 
 def add_old_fish(old_fish, anim):
-    fish_image = [
-"><'>\n",
-"1423\n",
-"<'_><\n",
-"123W1\n",
-">= >\n",
-"1W42\n",
-"< =<\n",
-"12W1\n",
-"><>'\n",
-"1W431\n",
-"<'><\n",
-"1231\n",
-">=('>\n",
-"14W31\n",
-"<')=<\n",
-"1W341\n",
+    fish_images = [
+"""
+       \\
+     ...\\..,
+\\  /'       \\
+ >=     (  ' >
+/  \\      / /
+    `"'"'/''
+""",
+"""
+       2
+     1112111
+6  11       1
+ 66     7  4 5
+6  1      3 1
+    11111311
+""",
+"""
+      /
+  ,../...
+ /       '\\  /
+< '  )     =<
+ \\ \\      /  \\
+  `'\\'"'"'
+""",
+"""
+      2
+  1112111
+ 1       11  6
+5 4  7     66
+ 1 3      1  6
+  11311111
+""",
+"""
+    \\
+\\ /--\\
+>=  (o>
+/ \\__/
+    /
+""",
+"""
+    2
+6 1111
+66  745
+6 1111
+    3
+""",
+"""
+  /
+ /--\\ /
+<o)  =<
+ \\__/ \\
+  \\
+""",
+"""
+  2
+ 1111 6
+547  66
+ 1111 6
+  3
+""",
+"""
+       \\:.
+\\;,   ,;\\\\\\,
+  \\\\\\;;:::::::o
+  ///;;::::::::<
+ /;` ``/////``
+""",
+"""
+       222
+666   1122211
+  6661111111114
+  66611111111115
+ 666 113333311
+""",
+"""
+      .:/
+   ,,///;,   ,;/
+ o:::::::;;///
+>::::::::;;\\\\\\
+  ''\\\\\\\\\\\\'' ';\\
+""",
+"""
+      222
+   1122211   666
+ 4111111111666
+51111111111666
+  113333311 666
+""",
+"""
+  __
+><_'>
+   '
+""",
+"""
+  11
+61145
+   3
+""",
+"""
+ __
+<'_><
+ `
+""",
+"""
+ 11
+54116
+ 3
+""",
+"""
+   ..\\,
+>='   ('>
+  '''/''
+""",
+"""
+   1121
+661   745
+  111311
+""",
+"""
+  ,/..
+<')   `=<
+ ``\\```
+""",
+"""
+  1211
+547   166
+ 113111
+""",
+"""
+   \\
+  / \\
+>=_('>
+  \\_/
+   /
+""",
+"""
+   2
+  1 1
+661745
+  111
+   3
+""",
+"""
+  /
+ / \\
+<')_=<
+ \\_/
+  \\
+""",
+"""
+  2
+ 1 1
+547166
+ 111
+  3
+""",
+"""
+  ,\\
+>=('>
+  '/
+""",
+"""
+  12
+66745
+  13
+""",
+"""
+ /,
+<')=<
+ \\`
+""",
+"""
+ 21
+54766
+ 31
+""",
+"""
+  __
+\\/ o\\
+/\\__/
+""",
+"""
+  11
+61 41
+61111
+""",
+"""
+ __
+/o \\/
+\\__/\\
+""",
+"""
+ 11
+14 16
+11116
+""",
     ]
-    add_fish_entity(anim, *fish_image)
+    add_fish_entity(anim, fish_images)
 
 
-def add_fish_entity(anim, *fish_image):
-    fish_image = list(fish_image)
+def add_fish_entity(anim, fish_images):
     colors = ['c', 'C', 'r', 'R', 'y', 'Y', 'b', 'B', 'g', 'G', 'm', 'M']
-    fish_num = int(random.random() * ((len(fish_image) - 1) / 2))
+    fish_num = int(random.random() * (len(fish_images) // 2))
     fish_index = fish_num * 2
     speed = random.random() * 2 + 0.25
-    f_depth = int(random.random() * (depth['fish_end'] - depth['fish_start'])) + depth['fish_start']
-    color_mask = fish_image[fish_index + 1]
+    fish_depth = int(random.random() * (depth['fish_end'] - depth['fish_start'])) + depth['fish_start']
+    color_mask = fish_images[fish_index + 1]
     color_mask = color_mask.replace('4', 'W')
     color_mask = rand_color(color_mask)
+
     if fish_num % 2:
         speed *= -1
-    fish_object = Entity(
+
+    fish_obj = Entity(
         type='fish',
-        shape=fish_image[fish_index],
-        auto_trans=1,
+        shape=fish_images[fish_index],
+        auto_trans=True,
         color=color_mask,
-        position=[0, 0, f_depth],
+        position=[0, 0, fish_depth],
         callback=fish_callback,
         callback_args=[speed, 0, 0],
-        die_offscreen=1,
+        die_offscreen=True,
         death_cb=add_fish,
-        physical=1,
+        physical=True,
         coll_handler=fish_collision,
     )
-    max_height = 18
-    min_height = anim.height() - fish_object.HEIGHT
-    fish_object.y = int(random.random() * (min_height - max_height)) + max_height
+
+    max_height = 9
+    min_height = anim.height - fish_obj.HEIGHT
+    fish_obj.Y = int(random.random() * (min_height - max_height)) + max_height
+    fish_obj.position[1] = fish_obj.Y
     if fish_num % 2:
-        fish_object.x = anim.width() - 2
+        fish_obj.X = anim.width - 2
     else:
-        fish_object.x = 1 - fish_object.WIDTH
-    anim.add_entity(fish_object)
+        fish_obj.X = 1 - fish_obj.WIDTH
+    fish_obj.position[0] = fish_obj.X
+    anim.add_entity(fish_obj)
 
 
 def fish_callback(fish, anim):
@@ -541,47 +838,43 @@ def fish_callback(fish, anim):
 
 
 def fish_collision(fish, anim):
-    collisions = fish.collisions()
-    for col_obj in collisions:
-        if col_obj.type == 'teeth' and fish.height <= 5:
-            add_splat(anim, *col_obj.position())
-            fish.kill()
-            break
+    for col_obj in anim._entities:
+        if col_obj.alive and col_obj.type == 'teeth' and fish.HEIGHT <= 5:
+            if _check_collision(fish, col_obj):
+                add_splat(anim, col_obj.position[0], col_obj.position[1], col_obj.position[2])
+                fish.kill()
+                return
 
 
 def add_splat(anim, x, y, z):
-    splat_image = [
-"""
+    splat_images = [
+        """
 
    .
   ***
    '
-
 """,
-"""
+        """
 
  ",*;`
  "*,**
- *"'~'
-
+ *\"'~'
 """,
-"""
+        """
   , ,
  " ","'
- *" *'"
-  " ; .
-
+ *\" *'\"
+  \" ; .
 """,
-"""
-* ' , ' `
+        """* ' , ' `
 ' ` * . '
- ' `' ",'
-* ' " * .
-" * ', '
-""",
+ ' `' \",'
+* ' \" * .
+\" * ', '
+"""
     ]
     anim.new_entity(
-        shape=splat_image,
+        shape=splat_images,
         position=[x - 4, y - 2, z - 2],
         default_color='RED',
         callback_args=[0, 0, 0, 0.25],
@@ -591,8 +884,8 @@ def add_splat(anim, x, y, z):
 
 
 def add_shark(old_ent, anim):
-    shark_image = [
-"""
+    shark_images = [
+        """
                               __
                              ( `\\
   ,??????????????????????????)   `\\
@@ -602,9 +895,8 @@ def add_shark(old_ent, anim):
     >                     _.-'      .((      ._     )
   .`.-`--...__         .-'     -.___.....-(|/|/|/|/'
  ;.'?????????`. ...----`.___.',,,_______......---'
- '???????????'-'
-""",
-"""
+ '???????????'-'""",
+        """
                      __
                     /' )
                   /'   (??????????????????????????,
@@ -614,11 +906,11 @@ def add_shark(old_ent, anim):
 (     _.      )).      `-._                     <
  `\\|\\|\\|\\|)-.....___.-     `-.         __...--'-.'.
    `---......_______,,,`.___.'----... .'?????????`.;
-                                      `-`???????????`
-""",
+                                      `-`???????????`"""
     ]
-    shark_mask = [
-"""
+
+    shark_masks = [
+        """
 
 
 
@@ -628,9 +920,8 @@ def add_shark(old_ent, anim):
                                           cWWWWWWWW
 
 
-
 """,
-"""
+        """
 
 
 
@@ -640,319 +931,305 @@ def add_shark(old_ent, anim):
   WWWWWWWWc
 
 
-
-""",
+"""
     ]
-    dir = int(random.random() * 2)
+
+    dir_val = int(random.random() * 2)
     x = -53
-    y = int(random.random() * (anim.height() - (10 + 9))) + 9
+    y = int(random.random() * (anim.height - (10 + 9))) + 9
     teeth_x = -9
     teeth_y = y + 7
     speed = 2
-    if dir:
+    if dir_val:
         speed *= -1
-        x = anim.width() - 2
+        x = anim.width - 2
         teeth_x = x + 9
+
     anim.new_entity(
         type='teeth',
         shape='*',
         position=[teeth_x, teeth_y, depth['shark'] + 1],
         depth=depth['fish_end'] - depth['fish_start'],
         callback_args=[speed, 0, 0],
-        physical=1,
+        physical=True,
     )
+
     anim.new_entity(
         type='shark',
-        color=shark_mask[dir],
-        shape=shark_image[dir],
-        auto_trans=1,
+        color=shark_masks[dir_val],
+        shape=shark_images[dir_val],
         position=[x, y, depth['shark']],
-        default_color='WHITE',
+        default_color='CYAN',
         callback_args=[speed, 0, 0],
-        die_offscreen=1,
+        die_offscreen=True,
         death_cb=shark_death,
     )
 
 
 def shark_death(shark, anim):
-    teeth = anim.get_entities_of_type('teeth')
-    for obj in list(teeth):
+    teeth_list = anim.get_entities_of_type('teeth')
+    for obj in teeth_list:
         anim.del_entity(obj)
     random_object(shark, anim)
 
 
 def add_ship(old_ent, anim):
-    ship_image = [
-"""
+    ship_images = [
+        """
      |    |    |
     )_)  )_)  )_)
    )___))___))___)\\
   )____)____)_____)\\\\
 _____|____|____|____\\\\\\__
-\\                   /
-""",
-"""
+\\                   /""",
+        """
          |    |    |
         (_(  (_(  (_(
       /(___((___((___(
     //(_____(____(____(
-___///____|____|____|_____
-    \\                   /
-""",
+__///____|____|____|_____
+    \\                   /"""
     ]
-    ship_mask = [
-"""
+
+    ship_masks = [
+        """
      y    y    y
 
                   w
                    ww
 yyyyyyyyyyyyyyyyyyyywwwyy
-y                   y
-""",
-"""
+y                   y""",
+        """
          y    y    y
 
       w
     ww
 yywwwyyyyyyyyyyyyyyyyyyyy
-    y                   y
-""",
+    y                   y"""
     ]
-    dir = int(random.random() * 2)
+
+    dir_val = int(random.random() * 2)
     x = -24
     speed = 1
-    if dir:
+    if dir_val:
         speed *= -1
-        x = anim.width() - 2
+        x = anim.width - 2
+
     anim.new_entity(
-        color=ship_mask[dir],
-        shape=ship_image[dir],
-        auto_trans=1,
+        color=ship_masks[dir_val],
+        shape=ship_images[dir_val],
         position=[x, 0, depth['water_gap1']],
         default_color='WHITE',
         callback_args=[speed, 0, 0],
-        die_offscreen=1,
+        die_offscreen=True,
         death_cb=random_object,
     )
 
 
 def add_whale(old_ent, anim):
-    whale_image = [
-"""
+    whale_images = [
+        """
         .-----:
       .'       `.
 ,????/       (o) \\
-\\`._/          ,__)
-""",
-"""
+\\`._/          ,__)""",
+        """
     :-----.
   .'       `.
  / (o)       \\????,
-(__,          \\_.'/
-""",
+(__,          \\_.'/"""
     ]
-    whale_mask = [
-"""
+
+    whale_masks = [
+        """
              C C
            CCCCCCC
            C  C  C
         BBBBBBB
       BB       BB
 B    B       BWB B
-BBBBB          BBBB
-""",
-"""
+BBBBB          BBBB""",
+        """
    C C
  CCCCCCC
  C  C  C
     BBBBBBB
   BB       BB
  B BWB       B    B
-BBBB          BBBBB
-""",
+BBBB          BBBBB"""
     ]
+
     water_spout = [
-"""
+        """
 
 
    :
 """,
-"""
+        """
 
    :
    :
 """,
-"""
+        """
   . .
   -:-
    :
 """,
-"""
+        """
   . .
  .-:-.
    :
 """,
-"""
+        """
   . .
 '.-:-.`
 '  :  '
 """,
-"""
+        """
 
  .- -.
 ;  :  ;
 """,
+        """
 
 
 
-"""
-
-
-;     ;
-""",
+;     ;"""
     ]
-    dir = int(random.random() * 2)
-    x = None
+
+    dir_val = int(random.random() * 2)
     speed = 1
-    spout_align = None
-    whale_anim = []
-    whale_anim_mask = []
-    if dir:
-        spout_align = 1
+    spout_align = 1
+    if dir_val:
         speed *= -1
-        x = anim.width() - 2
+        x = anim.width - 2
+        spout_align = 1
     else:
         spout_align = 11
         x = -18
-    for _ in range(1, 6):
-        whale_anim.append('\n\n\n' + whale_image[dir])
-        whale_anim_mask.append(whale_mask[dir])
+
+    whale_anim = []
+    whale_anim_mask = []
+    for _ in range(5):
+        whale_anim.append("\n\n\n" + whale_images[dir_val])
+        whale_anim_mask.append(whale_masks[dir_val])
+
     for spout_frame in water_spout:
-        whale_frame = whale_image[dir]
-        aligned_spout_frame = ('\n' + ' ' * spout_align).join(spout_frame.split('\n'))
-        whale_frame = aligned_spout_frame + whale_image[dir]
+        whale_frame = whale_images[dir_val]
+        spout_lines = spout_frame.split('\n')
+        aligned_lines = []
+        for line in spout_lines:
+            aligned_lines.append(' ' * spout_align + line)
+        aligned_spout_frame = '\n'.join(aligned_lines)
+        whale_frame = aligned_spout_frame + whale_images[dir_val]
         whale_anim.append(whale_frame)
-        whale_anim_mask.append(whale_mask[dir])
+        whale_anim_mask.append(whale_masks[dir_val])
+
     anim.new_entity(
         color=whale_anim_mask,
         shape=whale_anim,
-        auto_trans=1,
         position=[x, 0, depth['water_gap2']],
         default_color='WHITE',
         callback_args=[speed, 0, 0, 1],
-        die_offscreen=1,
+        die_offscreen=True,
         death_cb=random_object,
     )
 
 
-def add_monster(*parm):
+def add_monster(old_ent, anim):
     if new_monster:
-        add_new_monster(*parm)
+        add_new_monster(old_ent, anim)
     else:
-        add_old_monster(*parm)
+        add_old_monster(old_ent, anim)
 
 
 def add_new_monster(old_ent, anim):
-    monster_image = [
+    monster_images = [
         [
 """
          _???_?????????????????????_???_???????_a_a
        _{.`=`.}_??????_???_??????_{.`=`.}_????{/ ''\\_
  _????{.'  _  '.}????{.`'`.}????{.'  _  '.}??{|  ._oo)
-{ \\??{/  .'?'.  \\}??{/ .-. \\}??{/  .'?'.  \\}?{/  |
-""",
+{ \\??{/  .'?'.  \\}??{/ .-. \\}??{/  .'?'.  \\}?{/  |""",
 """
-                      _???_????????????????????_a_a
+                       _???_????????????????????_a_a
   _??????_???_??????_{.`=`.}_??????_???_??????{/ ''\\_
  { \\????{.`'`.}????{.'  _  '.}????{.`'`.}????{|  ._oo)
-  \\ \\??{/ .-. \\}??{/  .'?'.  \\}??{/ .-. \\}???{/  |
-""",
+  \\ \\??{/ .-. \\}??{/  .'?'.  \\}??{/ .-. \\}???{/  |"""
         ],
         [
 """
    a_a_???????_???_?????????????????????_???_
  _/'' \\}????_{.`=`.}_??????_???_??????_{.`=`.}_
 (oo_.  |}??{.'  _  '.}????{.`'`.}????{.'  _  '.}????_
-    |  \\}?{/  .'?'.  \\}??{/ .-. \\}??{/  .'?'.  \\}??/ }
-""",
+    |  \\}?{/  .'?'.  \\}??{/ .-. \\}??{/  .'?'.  \\}??/ }""",
 """
    a_a_????????????????????_   _
  _/'' \\}??????_???_??????_{.`=`.}_??????_???_??????_
 (oo_.  |}????{.`'`.}????{.'  _  '.}????{.`'`.}????/ }
-    |  \\}???{/ .-. \\}??{/  .'?'.  \\}??{/ .-. \\}??/ /
-""",
-        ],
+    |  \\}???{/ .-. \\}??{/  .'?'.  \\}??{/ .-. \\}??/ /"""
+        ]
     ]
-    monster_mask = [
-"""                                                W W
 
-
-
-
+    monster_masks = [
+        """                                                W W
 
 """,
+        """   W W
+
 """
-   W W
-
-
-
-
-""",
     ]
-    dir = int(random.random() * 2)
-    x = None
+
+    dir_val = int(random.random() * 2)
     speed = 2
-    if dir:
+    if dir_val:
         speed *= -1
-        x = anim.width() - 2
+        x = anim.width - 2
     else:
         x = -54
+
     monster_anim_mask = []
-    for _ in range(1, 3):
-        monster_anim_mask.append(monster_mask[dir])
+    for _ in range(2):
+        monster_anim_mask.append(monster_masks[dir_val])
+
     anim.new_entity(
-        shape=monster_image[dir],
-        auto_trans=1,
+        shape=monster_images[dir_val],
         color=monster_anim_mask,
         position=[x, 2, depth['water_gap2']],
         callback_args=[speed, 0, 0, 0.25],
         death_cb=random_object,
-        die_offscreen=1,
+        die_offscreen=True,
         default_color='GREEN',
     )
 
 
 def add_old_monster(old_ent, anim):
-    monster_image = [
+    monster_images = [
         [
 """
                                                           ____
             __??????????????????????????????????????????/   o  \\
           /    \\????????_?????????????????????_???????/     ____ >
   _??????|  __  |?????/   \\????????_????????/   \\????|     |
- | \\?????|  ||  |????|     |?????/   \\?????|     |???|     |
-""",
+ | \\?????|  ||  |????|     |?????/   \\?????|     |???|     |""",
 """
                                                           ____
                                              __?????????/   o  \\
              _?????????????????????_???????/    \\?????/     ____ >
    _???????/   \\????????_????????/   \\????|  __  |???|     |
-  | \\?????|     |?????/   \\?????|     |???|  ||  |???|     |
-""",
+  | \\?????|     |?????/   \\?????|     |???|  ||  |???|     |""",
 """
                                                           ____
                                   __????????????????????/   o  \\
  _??????????????????????_???????/    \\????????_???????/     ____ >
 | \\??????????_????????/   \\????|  __  |?????/   \\????|     |
- \\ \\???????/   \\?????|     |???|  ||  |????|     |???|     |
-""",
+ \\ \\???????/   \\?????|     |???|  ||  |????|     |???|     |""",
 """
                                                           ____
                        __???????????????????????????????/   o  \\
   _??????????_???????/    \\????????_??????????????????/     ____ >
  | \\???????/   \\????|  __  |?????/   \\????????_??????|     |
-  \\ \\?????|     |???|  ||  |????|     |?????/   \\????|     |
-""",
+  \\ \\?????|     |???|  ||  |????|     |?????/   \\????|     |"""
         ],
         [
 """
@@ -960,100 +1237,94 @@ def add_old_monster(old_ent, anim):
   /  o   \\??????????????????????????????????????????__
 < ____     \\???????_?????????????????????_????????/    \\
       |     |????/   \\????????_????????/   \\?????|  __  |??????_
-      |     |???|     |?????/   \\?????|     |????|  ||  |?????/ |
-""",
+      |     |???|     |?????/   \\?????|     |????|  ||  |?????/ |""",
 """
     ____
   /  o   \\?????????__
 < ____     \\?????/    \\???????_?????????????????????_
       |     |???|  __  |????/   \\????????_????????/   \\???????_
-      |     |???|  ||  |???|     |?????/   \\?????|     |?????/ |
-""",
+      |     |???|  ||  |???|     |?????/   \\?????|     |?????/ |""",
 """
     ____
   /  o   \\????????????????????__
 < ____     \\???????_????????/    \\???????_??????????????????????_
       |     |????/   \\?????|  __  |????/   \\????????_??????????/ |
-      |     |???|     |????|  ||  |???|     |?????/   \\???????/ /
-""",
+      |     |???|     |????|  ||  |???|     |?????/   \\???????/ /""",
 """
     ____
   /  o   \\???????????????????????????????__
 < ____     \\??????????????????_????????/    \\???????_??????????_
       |     |??????_????????/   \\?????|  __  |????/   \\???????/ |
-      |     |????/   \\?????|     |????|  ||  |???|     |?????/ /
-""",
-        ],
+      |     |????/   \\?????|     |????|  ||  |???|     |?????/ /"""
+        ]
     ]
-    monster_mask = [
-"""
+
+    monster_masks = [
+        """
 
                                                             W
 
 
-
 """,
-"""
+        """
 
      W
 
 
-
-""",
+"""
     ]
-    dir = int(random.random() * 2)
-    x = None
+
+    dir_val = int(random.random() * 2)
     speed = 2
-    if dir:
+    if dir_val:
         speed *= -1
-        x = anim.width() - 2
+        x = anim.width - 2
     else:
         x = -64
+
     monster_anim_mask = []
-    for _ in range(1, 5):
-        monster_anim_mask.append(monster_mask[dir])
+    for _ in range(4):
+        monster_anim_mask.append(monster_masks[dir_val])
+
     anim.new_entity(
-        shape=monster_image[dir],
-        auto_trans=1,
+        shape=monster_images[dir_val],
         color=monster_anim_mask,
         position=[x, 2, depth['water_gap2']],
         callback_args=[speed, 0, 0, 0.25],
         death_cb=random_object,
-        die_offscreen=1,
+        die_offscreen=True,
         default_color='GREEN',
     )
 
 
-def add_big_fish(*parm):
+def add_big_fish(old_ent, anim):
     if new_fish:
         if int(random.random() * 3) > 1:
-            add_big_fish_2(*parm)
+            add_big_fish_2(old_ent, anim)
         else:
-            add_big_fish_1(*parm)
+            add_big_fish_1(old_ent, anim)
     else:
-        add_big_fish_1(*parm)
+        add_big_fish_1(old_ent, anim)
 
 
 def add_big_fish_1(old_ent, anim):
-    big_fish_image = [
-"""
-
+    big_fish_images = [
+        """
  ______
 `""-.  `````-----.....__
-      `.  .      .       `-.
-        :     .     .       `.
+     `.  .      .       `-.
+       :     .     .       `.
  ,?????:   .    .          _ :
-: `.???:                  (@) `._
- `. `..'     .     =`-.       .__)
-   ;     .        =  ~  :     .-"
+ : `.???:                  (@) `._
+  `. `..'     .     =`-.       .__)
+    ;     .        =  ~  :     .-"
  .' .'`.   .    .  =.-'  `._ .'
 : .'???:               .   .'
  '???.'  .    .     .   .-'
    .'____....----''.'=.'
    ""?????????????.'.'
-               ''"'`
-""",
-"""
+               ''"'`""",
+        """
                            ______
           __.....-----'''''  .-""'
        .-'       .      .  .'
@@ -1067,28 +1338,26 @@ def add_big_fish_1(old_ent, anim):
        `-.   .     .    .  `.???`
           `.=`.``----....____`.
             `.`.?????????????""
-              '`"``
-""",
+              '`"``"""
     ]
-    big_fish_mask = [
-"""
 
+    big_fish_masks = [
+        """
  111111
 11111  11111111111111111
-    11  2      2       111
-      1     2     2       11
-1     1   2    2          1 1
+     11  2      2       111
+       1     2     2       11
+ 1     1   2    2          1 1
 1 11   1                  1W1 111
-11 1111     2     1111       1111
-  1     2        1  1  1     111
-11 1111   2    2  1111  111 11
+ 11 1111     2     1111       1111
+   1     2        1  1  1     111
+ 11 1111   2    2  1111  111 11
 1 11   1               2   11
-1   11  2    2     2   111
-  111111111111111111111
-  11             1111
-              11111
-""",
-"""
+ 1   11  2    2     2   111
+   111111111111111111111
+   11             1111
+               11111""",
+        """
                            111111
           11111111111111111  11111
        111       2      2  11
@@ -1102,69 +1371,66 @@ def add_big_fish_1(old_ent, anim):
        111   2     2    2  11   1
           111111111111111111111
             1111             11
-              11111
-""",
+              11111"""
     ]
-    dir = int(random.random() * 2)
-    x = None
+
+    dir_val = int(random.random() * 2)
     speed = 3
-    if dir:
-        x = anim.width() - 1
+    if dir_val:
+        x = anim.width - 1
         speed *= -1
     else:
         x = -34
     max_height = 9
-    min_height = anim.height() - 15
+    min_height = anim.height - 15
     y = int(random.random() * (min_height - max_height)) + max_height
-    color_mask = rand_color(big_fish_mask[dir])
+    color_mask = rand_color(big_fish_masks[dir_val])
+
     anim.new_entity(
-        shape=big_fish_image[dir],
-        auto_trans=1,
+        shape=big_fish_images[dir_val],
         color=color_mask,
         position=[x, y, depth['shark']],
         callback_args=[speed, 0, 0],
         death_cb=random_object,
-        die_offscreen=1,
+        die_offscreen=True,
         default_color='YELLOW',
     )
 
 
 def add_big_fish_2(old_ent, anim):
-    big_fish_image = [
-"""
+    big_fish_images = [
+        """
                 _ _ _
              .='\\ \\ \\`"=,
            .'\\ \\ \\ \\ \\ \\ \\
 \\'=._?????/ \\ \\ \\_\\_\\_\\_\\_\\
 \\'=._'.??/\\ \\,-"`- _ - _ - '-.
   \\`=._\\|'.\\/- _ - _ - _ - _- \\
-  ;"= ._\\=./_ -_ -_ \\{`"=_    @ \\
-   ;="_-_=- _ -  _ - \\{"=_"-     \\
-   ;_=_--_.,          \\{_.='   .-/
+  ;"= ._\\=./_ -_ -_ {`"=_    @ \\
+   ;="_-_=- _ -  _ - {"=_"-     \\
+   ;_=_--_.,          {_.='   .-/
   ;.="` / ';\\        _.     _.-`
-  /_.='/ \\/ /;._ _ _\\{.-;`/"`
-/._=_.'???'/ / / / /\\{.= /
-/.=' ??????`'./_/_.=`\\{_/
-""",
-"""
+  /_.='/ \\/ /;._ _ _{.-;`/""
+/._=_.'???'/ / / / /{.= /
+/.=' ??????`'./_/_.=`{_/""",
+        """
             _ _ _
         ,="`/ / /'=.
        / / / / / / /'.
       /_/_/_/_/_/ / / \\?????_.='/
    .-' - _ - _ -`"-,/ /\\??.'_.='/
   / -_ - _ - _ - _ -\\/.'|/_.=`/
- / @    _="`\} _- _- _\\.=/_. =";
-/     -"_="\} - _  - _ -=_-_"=;
-\\-.   '=._\}          ,._--_=_;
+ / @    _="`} _- _- _\\.=/_. =";
+/     -"_="} - _  - _ -=_-_"=;
+\\-.   '=._}          ,._--_=_;
  `-._     ._        /;' \\ `"=.;
-     `"\\`;-.\}_ _ _.;\\ \\/ \\'=._\\
-        \\ =.\}\\ \\ \\ \\ \\'???'._=_.\\
-         \\_\}`=._\\_\\.'`???????'=.\\
-""",
+     `"\\`;-.}_ _ _.;\\ \\/ \\'=._\\
+        \\ =.}\\ \\ \\ \\ \\'???'._=_.\\
+         \\_}`=._\\_\\.'`???????'=.\\"""
     ]
-    big_fish_mask = [
-"""
 
+    big_fish_masks = [
+        """
                 1 1 1
              1111 1 11111
            111 1 1 1 1 1 1
@@ -1177,9 +1443,8 @@ def add_big_fish_2(old_ent, anim):
   11111 11111        11     1111
   111111 11 1111 1 111111111
 1111111   11 1 1 1 1111 1
-1111       1111111111111
-""",
-"""
+1111       1111111111111""",
+        """
             1 1 1
         11111 1 1111
        1 1 1 1 1 1 111
@@ -1192,142 +1457,118 @@ def add_big_fish_2(old_ent, anim):
  1111     11        111 1 11111
      111111111 1 1111 11 111111
         1 1111 1 1 1 11   1111111
-         1111111111111       1111
-""",
+         1111111111111       1111"""
     ]
-    dir = int(random.random() * 2)
-    x = None
+
+    dir_val = int(random.random() * 2)
     speed = 2.5
-    if dir:
-        x = anim.width() - 1
+    if dir_val:
+        x = anim.width - 1
         speed *= -1
     else:
         x = -33
     max_height = 9
-    min_height = anim.height() - 14
+    min_height = anim.height - 14
     y = int(random.random() * (min_height - max_height)) + max_height
-    color_mask = rand_color(big_fish_mask[dir])
+    color_mask = rand_color(big_fish_masks[dir_val])
+
     anim.new_entity(
-        shape=big_fish_image[dir],
-        auto_trans=1,
+        shape=big_fish_images[dir_val],
         color=color_mask,
         position=[x, y, depth['shark']],
         callback_args=[speed, 0, 0],
         death_cb=random_object,
-        die_offscreen=1,
+        die_offscreen=True,
         default_color='YELLOW',
     )
 
 
+random_object_funcs = []
+
+
 def init_random_objects():
-    return [
+    global random_object_funcs
+    random_object_funcs = [
         add_ship,
         add_whale,
         add_monster,
         add_big_fish,
         add_shark,
     ]
-
-
-random_objects = init_random_objects()
+    return random_object_funcs
 
 
 def random_object(dead_object, anim):
-    sub = int(random.random() * len(random_objects))
-    random_objects[sub](dead_object, anim)
+    sub = int(random.random() * len(random_object_funcs))
+    random_object_funcs[sub](dead_object, anim)
 
 
-def dprint(*args):
-    with open('debug', 'a') as D:
-        D.write(' '.join(str(a) for a in args) + '\n')
-
-
-def sighandler(sig, frame):
-    if sig == signal.SIGINT:
-        quit_prog()
-    else:
-        quit_prog("Exiting with SIG{}".format(sig))
-
-
-def quit_prog(mesg=None):
-    if mesg is not None:
-        sys.stderr.write(mesg + '\n')
+def quit_program(mesg=None):
+    if mesg:
+        print(mesg, file=sys.stderr)
     sys.exit(0)
 
 
-def initialize():
-    for sig in [signal.SIGINT, signal.SIGTERM, signal.SIGABRT]:
-        signal.signal(sig, sighandler)
+def main(stdscr):
+    global new_fish, new_monster
 
+    new_fish = True
+    new_monster = True
 
-def center(width, mesg):
-    l = len(mesg)
-    if l < width:
-        return ' ' * int((width - len(mesg)) / 2) + mesg
-    elif l > width:
-        return mesg[:width - l - 3] + "..."
-    else:
-        return mesg
+    import getopt
+    try:
+        opts, args = getopt.getopt(sys.argv[1:], 'c')
+    except getopt.GetoptError:
+        opts = []
 
+    for opt, val in opts:
+        if opt == '-c':
+            new_fish = False
+            new_monster = False
 
-def rand_color(color_mask):
-    colors = ['c', 'C', 'r', 'R', 'y', 'Y', 'b', 'B', 'g', 'G', 'm', 'M']
-    for i in range(1, 10):
-        color = colors[int(random.random() * (len(colors) - 1))]
-        color_mask = color_mask.replace(str(i), color)
-    return color_mask
+    init_random_objects()
 
-
-def version_message():
-    print("asciiquarium {}".format(version))
-    sys.exit(0)
-
-
-def run(stdscr):
-    initialize()
     anim = Animation(stdscr)
-    curses.halfdelay(1)
     anim.color(1)
+
     start_time = time.time()
-    paused = 0
+    paused = False
+
     while True:
         add_environment(anim)
         add_castle(anim)
         add_all_seaweed(anim)
         add_all_fish(anim)
         random_object(None, anim)
+
         anim.redraw_screen()
-        nexttime = 0
-        while True:
+
+        inner_loop = True
+        while inner_loop:
+            stdscr.timeout(100)
             try:
-                in_char = stdscr.getch()
-            except Exception:
-                in_char = -1
-            if in_char != -1:
-                in_char = chr(in_char).lower()
-            else:
-                in_char = ''
-            if in_char == 'q':
-                quit_prog()
-            elif in_char == 'r':
-                break
-            elif in_char == 'p':
-                paused = not paused
+                key = stdscr.getch()
+            except KeyboardInterrupt:
+                quit_program()
+
+            if key != -1:
+                ch = chr(key).lower()
+                if ch == 'q':
+                    quit_program()
+                elif ch == 'r':
+                    inner_loop = False
+                elif ch == 'p':
+                    paused = not paused
+
             if not paused:
                 anim.animate()
 
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-c', action='store_true', help='classic mode')
-    parser.add_argument('--version', action='version', version='asciiquarium {}'.format(version))
-    args = parser.parse_args()
-    global new_fish, new_monster
-    if args.c:
-        new_fish = 0
-        new_monster = 0
-    curses.wrapper(run)
+        anim.update_term_size()
+        anim.remove_all_entities()
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        curses.wrapper(main)
+    except KeyboardInterrupt:
+        quit_program()
